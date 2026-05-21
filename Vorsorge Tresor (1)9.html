@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="robots" content="noindex"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vorsorge-Tresor · bestattungs-experten.de</title>
+
+
+<style>
+:root{
+  --bg:transparent;--w:#fff;--ink:#0d1117;--mu:#64748b;
+  --bo:#e5e7eb;--soft:#f8fafc;--cr:#f1f5f9;
+  --pu:#7c3aed;--pl:#f5f3ff;--pk:#ec4899;
+  --go:#b45309;--gl:#fffbeb;--sa:#15803d;--sl:#dcfce7;
+  --re:#b91c1c;--rl:#fee2e2;
+  --sh:0 8px 32px rgba(2,6,23,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:1280px;margin:0 auto;padding:20px 20px}
+.hidden{display:none!important}
+
+/* LOGIN */
+#LS{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:transparent;position:relative;overflow:hidden}
+#LS::before{display:none}
+.lc{background:rgba(255,255,255,.95);border:1px solid #e5e7eb;border-radius:24px;padding:44px 40px;max-width:460px;width:100%;text-align:center;position:relative;z-index:1;box-shadow:0 8px 40px rgba(0,0,0,.07)}
+.lc-logo{width:68px;height:68px;border-radius:20px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px}
+.lc-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7c3aed;margin-bottom:20px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:14px;padding:8px 16px;line-height:1.8}
+.lc-title{font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,5vw,38px);color:#0d1117;line-height:1.2;margin-bottom:10px}
+.lc-title em{background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+.lc-sub{font-size:14px;color:#64748b;line-height:1.65;margin-bottom:28px}
+.lc-in{width:100%;padding:13px 16px;border-radius:14px;border:1.5px solid #e5e7eb;background:#f9fafb;color:#0d1117;font-size:15px;font-family:inherit;margin-bottom:10px;box-sizing:border-box}
+.lc-in::placeholder{color:#9ca3af}
+.lc-in:focus{border-color:rgba(124,58,237,.8);outline:none}
+.lc-btn{width:100%;padding:14px;border-radius:14px;border:none;cursor:pointer;font-size:15px;font-weight:700;font-family:inherit;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;box-shadow:0 8px 24px rgba(124,58,237,.35);transition:all .2s}
+.lc-btn:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(124,58,237,.45)}
+.lc-res{display:none;margin-top:10px}
+.lc-res-btn{width:100%;padding:11px;border-radius:12px;border:1.5px solid #e5e7eb;background:#f9fafb;color:#64748b;font-size:13px;cursor:pointer;font-family:inherit;transition:all .2s}
+.lc-stats{display:flex;gap:20px;justify-content:center;margin-top:28px;padding-top:22px;border-top:1px solid #f0f0f0}
+.lcs-n{font-family:Georgia,'Times New Roman',serif;font-size:22px;background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.lcs-l{font-size:11px;color:#94a3b8;margin-top:2px}
+
+/* APP */
+#AS{display:none}
+.al{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start;margin-top:16px}
+@media(max-width:820px){.al{grid-template-columns:1fr}}
+
+/* TOPBAR */
+.tb{background:var(--w);border:1px solid var(--bo);border-radius:16px;padding:12px 18px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.tb-l{font-size:12px;font-weight:700;white-space:nowrap}
+.tb-b{flex:1;height:6px;background:var(--cr);border-radius:999px;overflow:hidden}
+.tb-f{height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:999px;transition:width .5s cubic-bezier(.22,1,.36,1)}
+.tb-p{font-family:'JetBrains Mono',monospace;font-size:12px;color:#7c3aed;white-space:nowrap}
+
+/* SIDEBAR */
+.sb{background:var(--w);border:1px solid var(--bo);border-radius:20px;box-shadow:var(--sh);padding:16px;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto}
+.sb-u{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--cr)}
+.sb-av{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:#fff}
+.sb-nm{font-size:14px;font-weight:700}
+.sb-lb{font-size:11px;color:var(--mu)}
+.sc-w{text-align:center;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--cr)}
+.sc-r{position:relative;width:88px;height:88px;margin:0 auto 8px}
+.sc-r svg{width:88px;height:88px;transform:rotate(-90deg)}
+.sc-r circle{fill:none;stroke-width:7;stroke-linecap:round}
+.sc-t{stroke:var(--cr)}
+.sc-f{stroke:url(#sg);transition:stroke-dashoffset .7s cubic-bezier(.22,1,.36,1)}
+.sc-n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-size:22px;color:var(--ink);font-weight:600}
+.sc-l{font-size:11px;color:var(--mu);font-weight:600}
+.ni{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;cursor:pointer;transition:all .2s;margin-bottom:3px;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+.ni:hover{background:var(--soft)}
+.ni{transition:background .15s,transform .1s}
+.ni:hover{background:var(--soft);transform:translateX(2px)}
+.ni.act{background:var(--pl);transform:translateX(3px)}
+.ni-ic{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--cr);transition:all .2s}
+.ni.act .ni-ic{background:#7c3aed;color:#fff}
+.ni-inf{flex:1;min-width:0}
+.ni-nm{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ni.act .ni-nm{color:#7c3aed}
+.ni-st{font-size:10px;color:var(--mu)}
+.ni-d{width:14px;height:14px;border-radius:999px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700}
+.nd-done{background:#15803d;color:#fff}
+.nd-part{background:var(--gl);color:#b45309}
+.nd-empty{background:var(--cr);color:var(--mu)}
+.sb-a{margin-top:14px;padding-top:14px;border-top:1px solid var(--cr);display:flex;flex-direction:column;gap:7px}
+.sb-btn{width:100%;padding:9px;border-radius:11px;border:1px solid var(--bo);background:var(--w);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;color:var(--ink);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.sb-btn:hover{background:var(--soft);transform:translateY(-1px)}
+.sb-btn.pr{background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(124,58,237,.25)}
+.sb-btn.pr:hover{box-shadow:0 8px 20px rgba(124,58,237,.38)}
+
+/* MODULE */
+.mod{background:var(--w);border:1px solid var(--bo);border-radius:20px;box-shadow:var(--sh);overflow:hidden}
+.mh{padding:16px 22px;border-bottom:1px solid var(--cr);display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(124,58,237,.03),rgba(236,72,153,.03))}
+.mh-ic{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;color:#fff}
+.mh-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7c3aed;margin-bottom:3px}
+.mh-t{font-family:Georgia,'Times New Roman',serif;font-size:19px;font-weight:600}
+.mh-d{font-size:12.5px;color:var(--mu);margin-top:1px}
+.mb{padding:22px 28px}
+
+/* FIELDS */
+.f{margin-bottom:12px}
+.f label{font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:5px}
+.f input,.f select,.f textarea{width:100%;padding:9px 13px;border-radius:10px;border:1.5px solid var(--bo);font-size:13.5px;font-family:inherit;background:var(--w);color:var(--ink);transition:all .15s}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:#7c3aed;outline:none;box-shadow:0 0 0 3px rgba(124,58,237,.10)}
+.f textarea{min-height:90px;resize:vertical;line-height:1.6}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:500px){.fr{grid-template-columns:1fr}}
+.fh{font-size:11.5px;color:#94a3b8;margin-top:5px;line-height:1.4}
+
+/* ONBOARDING STEPPER */
+.ob{max-width:580px;margin:0 auto;padding:0 8px}
+.ob-step{display:none}
+.ob-step.active{display:block}
+.ob-hero{text-align:center;padding:32px 0 24px}
+.ob-icon{width:72px;height:72px;border-radius:22px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(124,58,237,.25)}
+.ob-title{font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:600;color:#0d1117;margin-bottom:10px;line-height:1.3}
+.ob-sub{font-size:15px;color:#64748b;line-height:1.65;max-width:440px;margin:0 auto}
+.ob-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}
+@media(max-width:500px){.ob-cards{grid-template-columns:1fr}}
+.ob-card{background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.ob-card-ic{font-size:22px}
+.ob-card-t{font-size:14px;font-weight:700;color:#0d1117}
+.ob-card-d{font-size:12.5px;color:#64748b;line-height:1.55}
+.ob-checklist{background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:20px;margin:20px 0}
+.ob-check-t{font-size:13px;font-weight:700;color:#0d1117;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ob-check-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #f8f8f8}
+.ob-check-item:last-child{border-bottom:none;padding-bottom:0}
+.ob-check-box{width:20px;height:20px;min-width:20px;border-radius:6px;border:1.5px solid #e5e7eb;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all .15s}
+.ob-check-box.done{background:#7c3aed;border-color:#7c3aed;color:#fff}
+.ob-check-text{font-size:13.5px;color:#374151;line-height:1.5}
+.ob-check-sub{font-size:11.5px;color:#94a3b8;margin-top:2px}
+.ob-dots{display:flex;gap:8px;justify-content:center;margin-bottom:24px}
+.ob-dot{width:8px;height:8px;border-radius:999px;background:#e5e7eb;transition:all .3s}
+.ob-dot.active{width:24px;background:linear-gradient(90deg,#7c3aed,#ec4899)}
+.ob-nav{display:flex;gap:12px;justify-content:center;margin-top:8px}
+.ob-btn{padding:13px 28px;border-radius:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;border:none}
+.ob-btn-sec{background:#f1f5f9;color:#374151}
+.ob-btn-sec:hover{background:#e2e8f0}
+.ob-btn-pri{background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+.ob-btn-pri:hover{opacity:.92;transform:translateY(-1px)}
+.ob-prog{height:3px;background:#f1f5f9;border-radius:999px;margin-bottom:28px;overflow:hidden}
+.ob-prog-f{height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:999px;transition:width .4s ease}
+.ob-time{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:600;padding:5px 12px;border-radius:999px;margin-top:12px}
+
+/* CHIPS */
+.cg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{padding:8px 16px;border-radius:999px;border:1.5px solid var(--bo);background:var(--w);cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;transition:all .15s;color:var(--ink)}
+.chip:hover{border-color:#c4b5fd;background:#f9f8ff;transform:translateY(-1px)}
+.chip.on{border-color:#7c3aed;background:#7c3aed;color:#fff;transform:scale(1.03)}
+
+/* TRESOR ITEMS */
+.tl{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.ti{background:var(--soft);border:1px solid var(--bo);border-radius:14px;padding:14px 16px}
+.ti-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.ti-t{font-size:13px;font-weight:700}
+.ti-d{background:none;border:none;cursor:pointer;color:var(--mu);font-size:15px;padding:2px 6px;border-radius:6px;transition:all .2s}
+.ti-d:hover{color:#b91c1c;background:var(--rl)}
+.ti-b{font-size:12.5px;color:#334155;display:flex;flex-wrap:wrap;gap:8px}
+.add-form{background:var(--soft);border:1.5px dashed var(--bo);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.add-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:12px;border:1.5px dashed var(--bo);background:transparent;cursor:pointer;font-size:13px;font-weight:600;color:var(--mu);font-family:inherit;transition:all .2s}
+.add-btn:hover{border-color:#7c3aed;color:#7c3aed;background:var(--pl)}
+
+/* ALERTS */
+.al-box{border-radius:7px;padding:9px 12px;margin-bottom:10px;display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.55}
+.ali{font-size:16px;flex-shrink:0;margin-top:2px}
+.al-info{background:#faf9ff;border:1px solid #ede9fe;color:#4c1d95}
+.al-warn{background:#fffdf5;border:1px solid #fef3c7;color:#92400e}
+.al-danger{background:#fff8f8;border:1px solid #fecdd3;color:#991b1b}
+.al-ok{background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d}
+
+/* SECTION */
+.st{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin:16px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--cr)}
+
+/* BUTTONS */
+.acts{display:flex;justify-content:space-between;gap:10px;margin-top:24px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;border:1.5px solid var(--bo);background:var(--w);cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;transition:all .2s;color:var(--ink)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--sh)}
+.btn-g{color:#fff;border-color:transparent;background:linear-gradient(90deg,#7c3aed,#ec4899);box-shadow:0 6px 20px rgba(124,58,237,.25)}
+.btn-g:hover{box-shadow:0 10px 28px rgba(124,58,237,.40)}
+
+/* FINISH */
+.fh-screen{background:transparent;padding:0;margin-bottom:0;border-radius:0;text-align:left;position:relative;overflow:visible}
+/* .fh::before removed - was causing purple overlay on all .fh hint texts */
+.fh-t{font-family:Georgia,'Times New Roman',serif;font-size:clamp(20px,3vw,28px);color:#0d1117;font-weight:600;margin-bottom:6px}
+.fh-s{font-size:14px;color:#64748b;margin-bottom:16px}
+.fh-ms{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;justify-content:flex-start}
+.fh-m{background:#f5f3ff;border:1px solid #ede9fe;border-radius:999px;padding:4px 12px;font-size:11.5px;font-weight:600;color:#7c3aed;display:inline-block}
+.pg{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:24px;margin-top:20px}
+.pg-t{font-size:15px;font-weight:700;color:#0d1117;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.pg-h{font-size:12.5px;color:#64748b;margin-bottom:16px;line-height:1.55}
+.pg-in{width:100%;padding:11px 14px;border-radius:11px;border:1.5px solid #e5e7eb;background:#fafafa;color:#0d1117;font-size:14px;font-family:inherit;margin-bottom:10px;box-sizing:border-box}
+.pg-in::placeholder{color:rgba(255,255,255,.35)}
+.pg-in:focus{border-color:rgba(124,58,237,.8);outline:none}
+.pg-pw{position:relative;margin-bottom:9px}
+.pg-pw input,select,textarea{box-sizing:border-box;font-family:inherit}
+.pg-in input{width:100%;padding:11px 40px 11px 14px;border-radius:11px;border:1.5px solid #e5e7eb;background:#fafafa;color:#0d1117;font-size:14px;font-family:inherit;box-sizing:border-box}
+.pg-pw input::placeholder{color:#9ca3af}
+.pg-pw input:focus{border-color:rgba(124,58,237,.8);outline:none}
+.pg-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#9ca3af;font-size:16px;transition:color .15s}
+.pg-con{display:flex;align-items:flex-start;gap:10px;padding:10px 13px;border-radius:10px;background:#f8fafc;border:1px solid #f0f0f0;margin-bottom:10px;font-size:12.5px;color:#374151;line-height:1.5}
+.pg-con span{color:rgba(255,255,255,.8)}
+.pg-con a{color:#c4b5fd}
+.pg-con input[type=checkbox]{width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:#7c3aed;cursor:pointer}
+.pg-con span{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5}
+.pg-con a{color:rgba(255,255,255,.8)}
+.pg-err{color:#ef4444;font-size:12px;display:none;margin-bottom:8px;padding:8px 12px;background:#fff8f8;border-radius:8px;border:1px solid #fecdd3}
+.pg-ok{display:none;align-items:center;gap:8px;background:#f0fdf4;border-radius:10px;padding:11px 14px;color:#16a34a;font-size:13px;font-weight:600;margin-bottom:10px;border:1px solid #bbf7d0}
+.pg-ok.show{display:flex}
+.pg-btn{width:100%;padding:14px;border-radius:13px;border:none;cursor:pointer;font-size:15px;font-weight:700;font-family:inherit;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;box-shadow:0 6px 20px rgba(124,58,237,.25);transition:all .2s}
+.pg-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(124,58,237,.35)}
+.nr-r{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.85;color:#1e293b;white-space:pre-wrap;background:var(--soft);border-radius:12px;padding:20px;margin-top:12px;border-left:3px solid #7c3aed}
+.nr-l{text-align:center;padding:20px;color:var(--mu);font-style:italic}
+.tip-box{border-radius:8px;padding:8px 12px;margin-bottom:6px;display:flex;gap:8px;font-size:12.5px;line-height:1.5}
+.tip-box.tip{background:#f7fdf9;border:1px solid #d1fae5;color:#065f46}
+.tip-box.trap{background:#fffaf7;border:1px solid #fde8cc;color:#92400e}
+.tip-box.law{background:#f5f9ff;border:1px solid #dbeafe;color:#1e40af}
+.tip-box.money{background:#fefdf5;border:1px solid #fef9c3;color:#713f12}
+.tip-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+.tip-title{font-weight:600;margin-bottom:1px;font-size:12px}
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+@media(max-width:600px){.tips-grid{grid-template-columns:1fr}}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+@media(max-width:500px){.stat-row{grid-template-columns:1fr}}
+.stat-card{background:#fafafa;border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #f0f0f0}
+.stat-num{font-family:Georgia,'Times New Roman',serif;font-size:17px;background:linear-gradient(90deg,var(--pu),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600;line-height:1.1}
+.stat-lbl{font-size:10.5px;color:var(--mu);margin-top:3px;line-height:1.35}
+.todo-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.todo-item{display:flex;align-items:flex-start;gap:8px;padding:8px 11px;background:#fafafa;border-radius:7px;font-size:12.5px;line-height:1.45;border:0.5px solid #f0f0f0}
+.todo-num{width:18px;height:18px;min-width:18px;border-radius:999px;background:linear-gradient(135deg,var(--pu),var(--pk));color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
+.wb{background:#f9f8ff;border-radius:8px;padding:10px 14px;margin-bottom:14px;border:1px solid #ede9fe}
+.wb-t{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7c3aed;margin-bottom:3px}
+.wb-c{font-size:13px;color:#374151;line-height:1.6}
+.wb-c strong{color:#111827;font-weight:600}
+/* PROGRESS BAR IN MODULES */
+.mod-progress{height:3px;background:linear-gradient(90deg,var(--pu),var(--pk));border-radius:0 0 0 0;margin:0 -0px;position:relative}
+/* BETTER STAT CARDS */
+.stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.12);transition:all .2s}
+/* SMOOTH TRANSITIONS */
+.ni{transition:background .15s,color .15s}
+.tip-box{transition:box-shadow .2s}
+.tip-box:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+/* FINISH SCREEN IMPROVEMENTS */
+.fh-stats{display:flex;gap:10px;margin:16px 0}
+.fh-stat{background:#fff;border:1px solid #f0f0f0;border-radius:12px;padding:14px;text-align:center;flex:1}
+.fh-stat-n{font-family:Georgia,'Times New Roman',serif;font-size:24px;background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.fh-stat-l{font-size:11px;color:#94a3b8;margin-top:4px}
+@media(max-width:500px){.fh-stats{display:flex;gap:10px;margin:16px 0}}
+
+/* ACCORDION */
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:9px 13px;border:1px solid #f0f0f0;border-radius:8px;background:#fafafa;cursor:pointer;font-size:12px;font-weight:600;color:#64748b;font-family:inherit;margin-bottom:4px;transition:all .15s}
+.acc-btn:hover{background:#f5f3ff;border-color:#ede9fe;color:#7c3aed}
+.acc-btn .acc-arr{transition:transform .2s;font-size:10px}
+.acc-btn.open{background:#f5f3ff;border-color:#ede9fe;color:#7c3aed;border-radius:8px 8px 0 0;margin-bottom:0}
+.acc-btn.open .acc-arr{transform:rotate(180deg)}
+.acc-body{border:1px solid #ede9fe;border-top:none;border-radius:0 0 8px 8px;padding:10px 12px;margin-bottom:8px;display:none}
+.acc-body.open{display:block}
+/* ═══ PREMIUM 2-SPALTEN LAYOUT ═══ */
+.mod-grid{display:grid;grid-template-columns:1fr 280px;gap:0;min-height:0}
+.mod-main{padding:24px 28px;min-width:0}
+.mod-side{background:#fafafa;border-left:1px solid #f0f0f0;padding:20px;display:flex;flex-direction:column;gap:10px}
+@media(max-width:860px){.mod-grid{grid-template-columns:1fr}.mod-side{border-left:none;border-top:1px solid #f0f0f0}}
+
+/* Nummerierte Abschnitte */
+.sec{margin-bottom:22px}
+.sec:last-child{margin-bottom:0}
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:default}
+.sec-num{width:24px;height:24px;min-width:24px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(124,58,237,.25)}
+.sec-num.done{background:linear-gradient(135deg,#16a34a,#15803d);box-shadow:0 2px 8px rgba(22,163,74,.25)}
+.sec-title{font-size:13px;font-weight:700;color:#0d1117}
+.sec-line{flex:1;height:1px;background:#f0f0f0}
+.sec-body{display:flex;flex-direction:column;gap:8px}
+
+/* Seitliche Tipp-Karten */
+.s-tip{border-radius:10px;padding:11px 12px;font-size:12px;line-height:1.55}
+.s-tip-t{font-weight:700;font-size:11.5px;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.s-tip.green{background:#f0fdf4;border:1px solid #bbf7d0;color:#065f46}
+.s-tip.green .s-tip-t{color:#15803d}
+.s-tip.red{background:#fff8f8;border:1px solid #fecdd3;color:#7f1d1d}
+.s-tip.red .s-tip-t{color:#991b1b}
+.s-tip.blue{background:#f0f7ff;border:1px solid #bfdbfe;color:#1e3a8a}
+.s-tip.blue .s-tip-t{color:#1e40af}
+.s-tip.yellow{background:#fffdf0;border:1px solid #fde68a;color:#78350f}
+.s-tip.yellow .s-tip-t{color:#92400e}
+.s-tip.purple{background:#faf5ff;border:1px solid #ede9fe;color:#4c1d95}
+.s-tip.purple .s-tip-t{color:#7c3aed}
+
+/* Stat-Pill im Sidebar */
+.s-stat{background:#fff;border:1px solid #f0f0f0;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px}
+.s-stat-n{font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:600;background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;flex-shrink:0}
+.s-stat-l{font-size:11.5px;color:#64748b;line-height:1.4}
+
+/* Wissen-Box in Sidebar */
+.s-wb{background:#f9f8ff;border:1px solid #ede9fe;border-radius:10px;padding:11px 12px;font-size:12px;color:#374151;line-height:1.55}
+.s-wb-t{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px}
+
+/* Sidebar Label */
+.s-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:2px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<div id="LS">
+  <div class="lc">
+    <div class="lc-logo">🔐</div>
+    <div class="lc-badge">bestattungs-experten.de<br>Digitaler Vorsorge-Tresor</div>
+    <h1 class="lc-title">Ihr<br><span style="background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vorsorge-Tresor</span></h1>
+    <p class="lc-sub">Alle wichtigen Informationen sicher an einem Ort. Für Sie – und für Ihre Angehörigen wenn es darauf ankommt.</p>
+    <input class="lc-in" type="text" id="loginName" placeholder="Ihr vollständiger Name *" autocomplete="name"/>
+    <button class="lc-btn" id="btnStartTresor">Tresor öffnen →</button>
+    <div class="lc-res" id="lcRes">
+      <div style="text-align:center;font-size:12px;color:#94a3b8;margin:8px 0">oder</div>
+      <button class="lc-res-btn" id="btnResumeTresor">↩ Fortschritt laden (<span id="resName"></span>)</button>
+    </div>
+    <div class="lc-stats">
+      <div style="text-align:center"><div class="lcs-n">9</div><div class="lcs-l">Bereiche</div></div>
+      <div style="text-align:center"><div class="lcs-n">🔒</div><div class="lcs-l">Passwort-PDF</div></div>
+      <div style="text-align:center"><div class="lcs-n">~25</div><div class="lcs-l">Minuten</div></div>
+    </div>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;text-align:center">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:10px">Was im Tresor enthalten ist</div>
+      <div style="font-size:13px;color:#374151;padding:3px 0;display:flex;align-items:center;justify-content:center;gap:8px"><span style="color:#7c3aed;font-weight:700">✓</span> Vollständige Vorsorgevollmacht</div>
+      <div style="font-size:13px;color:#374151;padding:3px 0;display:flex;align-items:center;justify-content:center;gap:8px"><span style="color:#7c3aed;font-weight:700">✓</span> Passwörter &amp; digitale Zugänge</div>
+      <div style="font-size:13px;color:#374151;padding:3px 0;display:flex;align-items:center;justify-content:center;gap:8px"><span style="color:#7c3aed;font-weight:700">✓</span> Alle Bankkonten &amp; Versicherungen</div>
+      <div style="font-size:13px;color:#374151;padding:3px 0;display:flex;align-items:center;justify-content:center;gap:8px"><span style="color:#7c3aed;font-weight:700">✓</span> Immobilien &amp; Wertgegenstände</div>
+      <div style="font-size:13px;color:#374151;padding:3px 0;display:flex;align-items:center;justify-content:center;gap:8px"><span style="color:#7c3aed;font-weight:700">✓</span> Digitaler Nachlass-Plan</div>
+      <div style="font-size:13px;color:#374151;padding:3px 0;display:flex;align-items:center;justify-content:center;gap:8px"><span style="color:#7c3aed;font-weight:700">✓</span> KI-Nachruf &amp; persönlicher Brief</div>
+    </div>
+  </div>
+</div>
+
+<div id="ob" style="display:none;min-height:100vh;background:transparent;padding:0 0 40px">
+
+  <!-- STEP 1: Warum -->
+  <div class="ob-step active" id="obs0">
+
+    <!-- Hero -->
+    <div style="background:transparent;padding:40px 24px 32px;text-align:center;border-bottom:1px solid #f0f0f0">
+      <div style="max-width:480px;margin:0 auto">
+        <div style="width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;box-shadow:0 8px 24px rgba(124,58,237,.2)">🔒</div>
+        <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,4vw,30px);color:#0d1117;font-weight:600;margin:0 0 10px;line-height:1.25">Ihr persönlicher<br><span style="background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vorsorge-Tresor</span></h1>
+        <p style="font-size:14px;color:#64748b;line-height:1.65;margin:0 0 20px">Das wichtigste Dokument Ihres Lebens – für die Menschen die Sie lieben.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:999px;padding:7px 18px">
+          <span style="width:6px;height:6px;border-radius:999px;background:#7c3aed;display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:12px;color:#7c3aed;font-weight:600">Ca. 20–25 Min. · 100% auf Ihrem Gerät · PDF zum Download</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:520px;margin:0 auto;padding:0 20px">
+
+      <!-- Kernaussage -->
+      <div style="text-align:center;padding:36px 0 28px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7c3aed;margin:0 0 10px">Warum jetzt handeln?</p>
+        <h2 style="font-family:Georgia,'Times New Roman',serif;font-size:20px;color:#0d1117;font-weight:600;margin:0;line-height:1.4">Wenn es darauf ankommt, zählt jede Minute</h2>
+      </div>
+
+      <!-- Vorher / Nachher -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px">
+        <div style="background:#fff8f8;border:1px solid #fecdd3;border-radius:16px;padding:20px">
+          <div style="font-size:18px;margin-bottom:10px">😔</div>
+          <div style="font-size:12px;font-weight:700;color:#991b1b;margin-bottom:10px;letter-spacing:.03em">OHNE VORSORGE</div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#ef4444;flex-shrink:0;margin-top:1px">✕</span>Wochenlange Suche nach Konten</div>
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#ef4444;flex-shrink:0;margin-top:1px">✕</span>Behördengänge ohne Vollmacht</div>
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#ef4444;flex-shrink:0;margin-top:1px">✕</span>Streit über die Beerdigung</div>
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#ef4444;flex-shrink:0;margin-top:1px">✕</span>Ø 1.200 € Mehrkosten</div>
+          </div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:20px">
+          <div style="font-size:18px;margin-bottom:10px">✨</div>
+          <div style="font-size:12px;font-weight:700;color:#065f46;margin-bottom:10px;letter-spacing:.03em">MIT IHREM TRESOR</div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#16a34a;flex-shrink:0;margin-top:1px">✓</span>Alles sofort auffindbar</div>
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#16a34a;flex-shrink:0;margin-top:1px">✓</span>Vollmacht druckfertig</div>
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#16a34a;flex-shrink:0;margin-top:1px">✓</span>Klare Wünsche hinterlegt</div>
+            <div style="font-size:12.5px;color:#64748b;display:flex;gap:7px;align-items:flex-start"><span style="color:#16a34a;flex-shrink:0;margin-top:1px">✓</span>Sofort handlungsfähig</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Was enthalten ist – schlicht -->
+      <div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:22px;margin-bottom:28px">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#94a3b8;margin:0 0 16px;text-align:center">Der Tresor enthält</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:10px;background:#f5f3ff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">📄</div>
+            <div style="font-size:13px;color:#374151;font-weight:500">Vorsorgevollmacht</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:10px;background:#f0fdf4;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">🔑</div>
+            <div style="font-size:13px;color:#374151;font-weight:500">Passwörter & Zugänge</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:10px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">🏦</div>
+            <div style="font-size:13px;color:#374151;font-weight:500">Konten & Versicherungen</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:10px;background:#fff7ed;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">🏠</div>
+            <div style="font-size:13px;color:#374151;font-weight:500">Immobilien & Sachwerte</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:10px;background:#fdf4ff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">📱</div>
+            <div style="font-size:13px;color:#374151;font-weight:500">Digitaler Nachlass</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:10px;background:#fff0f6;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">✍️</div>
+            <div style="font-size:13px;color:#374151;font-weight:500">KI-Nachruf & Brief</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vertrauen – kompakt -->
+      <div style="display:flex;align-items:center;gap:12px;background:#f9f8ff;border:1px solid #ede9fe;border-radius:12px;padding:14px 16px;margin-bottom:28px">
+        <div style="font-size:22px;flex-shrink:0">🛡</div>
+        <div style="font-size:12.5px;color:#4c1d95;line-height:1.55"><strong>Kein Account. Keine Cloud. Kein Tracking.</strong><br>Alle Daten bleiben ausschließlich auf Ihrem Gerät.</div>
+      </div>
+
+      <button class="ob-btn ob-btn-pri" id="btnObNext" style="width:100%;padding:16px;font-size:15px;border-radius:16px;letter-spacing:.01em">Was brauche ich dafür? →</button>
+      <p style="text-align:center;font-size:12px;color:#94a3b8;margin:10px 0 0">Kostenlos &nbsp;·&nbsp; Keine Registrierung &nbsp;·&nbsp; Jederzeit pausierbar</p>
+
+    </div>
+  </div>
+
+    <!-- STEP 2: Vorbereitung -->
+  <div class="ob-step" id="obs1">
+
+    <div style="background:transparent;padding:32px 24px 24px;text-align:center;border-bottom:1px solid #f0f0f0">
+      <div style="width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px;box-shadow:0 6px 20px rgba(124,58,237,.2)">📋</div>
+      <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#0d1117;font-weight:600;margin:0 0 8px">Das sollten Sie jetzt bereithalten</h1>
+      <p style="font-size:14px;color:#64748b;margin:0">Nicht alles nötig – aber je mehr, desto vollständiger Ihr Schutz.</p>
+    </div>
+
+    <div style="max-width:580px;margin:0 auto;padding:0 20px">
+
+      <div style="background:#fffdf5;border:1px solid #fde68a;border-radius:12px;padding:13px 16px;margin:24px 0 20px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">💡</span>
+        <div style="font-size:13px;color:#92400e;line-height:1.6">Sie können den Tresor auch ohne diese Unterlagen starten und sie später ergänzen. Ihr Fortschritt wird automatisch gespeichert.</div>
+      </div>
+
+      <div style="background:#fafafa;border:1px solid #f0f0f0;border-radius:16px;padding:20px;margin-bottom:14px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px">📁 Dokumente &amp; Unterlagen</div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Personalausweis oder Reisepass</div><div class="ob-check-sub">Für Vollmacht &amp; Personalien</div></div></div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Krankenversicherungskarte</div><div class="ob-check-sub">Versichertennummer &amp; Krankenkasse</div></div></div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Letzter Steuerbescheid</div><div class="ob-check-sub">Enthält Ihre 11-stellige Steuer-ID</div></div></div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Versicherungsscheine</div><div class="ob-check-sub">Lebens-, Sterbegeld-, Unfall- und sonstige Policen</div></div></div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="border-bottom:none;padding-bottom:0;cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">IBAN &amp; Kontodaten</div><div class="ob-check-sub">Alle Bankkonten, Depots und Sparverträge</div></div></div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:20px;margin-bottom:28px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px">💡 Gut zu wissen</div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Smartphone-PIN / Entsperrcode</div><div class="ob-check-sub">Wichtigster digitaler Schlüssel – öffnet Banking-Apps, 2FA &amp; Cloud</div></div></div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Namen &amp; Telefon von 2 Vertrauenspersonen</div><div class="ob-check-sub">Diese Personen erhalten Zugang zum Tresor im Ernstfall</div></div></div>
+        <div class="ob-check-item" onclick="obToggle(this)" style="border-bottom:none;padding-bottom:0;cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Ihre Bestattungswünsche</div><div class="ob-check-sub">Art, Ort, Musik – je konkreter, desto weniger Stress für Angehörige</div></div></div>
+      </div>
+
+      <button class="ob-btn ob-btn-pri" id="btnObFinish" style="width:100%;padding:16px;font-size:16px;border-radius:16px">Tresor jetzt starten 🔒</button>
+      <button class="ob-btn ob-btn-sec" id="btnObPrev" style="width:100%;padding:12px;margin-top:10px;border-radius:14px">← Zurück</button>
+      <p style="text-align:center;font-size:12px;color:#94a3b8;margin:12px 0 0">Ihre Daten verlassen niemals dieses Gerät</p>
+    </div>
+  </div>
+
+</div>
+
+<div id="AS">
+<div class="wrap">
+  <div class="tb">
+    <div style="display:flex;flex-direction:column"><div class="tb-l" id="tbL">Bereich 1 von 9</div><div id="tbSub" style="font-size:10px;color:var(--mu)">Fortschritt wird automatisch gespeichert</div></div>
+    <div class="tb-b"><div class="tb-f" id="tbF" style="width:0%"></div></div>
+    <div id="saveInd" style="font-size:11.5px;color:#16a34a;display:flex;align-items:center;gap:4px;opacity:0;transform:translateY(-4px);transition:all .3s;flex-shrink:0"><span style="font-size:14px">✓</span> Gespeichert</div>
+    <div class="tb-p" id="tbP">0%</div>
+  </div>
+  <div class="al">
+    <div class="sb">
+      <div class="sb-u">
+        <div class="sb-av">👤</div>
+        <div><div class="sb-nm" id="sbNm">–</div><div class="sb-lb">Vorsorge-Tresor</div></div>
+      </div>
+      <div class="sc-w">
+        <div class="sc-r">
+          <svg viewBox="0 0 88 88"><defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+            <circle class="sc-t" cx="44" cy="44" r="37" stroke-dasharray="232" stroke-dashoffset="0"/>
+            <circle class="sc-f" cx="44" cy="44" r="37" stroke-dasharray="232" stroke-dashoffset="232" id="scC"/>
+          </svg>
+          <div class="sc-n" id="scN">0%</div>
+        </div>
+        <div class="sc-l" id="scL">Noch nicht begonnen</div>
+      </div>
+      <div id="navItems"></div>
+      <div class="sb-a">
+        <button class="sb-btn pr" id="btnGoFinish">🔒 Tresor-PDF erstellen</button>
+        <button class="sb-btn" onclick="if(confirm('Fortschritt wirklich löschen?')){localStorage.removeItem(SK);location.reload();}">🗑 Zurücksetzen</button>
+      </div>
+    </div>
+    <div id="cnt"></div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+var SK='vtresor_v4';
+var USER='',CUR=0;
+
+var D={
+  vn:'',nn:'',geb:'',plz:'',tel:'',em:'',par:'',par_tel:'',
+  nk1:'',nk1_tel:'',nk2:'',nk2_tel:'',nk3:'',nk3_tel:'',
+  arzt:'',arzt_tel:'',kk:'',kk_nr:'',beruf:'',religion:'',staatsang:'',
+  rentenvers:'',rentenvers_nr:'',steuer_id:'',steuerber:'',steuerber_tel:'',
+  b_art:'',b_ort:'',b_grab_art:'',b_grabst:'',b_inschrift:'',
+  b_musik:'',b_blumen:'',b_kleid:'',b_schmuck:'',b_redner:'',
+  b_anzeige:'',b_groesse:'',b_ausgeladen:'',b_essen:'',b_haustier:'',
+  b_wunsch:'',b_rel:'',
+  k_art:'',k_vor:'',k_ges:'',k_pol:'',k_ort:'',k_mo:'',
+  k_anbieter:'',k_ansp:'',k_wert:'',k_beg:'',k_pflegev:'',k_pflege_pol:'',
+  v_per:'',v_tel:'',v_tel2:'',v_ort:'',v_ort2:'',v_geb:'',v_geburtsort:'',
+  v_ausweis:'',v_anschrift:'',v_beziehung:'',v_ers:'',v_ers_tel:'',
+  v_ers_geb:'',v_ers_beziehung:'',v_kontroll:'',v_kontroll_tel:'',
+  v_mehrere:'einzeln',v_registrierung:'nein',v_181:true,v_untervollmacht:true,
+  v_bereiche:{A:true,B:true,C:true,D:true,E:true,F:true,G:true,H:true,I:true,J:true,K:true,L:true,M:true,N:false,O:true},
+  t_ort:'',t_not:'',pv:'',pv_ort:'',erben:'',
+  h_pin:'',pc_pw:'',em_hint:'',h_mod:'',pw_mgr:'',
+  pws:[],krypto:[],
+  banken:[],vers:[],
+  immos:[],fzg:'',fzg_dok:'',fzg_vers:'',fzg_wert:'',sachs:'',tresor:'',
+  nl_w:'',nl_fb:'',nl_go:'',nl_ap:'',nl_em:'',nl_li:'',nl_amz:'',nl_cloud:'',nl_wa:'',nl_sonst:'',abos:[],
+  brief:'',brief_ort:'',nr_st:'klassisch',nr_ber:'',nr_hob:'',nr_eri:'',nr_txt:'',nr_leben:'',nr_zitat:'',
+};
+
+var MODS=[
+  {id:'m1',ic:'👤',nm:'Person & Kontakte',tg:'Grunddaten'},
+  {id:'m2',ic:'🕊️',nm:'Bestattungswünsche',tg:'Letzter Wille'},
+  {id:'m3',ic:'💶',nm:'Kostenplanung',tg:'Finanzen'},
+  {id:'m4',ic:'⚖️',nm:'Vollmacht & Recht',tg:'Rechtssicherheit'},
+  {id:'m5',ic:'🔑',nm:'Passwörter & Zugänge',tg:'Digitaler Tresor'},
+  {id:'m6',ic:'🏦',nm:'Bankkonten & Versicherungen',tg:'Vermögen'},
+  {id:'m7',ic:'🏠',nm:'Immobilien & Sachwerte',tg:'Besitz'},
+  {id:'m8',ic:'📱',nm:'Digitaler Nachlass',tg:'Online-Konten'},
+  {id:'m9',ic:'✍️',nm:'Brief & Nachruf',tg:'Persönliches'},
+];
+
+function msc(id){
+  // h = hat Wert? (nicht leer)
+  var h=function(k){return D[k]&&String(D[k]).trim().length>0;};
+  // Berechne Score aus Liste von Feldern: Anteil ausgefüllter Felder
+  var p=function(){
+    var ks=Array.prototype.slice.call(arguments);
+    var filled=ks.filter(h).length;
+    return Math.round(filled/ks.length*100);
+  };
+  switch(id){
+    case 'm1':
+      // Pflicht: vn, nn | Wichtig: geb, nk1, nk1_tel | Bonus: nk2, arzt, kk_nr, steuer_id
+      var s1=0;
+      if(h('vn'))s1+=20;
+      if(h('nn'))s1+=15;
+      if(h('geb'))s1+=15;
+      if(h('nk1'))s1+=15;
+      if(h('nk1_tel'))s1+=10;
+      if(h('nk2'))s1+=10;
+      if(h('arzt'))s1+=5;
+      if(h('kk_nr'))s1+=5;
+      if(h('steuer_id'))s1+=5;
+      return Math.min(100,s1);
+
+    case 'm2':
+      // Bestattungsart + Details
+      var s2=0;
+      if(h('b_art'))s2+=30;
+      if(h('b_ort'))s2+=20;
+      if(h('b_musik'))s2+=10;
+      if(h('b_grabst'))s2+=10;
+      if(h('b_wunsch'))s2+=15;
+      if(h('b_kleid'))s2+=5;
+      if(h('b_redner'))s2+=5;
+      if(h('b_rel'))s2+=5;
+      return Math.min(100,s2);
+
+    case 'm3':
+      // Finanzielle Vorsorge
+      var s3=0;
+      if(h('k_art'))s3+=25;
+      if(h('k_vor'))s3+=25;
+      if(h('k_pol'))s3+=20;
+      if(h('k_ort'))s3+=15;
+      if(h('k_ges')||h('k_anbieter'))s3+=15;
+      return Math.min(100,s3);
+
+    case 'm4':
+      // Vollmacht
+      var s4=0;
+      if(h('v_per'))s4+=25;
+      if(h('v_geb'))s4+=10;
+      if(h('v_anschrift'))s4+=10;
+      if(h('v_ort2'))s4+=20; // Bevollmächtigte Person
+      if(h('t_ort'))s4+=15; // Testament
+      if(h('pv'))s4+=10;    // Patientenverfügung
+      if(h('erben'))s4+=10;
+      return Math.min(100,s4);
+
+    case 'm5':
+      // Passwörter
+      var s5=0;
+      if(h('h_pin'))s5+=35;
+      if(D.pws&&D.pws.length>0)s5+=30;
+      if(h('em_hint'))s5+=15;
+      if(h('pc_pw'))s5+=10;
+      if(D.krypto&&D.krypto.length>0)s5+=10;
+      return Math.min(100,s5);
+
+    case 'm6':
+      // Bankkonten & Versicherungen
+      var s6=0;
+      if(D.banken&&D.banken.length>0)s6+=50;
+      else if(D.banken&&D.banken.length===0)s6+=0;
+      if(D.vers&&D.vers.length>0)s6+=50;
+      return Math.min(100,s6);
+
+    case 'm7':
+      // Immobilien & Sachwerte
+      var s7=0;
+      if(D.immos&&D.immos.length>0)s7+=40;
+      if(h('fzg'))s7+=20;
+      if(h('sachs'))s7+=20;
+      if(h('tresor'))s7+=20;
+      return Math.min(100,s7);
+
+    case 'm8':
+      // Digitaler Nachlass
+      var s8=0;
+      if(h('nl_w'))s8+=20;
+      if(h('nl_fb')||h('nl_go')||h('nl_ap'))s8+=25;
+      if(h('nl_em'))s8+=20;
+      if(D.abos&&D.abos.length>0)s8+=20;
+      if(h('nl_sonst'))s8+=15;
+      return Math.min(100,s8);
+
+    case 'm9':
+      // Brief & Nachruf
+      var s9=0;
+      if(h('brief'))s9+=50;
+      if(D.nr_txt||h('nr_eri'))s9+=30;
+      if(h('nr_ber'))s9+=10;
+      if(h('nr_zitat'))s9+=10;
+      return Math.min(100,s9);
+
+    default:return 0;
+  }
+}
+function tot(){return Math.round(MODS.map(m=>msc(m.id)).reduce((a,b)=>a+b,0)/MODS.length);}
+
+function sv(){try{localStorage.setItem(SK,JSON.stringify({u:USER,c:CUR,d:D}));}catch(e){}}
+function ld(){try{return JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){return{};}}
+
+function startTresor(){
+  const n=(document.getElementById('loginName')||{}).value?document.getElementById('loginName').value.trim():'';
+  if(!n){alert('Bitte Namen eingeben.');return;}
+  USER=n;const pts=n.split(' ');
+  if(!D.vn)D.vn=pts[0];
+  if(!D.nn&&pts[1])D.nn=pts.slice(1).join(' ');
+  // Onboarding zeigen statt direkt App
+  document.getElementById('LS').style.display='none';
+  document.getElementById('ob').style.display='block';
+};
+function resumeTresor(){
+  const s=ld();if(!s.u)return;
+  USER=s.u;Object.assign(D,s.d||{});CUR=s.c||0;
+  // Gespeicherter Fortschritt → direkt App, Onboarding überspringen
+  showApp();
+};
+function showApp(){
+  document.getElementById('LS').style.display='none';
+  document.getElementById('ob').style.display='none';
+  document.getElementById('AS').style.display='block';
+  document.getElementById('sbNm').textContent=USER;
+  sv();rSB();rMod();
+}
+
+// Globale Funktionen verfügbar machen
+window.startTresor=startTresor;
+window.resumeTresor=resumeTresor;
+
+// check stored
+var stored=ld();
+if(stored.u&&(Object.keys(stored.d||{}).some(k=>stored.d[k]&&(typeof stored.d[k]==='string'?stored.d[k].length>0:Array.isArray(stored.d[k])?stored.d[k].length>0:false)))){
+  document.getElementById('lcRes').style.display='block';
+  document.getElementById('resName').textContent=stored.u;
+}
+
+function rSB(){
+  const t=tot();
+  const c=document.getElementById('scC');if(c)c.style.strokeDashoffset=232*(1-t/100);
+  const sn=document.getElementById('scN');if(sn)sn.textContent=t+'%';
+  var sl=document.getElementById('scL');
+  var labels=['Starten Sie jetzt! 💪','Fast da... 🌱','Gut begonnen 👍','Auf gutem Weg 🚀','Fast fertig! ✨','Fast fertig! ✨','Vollständig! 🎉'];
+  if(sl)sl.textContent=t===0?labels[0]:t<20?labels[1]:t<40?labels[2]:t<60?labels[3]:t<90?labels[4]:t<100?labels[5]:labels[6];
+  const tf=document.getElementById('tbF');if(tf)tf.style.width=t+'%';
+  const tp=document.getElementById('tbP');if(tp)tp.textContent=t+'%';
+  const tl=document.getElementById('tbL');if(tl)tl.textContent='Bereich '+(CUR+1)+' von '+MODS.length+' · '+(MODS[CUR]?MODS[CUR].nm:'');
+  const nav=document.getElementById('navItems');
+  if(nav)nav.innerHTML=MODS.map(function(m,i){
+    var sc=msc(m.id);
+    var dc=sc===100?'nd-done':sc>0?'nd-part':'nd-empty';
+    var di=sc===100?'✓':sc>0?'…':'·';
+    var act=i===CUR?' act':'';
+    var stTxt=sc>0?sc+'% ausgefüllt':'Noch leer';
+    return '<button class="ni'+act+'" onclick="gM('+i+')">'
+      +'<div class="ni-ic">'+m.ic+'</div>'
+      +'<div class="ni-inf"><div class="ni-nm">'+m.nm+'</div><div class="ni-st">'+stTxt+'</div></div>'
+      +'<div class="ni-d '+dc+'">'+di+'</div>'
+      +'</button>';
+  }).join('');
+}
+
+// Wrap stat-rows and todo-lists in accordions after render
+function initAccordions(){
+  var cnt=document.getElementById('cnt');
+  if(!cnt)return;
+  // Stat-rows: wrap in accordion
+  cnt.querySelectorAll('.stat-row').forEach(function(el){
+    if(el.parentElement.classList.contains('acc-body'))return;
+    var btn=document.createElement('button');
+    btn.className='acc-btn';
+    btn.innerHTML='📊 Wissenswertes <span class="acc-arr">▾</span>';
+    btn.onclick=function(){accToggle(this);};
+    var body=document.createElement('div');
+    body.className='acc-body';
+    el.parentNode.insertBefore(btn,el);
+    body.appendChild(el);
+    btn.after(body);
+  });
+  // Todo-lists: wrap in accordion
+  cnt.querySelectorAll('.todo-list').forEach(function(el){
+    if(el.parentElement.classList.contains('acc-body'))return;
+    var btn=document.createElement('button');
+    btn.className='acc-btn';
+    btn.innerHTML='✅ Checkliste anzeigen <span class="acc-arr">▾</span>';
+    btn.onclick=function(){accToggle(this);};
+    var body=document.createElement('div');
+    body.className='acc-body';
+    el.parentNode.insertBefore(btn,el);
+    body.appendChild(el);
+    btn.after(body);
+  });
+  // Tips-grids: wrap in accordion
+  cnt.querySelectorAll('.tips-grid').forEach(function(el){
+    if(el.parentElement.classList.contains('acc-body'))return;
+    var btn=document.createElement('button');
+    btn.className='acc-btn';
+    btn.innerHTML='💡 Tipps &amp; Fallstricke <span class="acc-arr">▾</span>';
+    btn.onclick=function(){accToggle(this);};
+    var body=document.createElement('div');
+    body.className='acc-body';
+    el.parentNode.insertBefore(btn,el);
+    body.appendChild(el);
+    btn.after(body);
+  });
+}
+
+window.obStep=0;
+window.obNext=function(){
+  var cur=document.getElementById('obs'+obStep);
+  if(cur)cur.classList.remove('active');
+  obStep++;
+  var next=document.getElementById('obs'+obStep);
+  if(next)next.classList.add('active');
+  var prog=document.getElementById('obProg');
+  if(prog)prog.style.width='100%';
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+window.obPrev=function(){
+  var cur=document.getElementById('obs'+obStep);
+  if(cur)cur.classList.remove('active');
+  obStep--;
+  var prev=document.getElementById('obs'+obStep);
+  if(prev)prev.classList.add('active');
+  var prog=document.getElementById('obProg');
+  if(prog)prog.style.width='50%';
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+window.obFinish=function(){
+  showApp();
+};
+window.obToggle=function(el){
+  var box=el.classList.contains('ob-check-box')?el:el.querySelector('.ob-check-box');
+  if(!box)box=el.closest('.ob-check-item')&&el.closest('.ob-check-item').querySelector('.ob-check-box');
+  if(!box)return;
+  box.classList.toggle('done');
+  box.textContent=box.classList.contains('done')?'✓':'';
+};
+window.gM=function(i){collAll();CUR=i;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});};
+function prev(){if(CUR>0){collAll();CUR--;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});}}
+function next(){collAll();if(CUR<MODS.length-1){CUR++;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});}}
+window.prev=prev;window.next=next;
+
+function navB(){
+  var last=CUR===MODS.length-1;
+  var prevBtn=CUR>0?'<button class="btn" onclick="prev()" title="← Zurück">← '+MODS[CUR-1].nm+'</button>':'<span></span>';
+  var shortcut='<span style="font-size:11px;color:#c4b5fd;margin-left:6px;opacity:.7">⌘↵</span>';
+  var nextBtn=last
+    ?'<button class="btn btn-g" style="gap:6px" onclick="goFinish()">🔒 Tresor-PDF erstellen →</button>'
+    :'<button class="btn btn-g" style="gap:6px" onclick="next()">Weiter: '+MODS[CUR+1].nm+' →'+shortcut+'</button>';
+  return '<div class="acts" style="padding-top:20px;border-top:1px solid var(--cr);margin-top:24px">'+prevBtn+nextBtn+'</div>';
+}
+
+function sh(ic,tg,ti,de,mainContent,sideContent){
+  var descHtml=de?'<div class="mh-d">'+de+'</div>':'';
+  var sc=msc(MODS[CUR].id);
+  var scBar=sc>0?'<div style="height:2px;background:#f1f5f9;border-radius:999px;margin-top:8px;overflow:hidden"><div style="height:100%;width:'+sc+'%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:999px;transition:width .6s ease"></div></div>':'';
+  var side=sideContent?'<div class="mod-side">'+sideContent+'</div>':'';
+  var body=sideContent
+    ?'<div class="mod-grid"><div class="mod-main">'+mainContent+'</div>'+side+'</div>'
+    :'<div class="mb">'+mainContent+'</div>';
+  return '<div class="mod"><div class="mh"><div class="mh-ic">'+ic+'</div><div style="flex:1"><div class="mh-tag">'+tg+'</div><div class="mh-t">'+ti+'</div>'+descHtml+scBar+'</div></div>'+body+'</div>';
+}
+
+// Hilfsfunktionen für Abschnitte und Sidebar-Elemente
+function sec(num,title,content,isDone){
+  var numCls='sec-num'+(isDone?' done':'');
+  var icon=isDone?'✓':num;
+  return '<div class="sec"><div class="sec-hd"><div class="'+numCls+'">'+icon+'</div><div class="sec-title">'+title+'</div><div class="sec-line"></div></div><div class="sec-body">'+content+'</div></div>';
+}
+function sTip(type,title,text){
+  return '<div class="s-tip '+type+'"><div class="s-tip-t">'+title+'</div>'+text+'</div>';
+}
+function sStat(num,label){
+  return '<div class="s-stat"><div class="s-stat-n">'+num+'</div><div class="s-stat-l">'+label+'</div></div>';
+}
+function sWb(title,text){
+  return '<div class="s-wb"><div class="s-wb-t">'+title+'</div>'+text+'</div>';
+}
+function sLabel(text){
+  return '<div class="s-label">'+text+'</div>';
+}
+function fld(label,id,placeholder,hint,val){
+  var h=hint?'<div class="fh">'+hint+'</div>':'';
+  var v=val||'';
+  return '<div class="f"><label>'+label+'</label><input id="f_'+id+'" value="'+v+'" placeholder="'+placeholder+'"/>'+h+'</div>';
+}
+function fldTA(label,id,placeholder,val){
+  return '<div class="f"><label>'+label+'</label><textarea id="f_'+id+'" placeholder="'+placeholder+'">'+(val||'')+'</textarea></div>';
+}
+
+function gv(id){const e=document.getElementById(id);return e?e.value:''}
+
+function chips(cgId,key,opts){
+  var btns=opts.map(function(o){
+    var val=o[0],lbl=o[1];
+    var on=D[key]===val?' on':'';
+    return '<button class="chip'+on+'" onclick="sC(\'' +key+ '\',\'' +val+ '\',this,\'' +cgId+ '\')">' +lbl+ '</button>';
+  }).join('');
+  return '<div class="cg" id="'+cgId+'">'+btns+'</div>';
+}
+window.sC=function(key,val,btn,cg){
+  D[key]=val;
+  var cgEl=document.getElementById(cg);cgEl&&cgEl.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');sv();rSB();
+};
+
+// Alle Felder aller Module
+var FIELD_MAP={
+  m1:['vn','nn','geb','plz','tel','em','par','par_tel','nk1','nk1_tel','nk2','nk2_tel','arzt','arzt_tel','kk','kk_nr','religion','staatsang','beruf','rentenvers','rentenvers_nr','steuerber','steuerber_tel','steuer_id','nk3','nk3_tel'],
+  m2:['b_ort','b_grab_art','b_grabst','b_inschrift','b_musik','b_blumen','b_kleid','b_schmuck','b_redner','b_anzeige','b_groesse','b_ausgeladen','b_essen','b_haustier','b_wunsch'],
+  m3:['k_ges','k_pol','k_ort','k_mo','k_anbieter','k_ansp','k_wert','k_beg','k_pflege_pol'],
+  m4:['v_per','v_tel','v_tel2','v_ort','v_ort2','t_ort','t_not','pv_ort','erben','v_ers','v_ers_tel','v_geburtsort','v_anschrift','v_ausweis','v_beziehung','v_geb','v_ers_geb','v_ers_beziehung','v_kontroll','v_kontroll_tel'],
+  m5:['h_pin','pc_pw','em_hint','h_mod','pw_mgr'],
+  m6:[],
+  m7:['fzg','fzg_dok','sachs','fzg_vers','fzg_wert','tresor'],
+  m8:['nl_fb','nl_go','nl_ap','nl_em','nl_wa','nl_li','nl_amz','nl_cloud','nl_sonst'],
+  m9:['brief','brief_ort','nr_ber','nr_hob','nr_eri','nr_leben','nr_zitat'],
+};
+var SELECT_FIELDS=['k_art','nl_w','b_art','b_rel','k_vor','pv','v_mehrere','v_registrierung','k_pflegev','nr_st'];
+
+function collMod(id){
+  // Sammle alle Felder eines bestimmten Moduls
+  (FIELD_MAP[id]||[]).forEach(function(k){
+    var e=document.getElementById('f_'+k);
+    if(e)D[k]=e.value;
+  });
+  SELECT_FIELDS.forEach(function(k){
+    var e=document.getElementById('f_'+k);
+    if(e)D[k]=e.value;
+  });
+}
+
+function coll(){
+  // Sammle NUR das aktuelle Modul (beim Navigieren)
+  collMod(MODS[CUR]?MODS[CUR].id:'');
+  sv();rSB();
+}
+
+function collAll(){
+  // Sammle ALLE sichtbaren Felder im DOM (egal welches Modul gerade aktiv)
+  document.querySelectorAll('#cnt input, #cnt textarea, #cnt select').forEach(function(el){
+    if(!el.id)return;
+    var key=el.id.startsWith('f_')?el.id.slice(2):null;
+    if(key&&key in D)D[key]=el.value;
+    else if(key)D[key]=el.value;
+  });
+  sv();rSB();
+}
+
+window.importPersonData=function(){
+  // Übernehme Daten aus Modul 1 in Vollmacht-Felder
+  var filled = 0;
+  var map = {
+    'f_v_per': (D.vn&&D.nn) ? D.vn+' '+D.nn : D.vn||'',
+    'f_v_geb': D.geb||'',
+    'f_v_geburtsort': D.plz||'',
+    'f_v_anschrift': D.tel||'',
+    'f_v_tel': D.arzt_tel||'',
+    'f_v_tel2': D.em||''
+  };
+  Object.keys(map).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&map[id]){
+      el.value=map[id];
+      el.style.borderColor='#7c3aed';
+      el.style.background='#f9f8ff';
+      setTimeout(function(){el.style.borderColor='';el.style.background='';el.style.transition='all .5s';},1500);
+      filled++;
+    }
+  });
+  // Werte auch in D speichern
+  if(D.vn||D.nn) D.v_per=(D.vn+' '+D.nn).trim();
+  if(D.geb) D.v_geb=D.geb;
+  if(D.plz) D.v_geburtsort=D.plz;
+  if(D.tel) D.v_anschrift=D.tel;
+  if(D.em) D.v_tel2=D.em;
+  sv();
+  // Feedback
+  var btn=document.getElementById('importBtn');
+  if(btn){
+    btn.textContent='✅ '+filled+' Felder übernommen!';
+    btn.style.background='#f0fdf4';
+    btn.style.borderColor='#16a34a';
+    btn.style.color='#15803d';
+    setTimeout(function(){
+      btn.textContent='← Daten aus Bereich 1 übernehmen';
+      btn.style.background='';btn.style.borderColor='';btn.style.color='';
+    },2500);
+  }
+};
+
+window.hideForm=function(id){var el=document.getElementById(id);if(el)el.classList.add('hidden');};
+window.showForm=function(id){var el=document.getElementById(id);if(el)el.classList.remove('hidden');};
+window.selChip=function(btn,isTrue){
+  var cg=btn.closest('.cg');
+  if(!cg)return;
+  var cgId=cg.id;
+  var key=cgId==='cg181'?'v_181':'v_untervollmacht';
+  D[key]=isTrue;sv();
+  cg.querySelectorAll('.chip').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+};
+// Keyboard: Cmd/Ctrl+Enter = Weiter
+document.addEventListener('keydown',function(e){
+  if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){
+    var nb=document.querySelector('.acts .btn-g');
+    if(nb)nb.click();
+  }
+});
+
+// Auto-Save: Jede Eingabe in Formularfelder sofort speichern
+document.addEventListener('input',function(e){
+  var t=e.target;
+  if(!t)return;
+  // Nur Felder innerhalb von #cnt (Modul-Bereich)
+  var cnt=document.getElementById('cnt');
+  if(cnt&&cnt.contains(t)&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT')){
+    // Feldwert direkt in D schreiben anhand der ID
+    var id=t.id;
+    if(id&&id.startsWith('f_')){
+      var key=id.slice(2); // z.B. f_vn -> vn
+      if(key in D||(D[key]!==undefined)){
+        D[key]=t.value;
+      } else {
+        D[key]=t.value; // Neues Feld trotzdem speichern
+      }
+    }
+    sv();
+  }
+});
+
+// Select-Felder auch abfangen (change statt input)
+document.addEventListener('change',function(e){
+  var t=e.target;
+  if(!t)return;
+  var cnt=document.getElementById('cnt');
+  if(cnt&&cnt.contains(t)&&t.tagName==='SELECT'){
+    var id=t.id;
+    if(id&&id.startsWith('f_')){
+      D[id.slice(2)]=t.value;
+    }
+    sv();
+  }
+});
+
+window.accToggle=function(btn){
+  btn.classList.toggle('open');
+  var body=btn.nextElementSibling;
+  if(body&&body.classList.contains('acc-body')){
+    body.classList.toggle('open');
+  }
+};
+
+window.toggleBC=function(lbl){
+  const id=lbl.getAttribute('data-bid');
+  if(!id)return;
+  const cur=D.v_bereiche[id]!==false;
+  D.v_bereiche[id]=!cur;
+  const on=!cur;
+  lbl.style.borderColor=on?'#7c3aed':'var(--bo)';
+  lbl.style.background=on?'var(--pl)':'var(--w)';
+  const box=lbl.querySelector('span:first-child');
+  if(box){box.style.background=on?'#7c3aed':'#fff';box.style.borderColor=on?'#7c3aed':'#d1d5db';box.textContent=on?'✓':'';}
+  sv();rSB();
+};
+
+function rMod(){
+  var c=document.getElementById('cnt');if(!c)return;
+  c.style.opacity='0';
+  c.style.transform='translateY(8px)';
+  setTimeout(function(){
+    ({m1:r1,m2:r2,m3:r3,m4:r4,m5:r5,m6:r6,m7:r7,m8:r8,m9:r9}[MODS[CUR].id]||function(){})(c);
+    initAccordions();
+    c.style.transition='opacity .25s ease,transform .25s ease';
+    c.style.opacity='1';
+    c.style.transform='translateY(0)';
+  },120);
+}
+
+
+// ═══ LIST RENDER & ADD FUNCTIONS ═══
+
+function mkTI(left, right){
+  return '<div class="ti"><div class="ti-h"><div class="ti-l">'+left+'</div><div class="ti-r">'+right+'</div></div></div>';
+}
+
+// PASSWÖRTER
+function rPWL(){
+  var el=document.getElementById('pwL');
+  if(!el)return;
+  if(!D.pws.length){el.innerHTML='';return;}
+  el.innerHTML=D.pws.map(function(p,i){
+    var aMap={loeschen:'🗑 Löschen',erben:'👨‍👩‍👧 Erben',gedenkzustand:'💙 Gedenkzustand',kuendigen:'❌ Kündigen',archivieren:'📁 Archivieren'};
+    return '<div class="ti"><div class="ti-h">'
+      +'<div class="ti-l"><strong>'+p.d+'</strong>'+(p.u?'<br><span style="font-size:12px;color:var(--mu)">'+p.u+'</span>':'')+'</div>'
+      +'<div class="ti-r"><span style="font-size:11px;background:var(--soft);padding:2px 8px;border-radius:6px;color:var(--mu)">'+(aMap[p.a]||p.a)+'</span>'
+      +' <button onclick="D.pws.splice('+i+',1);sv();rPWL()" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;padding:2px">×</button></div>'
+      +'</div>'+(p.p?'<div style="font-size:12px;color:var(--mu);margin-top:6px;padding-top:6px;border-top:1px solid var(--cr)">🔑 '+p.p+'</div>':'')+'</div>';
+  }).join('');
+}
+window.addPW=function(){
+  var d=document.getElementById('pw_d'),u=document.getElementById('pw_u'),p=document.getElementById('pw_p'),a=document.getElementById('pw_a');
+  if(!d||!d.value.trim()){alert('Bitte Dienst/Plattform angeben.');return;}
+  D.pws.push({d:d.value.trim(),u:u?u.value.trim():'',p:p?p.value.trim():'',a:a?a.value:'loeschen'});
+  sv();rPWL();
+  [d,u,p].forEach(function(el){if(el)el.value='';});
+  if(document.getElementById('pwF'))document.getElementById('pwF').classList.add('hidden');
+};
+
+// KRYPTO
+function rKrL(){
+  var el=document.getElementById('krL');
+  if(!el)return;
+  if(!D.krypto.length){el.innerHTML='';return;}
+  el.innerHTML=D.krypto.map(function(k,i){
+    return '<div class="ti"><div class="ti-h">'
+      +'<div class="ti-l"><strong>'+k.n+'</strong>'+(k.b?'<br><span style="font-size:12px;color:var(--mu)">'+k.b+'</span>':'')+'</div>'
+      +'<div class="ti-r">'+(k.w?'<span style="font-size:12px;color:var(--mu)">'+k.w+'</span> ':'')+
+      '<button onclick="D.krypto.splice('+i+',1);sv();rKrL()" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;padding:2px">×</button></div>'
+      +'</div>'+(k.k?'<div style="font-size:12px;color:var(--mu);margin-top:6px;padding-top:6px;border-top:1px solid var(--cr)">📍 Key/Seed: '+k.k+'</div>':'')+'</div>';
+  }).join('');
+}
+window.addKrypto=function(){
+  var n=document.getElementById('kr_n'),b=document.getElementById('kr_b'),w=document.getElementById('kr_w'),k=document.getElementById('kr_k');
+  if(!n||!n.value.trim()){alert('Bitte Kryptowährung angeben.');return;}
+  D.krypto.push({n:n.value.trim(),b:b?b.value.trim():'',w:w?w.value.trim():'',k:k?k.value.trim():''});
+  sv();rKrL();
+  [n,b,w,k].forEach(function(el){if(el)el.value='';});
+  if(document.getElementById('krF'))document.getElementById('krF').classList.add('hidden');
+};
+
+// BANKKONTEN
+function rBkL(){
+  var el=document.getElementById('bkL');
+  if(!el)return;
+  if(!D.banken.length){el.innerHTML='';return;}
+  el.innerHTML=D.banken.map(function(b,i){
+    var tMap={girokonto:'Girokonto',sparkonto:'Sparkonto',depot:'Depot',tagesgeld:'Tagesgeld',festgeld:'Festgeld',bauspar:'Bausparvertrag',gemeinschaft:'Gemeinschaftskonto'};
+    return '<div class="ti"><div class="ti-h">'
+      +'<div class="ti-l"><strong>'+b.n+'</strong><br><span style="font-size:12px;color:var(--mu)">'+(tMap[b.t]||b.t)+(b.i?' · '+b.i:'')+'</span></div>'
+      +'<div class="ti-r">'+(b.g?'<span style="font-size:12px;font-weight:600;color:var(--ink)">'+b.g+'</span> ':'')+
+      '<button onclick="D.banken.splice('+i+',1);sv();rBkL()" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;padding:2px">×</button></div>'
+      +'</div></div>';
+  }).join('');
+}
+window.addBk=function(){
+  var n=document.getElementById('bk_n'),t=document.getElementById('bk_t'),i=document.getElementById('bk_i'),g=document.getElementById('bk_g');
+  if(!n||!n.value.trim()){alert('Bitte Bank angeben.');return;}
+  D.banken.push({n:n.value.trim(),t:t?t.value:'girokonto',i:i?i.value.trim():'',g:g?g.value.trim():''});
+  sv();rBkL();
+  [n,i,g].forEach(function(el){if(el)el.value='';});
+  if(document.getElementById('bkF'))document.getElementById('bkF').classList.add('hidden');
+};
+
+// VERSICHERUNGEN
+function rVsL(){
+  var el=document.getElementById('vsL');
+  if(!el)return;
+  if(!D.vers.length){el.innerHTML='';return;}
+  el.innerHTML=D.vers.map(function(v,i){
+    var tMap={leben:'Lebensversicherung',sterbegeld:'Sterbegeldversicherung',rente:'Rentenversicherung',bav:'Betriebliche AV',riester:'Riester/Rürup',unfall:'Unfall',bu:'Berufsunfähigkeit',haftpflicht:'Haftpflicht',hausrat:'Hausrat',kfz:'KFZ',sonstige:'Sonstige'};
+    return '<div class="ti"><div class="ti-h">'
+      +'<div class="ti-l"><strong>'+(tMap[v.t]||v.t)+'</strong><br><span style="font-size:12px;color:var(--mu)">'+v.a+(v.p?' · '+v.p:'')+'</span></div>'
+      +'<div class="ti-r">'+(v.s?'<span style="font-size:12px;font-weight:600;color:var(--ink)">'+v.s+'</span> ':'')+
+      '<button onclick="D.vers.splice('+i+',1);sv();rVsL()" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;padding:2px">×</button></div>'
+      +'</div>'+(v.b?'<div style="font-size:12px;color:var(--mu);margin-top:4px">👤 Begünstigter: '+v.b+'</div>':'')+'</div>';
+  }).join('');
+}
+window.addVs=function(){
+  var t=document.getElementById('vs_t'),a=document.getElementById('vs_a'),p=document.getElementById('vs_p'),s=document.getElementById('vs_s'),b=document.getElementById('vs_b');
+  if(!a||!a.value.trim()){alert('Bitte Anbieter angeben.');return;}
+  D.vers.push({t:t?t.value:'leben',a:a.value.trim(),p:p?p.value.trim():'',s:s?s.value.trim():'',b:b?b.value.trim():''});
+  sv();rVsL();
+  [a,p,s,b].forEach(function(el){if(el)el.value='';});
+  if(document.getElementById('vsF'))document.getElementById('vsF').classList.add('hidden');
+};
+
+// IMMOBILIEN
+function rImL(){
+  var el=document.getElementById('imL');
+  if(!el)return;
+  if(!D.immos.length){el.innerHTML='';return;}
+  el.innerHTML=D.immos.map(function(m,i){
+    var tMap={eigenheim:'Eigenheim',wohnung:'Eigentumswohnung',mietobjekt:'Mietobjekt',grundstueck:'Grundstück',gewerbe:'Gewerbe',wochenend:'Wochenendhaus'};
+    return '<div class="ti"><div class="ti-h">'
+      +'<div class="ti-l"><strong>'+m.a+'</strong><br><span style="font-size:12px;color:var(--mu)">'+(tMap[m.t]||m.t)+'</span></div>'
+      +'<div class="ti-r">'+(m.w?'<span style="font-size:12px;font-weight:600;color:var(--ink)">'+m.w+'</span> ':'')+
+      '<button onclick="D.immos.splice('+i+',1);sv();rImL()" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;padding:2px">×</button></div>'
+      +'</div></div>';
+  }).join('');
+}
+window.addIm=function(){
+  var a=document.getElementById('im_a'),t=document.getElementById('im_t'),w=document.getElementById('im_w'),d=document.getElementById('im_d');
+  if(!a||!a.value.trim()){alert('Bitte Adresse angeben.');return;}
+  D.immos.push({a:a.value.trim(),t:t?t.value:'eigenheim',w:w?w.value.trim():'',d:d?d.value.trim():''});
+  sv();rImL();
+  [a,w,d].forEach(function(el){if(el)el.value='';});
+  if(document.getElementById('imF'))document.getElementById('imF').classList.add('hidden');
+};
+
+// ABONNEMENTS
+function rAbL(){
+  var el=document.getElementById('abL');
+  if(!el)return;
+  if(!D.abos.length){el.innerHTML='';return;}
+  var total=D.abos.reduce(function(s,a){return s+(parseFloat(a.b)||0);},0);
+  el.innerHTML=D.abos.map(function(a,i){
+    return '<div class="ti"><div class="ti-h">'
+      +'<div class="ti-l"><strong>'+a.n+'</strong></div>'
+      +'<div class="ti-r"><span style="font-size:13px;font-weight:600;color:var(--ink)">'+parseFloat(a.b).toFixed(2)+' €/Mo</span>'
+      +' <button onclick="D.abos.splice('+i+',1);sv();rAbL()" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;padding:2px">×</button></div>'
+      +'</div></div>';
+  }).join('')
+  +'<div style="text-align:right;font-size:12px;color:var(--mu);margin-top:6px">Gesamt: <strong style="color:var(--ink)">'+total.toFixed(2)+' €/Monat · '+( total*12).toFixed(0)+' €/Jahr</strong></div>';
+}
+window.addAb=function(){
+  var n=document.getElementById('ab_n'),b=document.getElementById('ab_b');
+  if(!n||!n.value.trim()){alert('Bitte Dienst angeben.');return;}
+  D.abos.push({n:n.value.trim(),b:b?b.value:0});
+  sv();rAbL();
+  if(n)n.value='';if(b)b.value='';
+  if(document.getElementById('abF'))document.getElementById('abF').classList.add('hidden');
+};
+
+// ═══ MODUL 1 ═══
+function r1(c){
+  var main1 =
+    sec(1,'Ihre Person',
+      fld('Vorname','vn','Maria','',D.vn)
+      +fld('Nachname','nn','Müller','',D.nn)
+      +'<div class="fr">'
+      +fld('Geburtsdatum','geb','12.03.1955','',D.geb)
+      +fld('Geburtsort','plz','Hamburg','',D.plz)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Telefon','tel','+49 40 ...','',D.tel)
+      +fld('E-Mail','em','maria@mueller.de','',D.em)
+      +'</div>'
+    )
+    +sec(2,'Krankenkasse & Steuer',
+      '<div class="fr">'
+      +fld('Krankenkasse','kk','AOK Hamburg','',D.kk||'')
+      +fld('Versichertennummer','kk_nr','A123456789','',D.kk_nr||'')
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Steuer-ID','steuer_id','12 345 678 901','Auf jedem Steuerbescheid',D.steuer_id||'')
+      +fld('Rentenvers.-Nr.','rentenvers_nr','12 345678 A 123','Auf dem Rentenausweis',D.rentenvers_nr||'')
+      +'</div>'
+    )
+    +sec(3,'Partner',
+      '<div class="fr">'
+      +fld('Name','par','Hans Müller','',D.par)
+      +fld('Telefon','par_tel','+49 ...','',D.par_tel)
+      +'</div>'
+    )
+    +sec(4,'Notfallkontakte',
+      fld('Kontakt 1 – Name & Verhältnis','nk1','Anna Müller (Tochter, hat Vollmacht)','Wer als erstes informiert wird',D.nk1)
+      +'<div class="fr">'
+      +fld('Telefon','nk1_tel','+49 ...','',D.nk1_tel)
+      +fld('Kontakt 2','nk2','Peter Müller (Sohn)','',D.nk2)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Telefon 2','nk2_tel','+49 ...','',D.nk2_tel)
+      +fld('Kontakt 3 (Backup)','nk3','Gisela Braun (Freundin)','',D.nk3||'')
+      +'</div>'
+    )
+    +sec(5,'Hausarzt',
+      '<div class="fr">'
+      +fld('Name & Praxis','arzt','Dr. Schmidt, Musterstr. 1','',D.arzt||'')
+      +fld('Telefon','arzt_tel','+49 40 ...','',D.arzt_tel||'')
+      +'</div>'
+    )
+    +navB();
+
+  var side1 =
+    sLabel('Warum das wichtig ist')
+    +sWb('⏱ Die ersten 24 Stunden','Im Ernstfall müssen Angehörige <strong>sofort handeln</strong> – wer wird angerufen? Wer hat Vollmacht? Ohne diese Infos gehen wertvolle Stunden verloren.')
+    +sLabel('Statistiken')
+    +sStat('87%','der Deutschen haben keinen Notfallplan')
+    +sStat('72 Std.','Ø bis alle Infos zusammen sind')
+    +sLabel('Tipps')
+    +sTip('red','⚠ Unverheiratete Partner','Ohne Trauschein haben Partner keinerlei gesetzliche Rechte – weder bei Banken noch im Krankenhaus.')
+    +sTip('blue','⚖ Schweigepflicht','Ärzte dürfen selbst Ehepartnern gegenüber schweigen – ohne schriftliche Entbindung.')
+    +sTip('green','✓ 3 Kontakte','Wenn nur eine Person eingetragen ist und diese nicht erreichbar ist, hat niemand Zugang.');
+
+  c.innerHTML=sh('👤','Grunddaten','Person & Notfallkontakte','Das Fundament Ihres Tresors.',main1,side1);
+}
+// ═══ MODUL 2 ═══
+function r2(c){
+  var al=[['erd','⛪ Erdbestattung'],['feuer','🔥 Feuerbestattung'],['see','🌊 Seebestattung'],['natur','🌳 Naturbestattung'],['anonym','🕊 Anonym']];
+  var re=[['kirchlich','Kirchlich'],['weltlich','Weltlich'],['beides','Gemischt'],['egal','Egal']];
+
+  var main2=
+    sec(1,'Bestattungsart & Charakter',
+      '<div class="f"><label>Gewünschte Bestattungsart</label>'+chips('cg1','b_art',al)+'</div>'
+      +'<div class="f"><label>Religiöser Charakter</label>'+chips('cg2','b_rel',re)+'</div>'
+    )
+    +sec(2,'Ort & Grabstätte',
+      fld('Gewünschter Friedhof / Ort','b_ort','z.B. Friedhof Hamburg-Ohlsdorf, Kapelle 2','Je konkreter, desto weniger müssen Angehörige entscheiden',D.b_ort)
+      +'<div class="fr">'
+      +fld('Grabart','b_grab_art','z.B. Einzelgrab / Rasengrab (pflegeleicht)','',D.b_grab_art||'')
+      +fld('Grabstein-Wunsch','b_grabst','z.B. schlichter Naturstein','',D.b_grabst)
+      +'</div>'
+      +fld('Grabinschrift (exakt)','b_inschrift','z.B. Maria Müller · „In Liebe" · 1955–2024','',D.b_inschrift||'')
+    )
+    +sec(3,'Zeremonie',
+      '<div class="fr">'
+      +fld('Musik','b_musik','z.B. Bach – Air / Johnny Cash – Hurt','Interpret und Stücktitel, nicht nur „etwas Ruhiges"',D.b_musik)
+      +fld('Blumen & Dekoration','b_blumen','z.B. weiße Rosen / Wildblumen','',D.b_blumen)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Kleidung im Sarg','b_kleid','z.B. blaues Lieblingskleid – hängt im Schlafzimmer','',D.b_kleid||'')
+      +fld('Trauerredner','b_redner','z.B. Pastor Meyer / Tochter Anna spricht','',D.b_redner||'')
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Traueranzeige','b_anzeige','z.B. Hamburger Abendblatt / keine Anzeige','',D.b_anzeige||'')
+      +fld('Gästezahl','b_groesse','z.B. nur Familie, max. 20 Pers.','',D.b_groesse||'')
+      +'</div>'
+    )
+    +sec(4,'Persönliche Wünsche',
+      fld('Wer soll NICHT eingeladen werden?','b_ausgeladen','z.B. Familie Schröder / Ex-Partner ausschließen','Verhindert den häufigsten Streit bei Beerdigungen',D.b_ausgeladen||'')
+      +fldTA('Weitere Wünsche & Anweisungen','b_wunsch','Was soll gesagt / gespielt / gezeigt werden? Was wünschen Sie sich für das Traueressen? Was soll mit der Asche passieren?',D.b_wunsch)
+    )
+    +navB();
+
+  var side2=
+    sLabel('Kosten im Überblick')
+    +sStat('5.800 €','Ø Erdbestattung 2024')
+    +sStat('+38%','Kostenstieg seit 2015')
+    +sLabel('Bestattungsarten')
+    +sTip('green','🔥 Feuerbestattung (65%)','Günstigste Option. Urne flexibel beisetzbar. 2–4 Wochen Wartezeit. Keine Grabpflegepflicht.')
+    +sTip('blue','⛪ Erdbestattung (27%)','4.000–8.000 €. Gesetzl. Ruhefrist 20–30 Jahre je Bundesland.')
+    +sTip('green','🌳 Naturbestattung','Kein Grabpflegeaufwand. Baumbestattung, Ruheforst etc. Preise stark unterschiedlich.')
+    +sLabel('Wichtige Hinweise')
+    +sTip('red','⚠ Zu vage bleiben','„Etwas Schönes" ist keine Anweisung. Konkrete Namen und Orte ersparen Angehörigen stundenlange Recherche.')
+    +sTip('yellow','⚖ Bestattungspflicht','Ehepartner & Kinder sind gesetzlich verpflichtet – auch nach Erbausschlagung. Bei Mittellosigkeit zahlt das Sozialamt (§ 74 SGB XII).');
+
+  c.innerHTML=sh('🕊️','Letzter Wille','Meine Bestattungswünsche','Präzise Wünsche – weniger Stress für Ihre Angehörigen.',main2,side2);
+}
+// ═══ MODUL 3 ═══
+function r3(c){
+  var kv=[['sterbegeld','Sterbegeldversicherung'],['treuhand','Vorsorge-Vertrag'],['spare','Eigene Rücklage'],['nichts','Noch nichts']];
+  var artOpts=[['erd','Erdbestattung (~4.000–8.000 €)'],['feuer','Feuerbestattung (~2.000–4.500 €)'],['see','Seebestattung (~2.500–5.000 €)'],['natur','Naturbestattung (~2.500–5.000 €)'],['anonym','Anonym (~1.200–2.500 €)']];
+
+  var main3=
+    sec(1,'Geplante Bestattungsart',
+      '<div class="f"><label>Bestattungsart für Kostenplanung</label><select id="f_k_art">'
+      +'<option value="">Bitte wählen …</option>'
+      +artOpts.map(function(o){return '<option value="'+o[0]+'"'+(D.k_art===o[0]?' selected':'')+'>'+o[1]+'</option>';}).join('')
+      +'</select></div>'
+    )
+    +sec(2,'Art der Vorsorge',
+      '<div class="f"><label>Wie haben Sie vorgesorgt?</label>'+chips('cg3','k_vor',kv)+'</div>'
+      +'<div class="fr">'
+      +fld('Anbieter / Bestatter','k_anbieter','z.B. Bestattungshaus Müller, Hamburg','',D.k_anbieter||'')
+      +fld('Ansprechpartner & Tel.','k_ansp','z.B. Herr Müller, 040-123456','',D.k_ansp||'')
+      +'</div>'
+    )
+    +sec(3,'Vertragsdetails',
+      fld('Police-Nr. / Vertrags-Nr. ⚠','k_pol','z.B. VV-2024-12345','Ohne diese Nummer findet niemand den Vertrag!',D.k_pol)
+      +'<div class="fr">'
+      +fld('Versicherungssumme','k_wert','z.B. 6.500 €','',D.k_wert||'')
+      +fld('Begünstigte Person','k_beg','Anna Müller (Tochter)','Nicht nur „die Erben"!',D.k_beg||'')
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Bereits angespart (€)','k_ges','z.B. 3.500','',D.k_ges)
+      +fld('Aufbewahrungsort','k_ort','z.B. Roter Ordner Büroschrank','',D.k_ort)
+      +'</div>'
+    )
+    +navB();
+
+  var side3=
+    sLabel('Inflation & Kosten')
+    +sStat('5.800 €','Ø Erdbestattung heute')
+    +sStat('11.800 €','In 20 Jahren (3,5% p.a.)')
+    +sLabel('Vorsorge-Optionen')
+    +sTip('green','✓ Vorsorgevertrag (Empfehlung)','Preis heute festschreiben. Bestatter erledigt alles. Insolvenzgeschützt durch Treuhandkonto.')
+    +sTip('yellow','📜 Sterbegeldversicherung','Achtung: Wartezeiten bis 3 Jahre möglich. Gesundheitsprüfung. Beiträge oft höher als Leistung.')
+    +sTip('red','⚠ Konto-Rücklage riskant','Konten werden nach dem Tod eingefroren. Angehörige kommen NICHT ran – genau dann wenn sie Geld brauchen.')
+    +sTip('blue','⚖ § 74 SGB XII','Bei Mittellosigkeit zahlt das Sozialamt. Antrag VOR Beauftragung stellen – rückwirkend gibt es nichts.');
+
+  c.innerHTML=sh('💶','Finanzen','Kostenplanung & Vorsorge','Schützen Sie Ihre Angehörigen vor finanzieller Last.',main3,side3);
+}
+// ═══ MODUL 4 ═══
+function r4(c){
+  var bereiche=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'];
+  var bereichsNamen={
+    A:'A · Gesundheitssorge & Medizin',B:'B · Pflege, Versorgung & Persönliches',
+    C:'C · Aufenthalt, Wohnung & Heim',D:'D · Freiheitsentziehende Maßnahmen',
+    E:'E · Behörden, Ämter & Versicherungen',F:'F · Vermögenssorge',
+    G:'G · Bank-, Konto- & Depotangelegenheiten',H:'H · Immobilien & Grundstücke',
+    I:'I · Digitale Angelegenheiten',J:'J · Post, Telekommunikation & Datenschutz',
+    K:'K · Gerichtliche Vertretung',L:'L · Verträge & Mitgliedschaften',
+    M:'M · Steuerliche Angelegenheiten',N:'N · Unternehmerische Angelegenheiten',
+    O:'O · Vertretung nach dem Tod'
+  };
+
+  function mkBC(id){
+    var on=D.v_bereiche[id]!==false;
+    return '<label data-bid="'+id+'" onclick="toggleBC(this)" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;border:1.5px solid '+(on?'#7c3aed':'var(--bo)')+';background:'+(on?'var(--pl)':'var(--w)')+';cursor:pointer;margin-bottom:5px">'
+      +'<span style="width:18px;height:18px;min-width:18px;border-radius:5px;border:2px solid '+(on?'#7c3aed':'#d1d5db')+';background:'+(on?'#7c3aed':'#fff')+';display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0">'+(on?'✓':'')+'</span>'
+      +'<span style="font-size:12.5px;font-weight:600;color:var(--ink)">'+bereichsNamen[id]+'</span>'
+      +'</label>';
+  }
+
+  var bereicheHTML=bereiche.map(function(id){return mkBC(id);}).join('');
+  var v181_ja_on=(D.v_181===true)?' on':'';
+  var v181_nein_on=(D.v_181===false)?' on':'';
+  var uv_ja_on=(D.v_untervollmacht===true)?' on':'';
+  var uv_nein_on=(D.v_untervollmacht===false)?' on':'';
+
+  var importBtn='<div style="background:#f9f8ff;border:1px solid #ede9fe;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">'
+    +'<div><div style="font-size:13px;font-weight:700;color:#4c1d95;margin-bottom:2px">💡 Daten aus Bereich 1 übernehmen</div>'
+    +'<div style="font-size:12px;color:#7c3aed">Name, Geburtsdatum, Adresse automatisch eintragen</div></div>'
+    +'<button id="importBtn" onclick="importPersonData()" style="padding:8px 14px;border-radius:10px;border:1.5px solid #ede9fe;background:#fff;color:#7c3aed;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">← Übernehmen</button>'
+    +'</div>';
+
+  var main4=
+    importBtn
+    +sec(1,'Vollmachtgebende Person (Sie)',
+      '<div class="fr">'
+      +fld('Vorname und Nachname','v_per','Maria Müller','',D.v_per)
+      +fld('Geburtsdatum','v_geb','12.03.1955','',D.v_geb||'')
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Geburtsort','v_geburtsort','Hamburg','',D.v_geburtsort||'')
+      +fld('Personalausweis-Nr.','v_ausweis','L01X00T47','',D.v_ausweis||'')
+      +'</div>'
+      +fld('Vollständige Anschrift','v_anschrift','Musterstraße 1, 20095 Hamburg','',D.v_anschrift||'')
+      +'<div class="fr">'
+      +fld('Telefon','v_tel','+49 40 ...','',D.v_tel||'')
+      +fld('E-Mail','v_tel2','maria@mueller.de','',D.v_tel2||'')
+      +'</div>'
+    )
+    +sec(2,'Bevollmächtigte Person',
+      '<div class="fr">'
+      +fld('Vorname und Nachname','v_ort2','Anna Müller','',D.v_ort2||'')
+      +fld('Geburtsdatum','v_beziehung','15.06.1980','',D.v_beziehung||'')
+      +'</div>'
+      +fld('Vollständige Anschrift','v_ers_tel','Hauptstraße 5, 20099 Hamburg','',D.v_ers_tel||'')
+      +'<div class="fr">'
+      +fld('Telefon','v_ers','+49 40 ...','',D.v_ers||'')
+      +fld('Verhältnis zu mir','v_ers_geb','Tochter / Ehemann','',D.v_ers_geb||'')
+      +'</div>'
+    )
+    +sec(3,'Ersatzbevollmächtigte Person',
+      '<div class="fr">'
+      +fld('Vorname und Nachname','v_ers_beziehung','Peter Müller','',D.v_ers_beziehung||'')
+      +fld('Telefon','v_kontroll_tel','+49 40 ...','',D.v_kontroll_tel||'')
+      +'</div>'
+      +fld('Verhältnis zu mir','v_kontroll','Sohn / Schwester','',D.v_kontroll||'')
+    )
+    +sec(4,'Vollmacht-Bereiche',
+      '<div class="al-box al-info"><span class="ali">✅</span><div>Alle empfohlenen Bereiche sind vorausgewählt. Bereich N (Unternehmerisches) ist standardmäßig deaktiviert.</div></div>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">'+bereicheHTML+'</div>'
+    )
+    +sec(5,'Zusätzliche Regelungen',
+      '<div class="f"><label>§ 181 BGB – Insichgeschäfte erlaubt?</label>'
+      +'<div class="fh" style="margin-bottom:8px">Empfehlung: Ja erlauben – ermöglicht einfacheres Handeln</div>'
+      +'<div class="cg" id="cg181">'
+      +'<button class="chip'+v181_ja_on+'" onclick="selChip(this,true)">Ja – erlaubt</button>'
+      +'<button class="chip'+v181_nein_on+'" onclick="selChip(this,false)">Nein – nicht erlaubt</button>'
+      +'</div></div>'
+      +'<div class="f"><label>Untervollmacht erteilen erlaubt?</label>'
+      +'<div class="fh" style="margin-bottom:8px">Darf die bevollmächtigte Person Aufgaben weitergeben?</div>'
+      +'<div class="cg" id="cguv">'
+      +'<button class="chip'+uv_ja_on+'" onclick="selChip(this,true)">Ja</button>'
+      +'<button class="chip'+uv_nein_on+'" onclick="selChip(this,false)">Nein</button>'
+      +'</div></div>'
+    )
+    +sec(6,'Testament & Patientenverfügung',
+      '<div class="fr">'
+      +fld('Testament – Aufbewahrungsort','v_ort','z.B. Beim Notar Dr. Schulz / Bankschließfach','',D.v_ort||'')
+      +fld('Notar / Anwalt','pv_ort','z.B. Notar Müller, Tel: 040-...','',D.pv_ort||'')
+      +'</div>'
+      +'<div class="f"><label>Patientenverfügung vorhanden?</label>'
+      +chips('cg4','pv',[['ja','✓ Vorhanden'],['nein','Nicht vorhanden'],['geplant','In Planung']])
+      +'</div>'
+      +fld('Aufbewahrungsort Patientenverfügung','t_not','z.B. Beim Hausarzt / Ordner Büroschrank','⚠ Muss im Ernstfall sofort auffindbar sein!',D.t_not||'')
+      +fldTA('Weitere Hinweise für Bevollmächtigte','erben','z.B. Steuerberater Herr Klein, Tel 040-... bitte kontaktieren.',D.erben||'')
+    )
+    +navB();
+
+  var side4=
+    sLabel('Warum die Vollmacht')
+    +sStat('52%','der Deutschen haben keine Vollmacht')
+    +sStat('4–8 Wo.','Betreuungsverfahren ohne Vollmacht')
+    +sStat('800 €','Ø Kosten ohne Vollmacht')
+    +sLabel('Wichtige Hinweise')
+    +sTip('red','⚠ Vollmacht erlischt mit dem Tod','Eine normale Vollmacht endet beim Tod. Diese Vollmacht gilt ausdrücklich auch darüber hinaus.')
+    +sTip('blue','⚖ Notarielle Beglaubigung','Für Immobilien und Bankgeschäfte empfohlen. Kosten: ca. 70–150 €. Beim Notar beglaubigen lassen.')
+    +sTip('green','✓ Vorsorgeregister','Kostenlos unter vorsorgeregister.de registrieren – Gerichte finden die Vollmacht sofort.')
+    +sTip('red','⚠ Banken-Fallstrick','Viele Banken akzeptieren keine allgemeine Vollmacht. Zusätzlich bankeigene Vollmacht ausstellen lassen!');
+
+  c.innerHTML=sh('⚖️','Rechtssicherheit','Vollmacht & Rechtliches','Ihre persönliche Vorsorgevollmacht – komplett und rechtskonform.',main4,side4);
+}
+// ═══ MODUL 5 ═══
+function r5(c){
+  var side5=
+    sLabel('Warum so wichtig?')
+    +sStat('73%','der Deutschen nutzen 2FA – ohne PIN blockiert')
+    +sStat('6 Mon.','Ø Wartezeit für rechtlichen Zugang')
+    +sLabel('Tipps')
+    +sTip('red','⚠ Handy-PIN fehlt = alles gesperrt','Das Smartphone öffnet 2FA, Banking-Apps, Apple Pay und alle Cloud-Dienste. Es ist der Generalschlüssel.')
+    +sTip('green','✓ Hinweis statt Klartext','HundName+Geburtsjahr+! reicht für Vertrauenspersonen – sicherer als das volle Passwort.')
+    +sTip('blue','⚖ BGH 2018','Erben haben Anspruch auf ALLE digitalen Konten. Ohne Passwörter dauert der Prozess aber Monate.')
+    +sTip('red','💀 Krypto ohne Key verloren','Weltweit sind bereits 3,7 Mio. Bitcoin für immer verloren – keine Behörde kann helfen.');
+
+  var s1=sec(1,'Geräte-Zugänge',
+    fld('📱 Smartphone PIN','h_pin','z.B. 1234 / Muster oben-links','Kritisch: Ohne PIN kein Zugang zu 2FA, Banking-Apps und Fotos',D.h_pin)
+    +'<div class="fr">'
+    +fld('Handy-Modell & OS','h_mod','z.B. iPhone 15, iOS 18','Hilft beim Entsperren',D.h_mod||'')
+    +fld('💻 Computer Passwort','pc_pw','z.B. MeinPasswort2024!','',D.pc_pw)
+    +'</div>'
+    +'<div class="fr">'
+    +fld('📧 E-Mail Hinweis','em_hint','z.B. HundName+Jahr+!','Schlüssel für alle Passwort-vergessen-Funktionen',D.em_hint)
+    +fld('🔐 Passwort-Manager','pw_mgr','z.B. 1Password – Hinweis: HundName+!','',D.pw_mgr||'')
+    +'</div>'
+  );
+
+  var s2=sec(2,'Online-Zugänge',
+    '<div class="tl" id="pwL"></div>'
+    +'<div class="add-form hidden" id="pwF">'
+    +'<div class="fr">'
+    +'<div class="f"><label>Dienst / Plattform</label><input id="pw_d" placeholder="z.B. Online-Banking, PayPal, Amazon"/></div>'
+    +'<div class="f"><label>Benutzername</label><input id="pw_u" placeholder="maria@mueller.de"/></div>'
+    +'</div>'
+    +'<div class="fr">'
+    +'<div class="f"><label>Passwort oder Hinweis</label><input id="pw_p" placeholder="Im Passwort-Manager / HundName+Jahr"/></div>'
+    +'<div class="f"><label>Was soll passieren?</label>'
+    +'<select id="pw_a">'
+    +'<option value="loeschen">Konto löschen</option>'
+    +'<option value="erben">Übergeben</option>'
+    +'<option value="gedenkzustand">Gedenkzustand</option>'
+    +'<option value="kuendigen">Kündigen</option>'
+    +'<option value="archivieren">Archivieren</option>'
+    +'</select></div>'
+    +'</div>'
+    +'<div style="display:flex;gap:8px">'
+    +'<button class="btn btn-g" onclick="addPW()" style="flex:1">+ Hinzufügen</button>'
+    +'<button class="btn" onclick="hideForm(\'pwF\')">Abbrechen</button>'
+    +'</div></div>'
+    +'<button class="add-btn" onclick="showForm(\'pwF\')">+ Online-Konto hinzufügen</button>'
+  );
+
+  var s3=sec(3,'Krypto-Assets',
+    '<div class="tl" id="krL"></div>'
+    +'<div class="add-form hidden" id="krF">'
+    +'<div class="fr">'
+    +'<div class="f"><label>Kryptowährung</label><input id="kr_n" placeholder="z.B. Bitcoin, Ethereum"/></div>'
+    +'<div class="f"><label>Börse / Wallet</label><input id="kr_b" placeholder="z.B. Coinbase, Ledger Nano"/></div>'
+    +'</div>'
+    +'<div class="fr">'
+    +'<div class="f"><label>Ungefähres Guthaben</label><input id="kr_w" placeholder="z.B. ca. 0,5 BTC / ca. 8.000 €"/></div>'
+    +'<div class="f"><label>Wo ist Seed Phrase hinterlegt?</label><input id="kr_k" placeholder="z.B. Bankschließfach Fach 12"/></div>'
+    +'</div>'
+    +'<div style="display:flex;gap:8px">'
+    +'<button class="btn btn-g" onclick="addKrypto()" style="flex:1">+ Hinzufügen</button>'
+    +'<button class="btn" onclick="hideForm(\'krF\')">Abbrechen</button>'
+    +'</div></div>'
+    +'<button class="add-btn" onclick="showForm(\'krF\')">+ Krypto-Asset hinzufügen</button>'
+  );
+
+  var main5=s1+s2+s3+navB();
+  c.innerHTML=sh('🔑','Digitaler Tresor','Passwörter & Zugänge','Der wichtigste Abschnitt – ohne Zugänge können Angehörige monatelang nichts tun.',main5,side5);
+  rPWL();rKrL();
+}
+// ═══ MODUL 6 ═══
+function r6(c){
+  var main6=
+    sec(1,'Bankkonten & Depots',
+      +'<div class="tl" id="bkL"></div>'
+      +'<div class="add-form hidden" id="bkF">'
+      +'<div class="fr"><div class="f"><label>Bank / Institut</label><input id="bk_n" placeholder="z.B. Sparkasse Hamburg, ING, DKB"/></div>'
+      +'<div class="f"><label>Art</label><select id="bk_t"><option value="girokonto">Girokonto</option><option value="sparkonto">Sparkonto</option><option value="depot">Wertpapierdepot</option><option value="tagesgeld">Tagesgeld</option><option value="festgeld">Festgeld</option><option value="bauspar">Bausparvertrag</option></select></div></div>'
+      +'<div class="fr"><div class="f"><label>IBAN</label><input id="bk_i" placeholder="DE12 3456 7890 1234 5678 90"/></div>'
+      +'<div class="f"><label>Ca. Guthaben</label><input id="bk_g" placeholder="z.B. ca. 15.000 €"/></div></div>'
+      +'<div style="display:flex;gap:8px"><button class="btn btn-g" onclick="addBk()" style="flex:1">+ Konto hinzufügen</button><button class="btn" onclick="hideForm(\'bkF\')">Abbrechen</button></div>'
+      +'</div>'
+      +'<button class="add-btn" onclick="document.getElementById(\'bkF\').classList.remove(\'hidden\')">+ Konto / Depot hinzufügen</button>'
+    )
+    +sec(2,'Versicherungen',
+      +'<div class="tl" id="vsL"></div>'
+      +'<div class="add-form hidden" id="vsF">'
+      +'<div class="fr"><div class="f"><label>Versicherungsart</label><select id="vs_t"><option value="leben">Lebensversicherung</option><option value="sterbegeld">Sterbegeldversicherung</option><option value="rente">Rentenversicherung</option><option value="bav">Betr. Altersvorsorge</option><option value="unfall">Unfallversicherung</option><option value="haftpflicht">Haftpflicht</option><option value="hausrat">Hausrat</option><option value="kfz">KFZ</option><option value="sonstige">Sonstige</option></select></div>'
+      +'<div class="f"><label>Anbieter</label><input id="vs_a" placeholder="z.B. Allianz, DEVK, HUK"/></div></div>'
+      +'<div class="fr"><div class="f"><label>Police-Nr. ⚠</label><input id="vs_p" placeholder="LV-12345678"/></div>'
+      +'<div class="f"><label>Versicherungssumme</label><input id="vs_s" placeholder="z.B. 50.000 €"/></div></div>'
+      +'<div class="fr"><div class="f"><label>Begünstigter (vollständiger Name!)</label><input id="vs_b" placeholder="Anna Müller (Tochter)"/></div>'
+      +'<div class="f"><label>Aufbewahrungsort Police</label><input id="vs_dok" placeholder="z.B. Ordner Versicherungen"/></div></div>'
+      +'<div style="display:flex;gap:8px"><button class="btn btn-g" onclick="addVs()" style="flex:1">+ Versicherung hinzufügen</button><button class="btn" onclick="hideForm(\'vsF\')">Abbrechen</button></div>'
+      +'</div>'
+      +'<button class="add-btn" onclick="document.getElementById(\'vsF\').classList.remove(\'hidden\')">+ Versicherung hinzufügen</button>'
+    )
+    +navB();
+
+  var side6=
+    sLabel('Erschreckende Zahlen')
+    +sStat('9 Mrd.','€ jährlich vergessene Erbgelder')
+    +sStat('30%','der Lebensversicherungen werden nie ausgezahlt')
+    +sStat('10 Jahre','Verjährungsfrist für Versicherungsansprüche')
+    +sLabel('Tipps')
+    +sTip('red','⚠ Konto wird sofort gesperrt','Nach dem Tod sperren Banken Konten. Ohne Erbschein (4–12 Wochen!) kein Zugang. Lösung: Bankvollmacht!')
+    +sTip('green','✓ Bankvollmacht direkt ausstellen','Viele Banken akzeptieren keine allgemeine Vollmacht. Direkt am Schalter eine bankeigene Vollmacht ausstellen lassen.')
+    +sTip('red','⚠ Veralteter Begünstigter','Vor 20 Jahren war vielleicht noch der Ex-Partner eingetragen. Dieser erhält das Geld – prüfen Sie das jetzt!');
+
+  c.innerHTML=sh('🏦','Vermögen','Bankkonten & Versicherungen','Vollständige Übersicht – damit kein Euro verloren geht.',main6,side6);
+  rBkL();rVsL();
+}
+// ═══ MODUL 7 ═══
+function r7(c){
+  var main7=
+    sec(1,'Immobilien & Grundstücke',
+      +'<div class="tl" id="imL"></div>'
+      +'<div class="add-form hidden" id="imF">'
+      +'<div class="f"><label>Genaue Adresse</label><input id="im_a" placeholder="Musterstraße 1, 20095 Hamburg"/></div>'
+      +'<div class="fr"><div class="f"><label>Art</label><select id="im_t"><option value="eigenheim">Eigenheim</option><option value="wohnung">Eigentumswohnung</option><option value="mietobjekt">Mietobjekt</option><option value="grundstueck">Grundstück</option><option value="gewerbe">Gewerbe</option></select></div>'
+      +'<div class="f"><label>Geschätzter Wert</label><input id="im_w" placeholder="z.B. ca. 450.000 €"/></div></div>'
+      +'<div class="fr"><div class="f"><label>Restkredit / Grundschuld</label><input id="im_schuld" placeholder="z.B. Restschuld 85.000 € / lastenfrei"/></div>'
+      +'<div class="f"><label>Wo liegen die Dokumente?</label><input id="im_d" placeholder="z.B. Ordner Haus, Aktenschrank"/></div></div>'
+      +'<div style="display:flex;gap:8px"><button class="btn btn-g" onclick="addIm()" style="flex:1">+ Hinzufügen</button><button class="btn" onclick="hideForm(\'imF\')">Abbrechen</button></div>'
+      +'</div>'
+      +'<button class="add-btn" onclick="document.getElementById(\'imF\').classList.remove(\'hidden\')">+ Immobilie hinzufügen</button>'
+    )
+    +sec(2,'Fahrzeuge',
+      '<div class="fr">'
+      +fld('Fahrzeug (Marke, Modell, Kennzeichen)','fzg','z.B. VW Golf, HH-AB 1234, Bj. 2019','',D.fzg)
+      +fld('Fahrzeugschein liegt wo?','fzg_dok','z.B. Handschuhfach / roter Umschlag Büro','',D.fzg_dok)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('KFZ-Versicherung','fzg_vers','z.B. HUK-Coburg, Police KFZ-12345','',D.fzg_vers||'')
+      +fld('Schätzwert','fzg_wert','z.B. ca. 16.000 €','',D.fzg_wert||'')
+      +'</div>'
+    )
+    +sec(3,'Wertgegenstände & Bankschließfach',
+      fldTA('Schmuck, Kunst, Sammlungen, Edelmetalle','sachs','z.B.: Goldring Oma (Schmuckkästchen, ca. 800 €) / Briefmarkensammlung (Aktenschrank, ca. 3.500 €) / 5 Goldmünzen (Bankschließfach)',D.sachs)
+      +fld('Bankschließfach / Heimtresor','tresor','z.B. Sparkasse Fach 12, Schlüssel im Schlüsselkasten','',D.tresor||'')
+    )
+    +navB();
+
+  var side7=
+    sLabel('Wichtige Hinweise')
+    +sTip('red','⚠ Erbengemeinschaft vermeiden','Wenn mehrere erben, müssen ALLE bei jeder Entscheidung zustimmen. Immobilie nur gemeinsam verkaufbar. Lösung: Testament mit klarer Zuweisung.')
+    +sTip('blue','⚖ Grundbuch prüfen','Ist die Immobilie noch auf Ihren Namen? Gibt es alte Grundschulden? Grundbuchauszug beim Amtsgericht: ca. 20 €.')
+    +sTip('red','⚠ KFZ: 2-Wochen-Frist!','KFZ-Versicherung läuft nach dem Tod weiter. Innerhalb von 2 Wochen kündigen – das Fahrzeug ist bis dahin noch versichert.')
+    +sTip('green','✓ Werte über 2.000 € schätzen','Für die Erbschaftssteuererklärung: Ohne Nachweis schätzt das Finanzamt – oft zu hoch.');
+
+  c.innerHTML=sh('🏠','Besitz','Immobilien & Sachwerte','Vollständige Dokumentation – kein Streit, keine Überraschungen.',main7,side7);
+  rImL();
+}
+// ═══ MODUL 8 ═══
+function r8(c){
+  var wop=[['loeschen','🗑 Alles löschen'],['gedenkzustand','💙 Gedenkzustand'],['erben','👨‍👩‍👧 Übergeben'],['individuell','⚙️ Individuell']];
+
+  var main8=
+    sec(1,'Genereller Wunsch',
+      '<div class="f"><label>Was soll mit meinen Online-Konten passieren?</label>'+chips('cg8','nl_w',wop)+'</div>'
+    )
+    +sec(2,'Wichtige Plattformen',
+      '<div class="fr">'
+      +fld('Facebook / Instagram','nl_fb','Gedenkzustand / Löschen / Kontakt: Anna','',D.nl_fb)
+      +fld('Google / Gmail / Drive','nl_go','Inaktivitätsmanager eingerichtet / Löschen','',D.nl_go)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Apple ID / iCloud','nl_ap','Nachlasskontakt: Anna Müller (eingerichtet)','Enthält oft das komplette Fotoarchiv!',D.nl_ap)
+      +fld('E-Mail-Konten','nl_em','z.B. Gmail archivieren, Outlook löschen','',D.nl_em)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('WhatsApp / Signal','nl_wa','z.B. Backup sichern, dann Konto löschen','',D.nl_wa||'')
+      +fld('LinkedIn / XING','nl_li','z.B. Profil löschen / Gedenkprofil','',D.nl_li||'')
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Amazon / PayPal','nl_amz','z.B. Guthaben auszahlen, dann schließen','',D.nl_amz||'')
+      +fld('Cloud-Speicher (Fotos!)','nl_cloud','z.B. Dropbox: 50GB Fotos bitte sichern','',D.nl_cloud||'')
+      +'</div>'
+      +fldTA('Sonstige Konten & Wünsche','nl_sonst','z.B.: Dating-App diskret löschen / ELSTER an Steuerberater / Online-Banking: Bank informieren',D.nl_sonst||'')
+    )
+    +sec(3,'Abonnements kündigen',
+      +'<div class="tl" id="abL"></div>'
+      +'<div class="add-form hidden" id="abF">'
+      +'<div class="fr"><div class="f"><label>Dienst / Abo</label><input id="ab_n" placeholder="z.B. Netflix, Spotify, Adobe"/></div>'
+      +'<div class="f"><label>Monatlich (€)</label><input type="number" id="ab_b" placeholder="14.99"/></div></div>'
+      +'<div style="display:flex;gap:8px"><button class="btn btn-g" onclick="addAb()" style="flex:1">+ Hinzufügen</button><button class="btn" onclick="hideForm(\'abF\')">Abbrechen</button></div>'
+      +'</div>'
+      +'<button class="add-btn" onclick="document.getElementById(\'abF\').classList.remove(\'hidden\')">+ Abo / Mitgliedschaft hinzufügen</button>'
+    )
+    +navB();
+
+  var side8=
+    sLabel('Zahlen die überraschen')
+    +sStat('90+','Ø Online-Konten pro Person')
+    +sStat('840 €','Ø jährliche Abo-Kosten die weiterlaufen')
+    +sLabel('Jetzt einrichten!')
+    +sTip('green','🍎 Apple Nachlasskontakt','Einstellungen → Apple ID → Passwort & Sicherheit → Nachlasskontakt. 2 Minuten, kostenlos!')
+    +sTip('green','🔍 Google Inaktivitätsmanager','myaccount.google.com → Daten & Datenschutz → Inaktivitätsmanager. 5 Minuten!')
+    +sTip('blue','⚖ BGH + OLG 2024','Erben haben vollen Anspruch auf alle digitalen Konten und dürfen diese aktiv weiternutzen.')
+    +sTip('yellow','💰 Abos finden','Kontoauszüge der letzten 3 Monate nach wiederkehrenden Abbuchungen durchsuchen.');
+
+  c.innerHTML=sh('📱','Online-Konten','Digitaler Nachlass','Was soll mit Ihren Konten, Profilen und Abonnements passieren?',main8,side8);
+  rAbL();
+}
+// ═══ MODUL 9 ═══
+function r9(c){
+  var main9=
+    sec(1,'Persönlicher Brief',
+      fldTA('Ihr Brief an Ihre Angehörigen','brief','Liebe Anna, lieber Peter,\n\nwenn ihr dieses lest, bin ich nicht mehr bei euch. Ich möchte euch wissen lassen...\n\nIn Liebe,\n[Ihr Name]',D.brief)
+      +fld('Aufbewahrungsort (handgeschrieben)','brief_ort','z.B. Brauner Umschlag im Bankschließfach','',D.brief_ort||'')
+    )
+    +sec(2,'KI-Nachruf erstellen',
+      '<div class="fr">'
+      +fld('Beruf / Tätigkeit','nr_ber','z.B. 35 Jahre Lehrerin / Schreiner / Rentner','',D.nr_ber)
+      +fld('Hobbys & Leidenschaften','nr_hob','z.B. Gartenarbeit, Reisen nach Italien','',D.nr_hob)
+      +'</div>'
+      +'<div class="fr">'
+      +fld('Wichtige Lebensstationen','nr_leben','z.B. 42 Jahre verheiratet, 3 Kinder, 7 Enkel','',D.nr_leben||'')
+      +fld('Lieblingszitat / Lebensmotto','nr_zitat','z.B. „Das Leben ist schön, wenn man es lebt"','',D.nr_zitat||'')
+      +'</div>'
+      +fldTA('Wie sollen Menschen Sie erinnern?','nr_eri','Was war Ihnen im Leben am wichtigsten? Womit haben Sie anderen geholfen? Welche Eigenschaften schätzen andere an Ihnen?',D.nr_eri)
+      +'<div class="f"><label>Stil des Nachruf-Entwurfs</label>'
+      +chips('cg9','nr_st',[['klassisch','📜 Klassisch'],['modern','💬 Modern'],['poetisch','🌸 Poetisch'],['kurz','📌 Kurz (Anzeige)']])
+      +'</div>'
+      +'<button class="btn btn-g" style="width:100%;justify-content:center;margin-bottom:12px" onclick="genNR()">✨ KI-Nachruf generieren</button>'
+      +'<div id="nrR">'+(D.nr_txt?'<div class="nr-r">'+D.nr_txt+'</div>':'')+'</div>'
+    )
+    +navB();
+
+  var side9=
+    sLabel('Das Herzstück')
+    +sWb('💌 Warum dieser Brief so wichtig ist','Technische Dokumente regeln <strong>was</strong> passiert. Ihr persönlicher Brief erklärt <strong>warum</strong> – er spendet Trost und hinterlässt Ihre Stimme für immer.')
+    +sLabel('Was Sie schreiben können')
+    +sTip('purple','✍ Inhalt-Ideen','• Was Ihnen an Ihren Liebsten bedeutet\n• Warum Sie Entscheidungen so getroffen haben\n• Worte die Sie nie ausgesprochen haben\n• Dankbarkeit für alles')
+    +sTip('green','✓ Tipp: Mehrere Briefe','Ein Brief pro Person – Partner, jedes Kind, Enkel. Jede Person erhält etwas das nur ihr gehört.')
+    +sTip('blue','📰 Nachruf','Angehörige müssen innerhalb von 24–48 Stunden einen Nachruf für die Zeitung einreichen. Ein vorbereiteter Entwurf nimmt diese Last ab.');
+
+  c.innerHTML=sh('✍️','Persönliches','Persönlicher Brief & Nachruf','Das Wertvollste was Sie hinterlassen – Ihre eigenen Worte.',main9,side9);
+}
+
+window.genNR=function(){
+  coll();
+  const res=document.getElementById('nrR');
+  res.innerHTML='<div class="nr-l">KI schreibt Nachruf-Entwurf …</div>';
+  const nm=D.vn||'die Person';
+  const sm={klassisch:'würdevoll und klassisch',modern:'modern und persönlich',poetisch:'poetisch und bildreich',kurz:'kurz und prägnant in 4-5 Sätzen für eine Zeitungsanzeige'};
+  const prompt=`Schreibe einen ${sm[D.nr_st||'klassisch']} deutschen Nachruf für ${nm}.${D.nr_ber?' Beruf: '+D.nr_ber+'.':''}${D.nr_hob?' Hobbys: '+D.nr_hob+'.':''}${D.nr_eri?' Persönliches: '+D.nr_eri+'.':''} 8-12 Sätze. Nur der Nachruf-Text, keine Überschrift.`;
+  fetch('https://curly-tooth-ee27.mbaade.workers.dev/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})})
+  .then(r=>r.json()).then(d=>{
+    let t=(d.content?d.content.map(function(b){return b.text||'';}).join(''):'')||d.response||'Fehler.';
+    t=t.replace(/^[\u201C\u201D\u201E\u0022\s]+/,'').replace(/[\u201C\u201D\u201E\u0022\s]+$/,'').trim();
+    D.nr_txt=t;sv();rSB();res.innerHTML=`<div class="nr-r">${t}</div>`;
+  }).catch(()=>{res.innerHTML='<div class="nr-l">Fehler – bitte nochmal versuchen.</div>';});
+};
+
+// ═══ FINISH ═══
+function launchConfetti(){
+  var colors=['#7c3aed','#ec4899','#a78bfa','#f472b6','#6d28d9'];
+  for(var i=0;i<60;i++){
+    (function(i){
+      setTimeout(function(){
+        var el=document.createElement('div');
+        var size=Math.random()*8+4;
+        el.style.cssText='position:fixed;width:'+size+'px;height:'+size+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';border-radius:'+(Math.random()>0.5?'50%':'2px')+';left:'+Math.random()*100+'vw;top:-10px;z-index:9999;pointer-events:none;transition:transform '+(1.5+Math.random()*1.5)+'s ease,opacity '+(1+Math.random())+'s ease '+( 0.5+Math.random())+'s';
+        document.body.appendChild(el);
+        setTimeout(function(){
+          el.style.transform='translateY('+(60+Math.random()*40)+'vh) rotate('+(Math.random()*720-360)+'deg)';
+          el.style.opacity='0';
+        },50);
+        setTimeout(function(){el.remove();},3000);
+      },i*40);
+    })(i);
+  }
+}
+window.goFinish=function(){
+  collAll();
+  launchConfetti();
+  const sc=tot();
+  const c=document.getElementById('cnt');
+  const filled=MODS.filter(m=>msc(m.id)>20).map(m=>`<span class="fh-m">✓ ${m.nm}</span>`).join('');
+  const missing=MODS.filter(m=>msc(m.id)<=20).map(m=>m.nm);
+  c.innerHTML=`<div class="fh-screen">
+
+  <!-- OBERER BEREICH: Score + Module -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;align-items:start">
+
+    <!-- Links: Score & Status -->
+    <div style="background:#fff;border:1px solid #f0f0f0;border-radius:20px;padding:24px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:14px">Ihr Tresor</div>
+      <div class="fh-t">Tresor ist ${sc}%<br>vollständig</div>
+      <div style="height:8px;background:#f1f5f9;border-radius:999px;margin:14px 0;overflow:hidden">
+        <div style="height:100%;width:${sc}%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:999px;transition:width 1s ease"></div>
+      </div>
+      <div class="fh-s">${sc>=80?'Sehr gut! Ihre Angehörigen sind optimal abgesichert.':sc>=50?'Gut begonnen – je vollständiger, desto besser.':'Bitte noch weitere Bereiche ausfüllen.'}</div>
+      <div class="fh-ms">${filled||'<span class="fh-m">Noch keine Bereiche ausgefüllt</span>'}</div>
+      ${missing.length>0
+        ?'<div style="font-size:12px;color:#f59e0b;background:#fffdf5;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;margin-top:8px">⚠️ Noch leer: '+missing.join(' · ')+'</div>'
+        :'<div style="font-size:12px;color:#16a34a;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 12px;margin-top:8px">✅ Alle Bereiche ausgefüllt – maximaler Schutz!</div>'
+      }
+    </div>
+
+    <!-- Rechts: Stats -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:4px">Erfasste Daten</div>
+      <div class="fh-stats">
+        <div class="fh-stat"><div class="fh-stat-n">${D.pws.length}</div><div class="fh-stat-l">Zugänge</div></div>
+        <div class="fh-stat"><div class="fh-stat-n">${D.banken.length}</div><div class="fh-stat-l">Konten</div></div>
+        <div class="fh-stat"><div class="fh-stat-n">${D.vers.length}</div><div class="fh-stat-l">Versiche­rungen</div></div>
+        <div class="fh-stat"><div class="fh-stat-n">${D.immos.length}</div><div class="fh-stat-l">Immobilien</div></div>
+      </div>
+      <div style="background:#f9f8ff;border:1px solid #ede9fe;border-radius:14px;padding:16px">
+        <div style="font-size:12.5px;font-weight:700;color:#4c1d95;margin-bottom:6px">🛡 Sicher & privat</div>
+        <div style="font-size:12px;color:#64748b;line-height:1.55">Alle Daten bleiben auf Ihrem Gerät. Die PDF wird lokal erstellt und mit Ihrem Passwort verschlüsselt.</div>
+      </div>
+      <button class="btn" onclick="gM(0)" style="width:100%;justify-content:center;font-size:13px">← Zurück zu Bereich 1 bearbeiten</button>
+    </div>
+  </div>
+
+  <!-- UNTERER BEREICH: PDF Download -->
+  <div class="pg">
+    <div class="pg-t">🔒 Tresor-PDF herunterladen</div>
+    <div class="pg-h">Legen Sie ein Passwort fest das nur Ihre Vertrauensperson kennt – am besten persönlich mitteilen, nie per E-Mail.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label style="font-size:11.5px;font-weight:600;color:#374151">E-Mail Adresse <span style="font-weight:400;color:#94a3b8">(optional – für Bestätigung)</span></label>
+        <input class="pg-in" type="email" id="pg_em" placeholder="ihre@email.de"/>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label style="font-size:11.5px;font-weight:600;color:#374151">PDF-Passwort * <span style="font-weight:400;color:#94a3b8">(mind. 4 Zeichen)</span></label>
+        <div class="pg-pw"><input type="password" id="pg_pw" placeholder="Ihr Passwort"/><button class="pg-eye" onclick="['pg_pw','pg_pw2'].forEach(id=>{const e=document.getElementById(id);if(e)e.type=e.type==='password'?'text':'password'})" type="button">👁</button></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:10px">
+      <label style="font-size:11.5px;font-weight:600;color:#374151">Passwort wiederholen *</label>
+      <div class="pg-pw" style="margin-top:6px"><input type="password" id="pg_pw2" placeholder="Passwort wiederholen"/></div>
+    </div>
+
+    <div class="pg-con"><input type="checkbox" id="pg_co" style="margin-top:2px;flex-shrink:0"/>
+      <span>Ich stimme der Verarbeitung meiner Daten gemäß <a href="https://bestattungs-experten.de/ueber-uns/datenschutz" target="_blank" style="color:#7c3aed;text-decoration:none;font-weight:600">Datenschutzerklärung</a> zu. *</span></div>
+
+    <div class="pg-err" id="pg_e"></div>
+    <div class="pg-ok" id="pg_ok"><span>✅</span><span>PDF wird erstellt – bitte warten …</span></div>
+
+    <button class="pg-btn" onclick="subPDF()">🔒 Passwortgeschützte PDF herunterladen</button>
+
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid #f0f0f0;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <button class="btn btn-g" onclick="genVollmachtPDF()" style="flex:1;min-width:180px;justify-content:center;font-size:13px">📄 Vorsorgevollmacht separat downloaden</button>
+      <div style="font-size:11.5px;color:#94a3b8;flex:1;min-width:140px">Erstellt eine separate druckfertige Vollmacht mit allen 15 Rechtsbereichen.</div>
+    </div>
+  </div>
+
+</div>`;
+};
+
+window.subPDF=function(){
+  window._loadJsPDF(function(){_subPDF();});
+};
+window._subPDF=function(){
+  const em=((document.getElementById('pg_em')||{value:''}).value||'').trim();
+  const pw=(document.getElementById('pg_pw')||{value:''}).value||'';
+  const pw2=(document.getElementById('pg_pw2')||{value:''}).value||'';
+  const co=(document.getElementById('pg_co')||{}).checked;
+  const err=document.getElementById('pg_e');
+  // E-Mail ist optional - nur prüfen wenn ausgefüllt
+  if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.style.display='block';err.textContent='Bitte eine gültige E-Mail-Adresse eingeben.';return;}
+  if(pw.length<4){err.style.display='block';err.textContent='Bitte ein Passwort mit mindestens 4 Zeichen eingeben.';return;}
+  if(pw!==pw2){err.style.display='block';err.textContent='Die Passwörter stimmen nicht überein.';return;}
+  if(!co){err.style.display='block';err.textContent='Bitte stimmen Sie der Datenschutzerklärung zu.';return;}
+  err.style.display='none';
+  fetch('https://formspree.io/f/xkoykbgd',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:em,tool:'Vorsorge-Tresor',score:tot()+'%',name:USER,module:MODS.map(function(m){return m.nm+': '+msc(m.id)+'%';}).join(', ')})}).catch(()=>{});
+  var pgOk=document.getElementById('pg_ok');if(pgOk)pgOk.classList.add('show');
+  setTimeout(()=>genPDF(pw),800);
+};
+
+// ═══ PDF ═══
+function genPDF(pw){
+  if(!window.jspdf){alert('PDF-Bibliothek lädt noch.');return;}
+  try{
+  const {jsPDF}=window.jspdf;
+  const enc={userPassword:pw,ownerPassword:pw+'_o',userPermissions:['print','copy']};
+  const doc=new jsPDF({unit:'mm',format:'a4',compress:true,encryption:enc});
+  const W=210,M=16,CW=W-M*2,PB=278;
+  let y=0,pg=1,cS='';
+  const P=[124,58,237],PI=[236,72,153],WH=[255,255,255],DK=[15,23,42],SL=[51,65,85],MU=[148,163,184];
+  const BD=[226,232,240],SO=[248,250,252],PL=[245,243,255],GL=[240,253,244],GF=[21,128,61];
+  const AL=[255,251,235],AF=[161,98,7],RL=[254,242,242],RF=[185,28,28];
+
+  const gr=(x,gy,w,h)=>{for(let i=0;i<=Math.ceil(w);i++){const t=i/w;doc.setFillColor(Math.round(P[0]+(PI[0]-P[0])*t),Math.round(P[1]+(PI[1]-P[1])*t),Math.round(P[2]+(PI[2]-P[2])*t));doc.rect(x+i,gy,1.1,h,'F');}};
+  const ft=()=>{doc.setDrawColor(...BD);doc.setLineWidth(.2);doc.line(M,284,W-M,284);doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(...MU);doc.text('🔒 VORSORGE-TRESOR · BESTATTUNGS-EXPERTEN.DE · VERTRAULICH',M,290);doc.text('Seite '+pg,W-M,290,{align:'right'});};
+  const np=(t)=>{ft();doc.addPage();pg++;cS=t;y=M;doc.setFillColor(...PL);doc.rect(0,0,W,8,'F');doc.setFillColor(...P);doc.rect(0,0,3,8,'F');doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...P);doc.text('🔒 '+(t||'VORSORGE-TRESOR').toUpperCase()+' · BESTATTUNGS-EXPERTEN.DE',M+5,5.5);y=14;};
+  const ck=(n)=>{if(y+n>PB)np(cS);};
+  const sh2=(ti,su,num,ic)=>{cS=ti;ck(22);gr(M,y,CW,16);doc.setFillColor(...WH);doc.roundedRect(M+4,y+3,10,10,2,2,'F');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...P);doc.text(String(num),M+9,y+10.5,{align:'center'});doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...WH);doc.text(ic+' '+ti,M+18,y+9);if(su){doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.text(su,W-M-2,y+9,{align:'right'});}y+=20;};
+  const rw=(l,val,i)=>{ck(8);if(i%2===0){doc.setFillColor(...SO);doc.rect(M,y-3,CW,8,'F');}doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...MU);doc.text(l,M+4,y+1);doc.setFont('helvetica','bold');doc.setTextColor(...DK);const ls=doc.splitTextToSize(String(val||'–'),CW*.6);doc.text(ls,W-M-2,y+1,{align:'right'});doc.setDrawColor(...BD);doc.setLineWidth(.15);doc.line(M,y+4,W-M,y+4);y+=8;};
+  const ch2=(t)=>{ck(8);doc.setFillColor(...PL);doc.rect(M,y-2,CW,7,'F');doc.setFillColor(...P);doc.rect(M,y-2,2.5,7,'F');doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(...P);doc.text(t.toUpperCase(),M+6,y+3);y+=9;};
+  const nb2=(tx,type)=>{const ls=doc.splitTextToSize(tx,CW-14);const h=ls.length*5.5+10;ck(h+4);const bg=type==='warn'?AL:type==='danger'?RL:PL;const fg=type==='warn'?AF:type==='danger'?RF:P;doc.setFillColor(...bg);doc.roundedRect(M,y,CW,h,3,3,'F');gr(M,y,3,h);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...fg);ls.forEach((l,i)=>doc.text(l,M+7,y+7+i*5.5));y+=h+6;};
+  const box=(rows)=>{const rh=rows.filter(([,v])=>v).length*6+10;if(rh<=10)return;ck(rh);doc.setFillColor(...SO);doc.roundedRect(M,y,CW,rh,3,3,'F');doc.setDrawColor(...BD);doc.setLineWidth(.2);doc.roundedRect(M,y,CW,rh,3,3,'S');let ty=y+7;rows.filter(([,v])=>v).forEach(([l,v2])=>{doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...P);doc.text(l,M+4,ty);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...DK);const ls=doc.splitTextToSize(String(v2),CW*.56);doc.text(ls,W-M-2,ty,{align:'right'});ty+=6;});y+=rh+6;};
+
+  const artlbl={erd:'Erdbestattung',feuer:'Feuerbestattung',see:'Seebestattung',natur:'Naturbestattung',anonym:'Anonym'};
+  const aklb={loeschen:'Löschen',erben:'Übergeben',gedenkzustand:'Gedenkzustand',kuendigen:'Kündigen'};
+  const bktlb={girokonto:'Girokonto',sparkonto:'Sparkonto',depot:'Depot',tagesgeld:'Tagesgeld'};
+  const vstlb={leben:'Lebensversicherung',sterbegeld:'Sterbegeldversicherung',rente:'Rentenversicherung',unfall:'Unfallversicherung',haftpflicht:'Haftpflicht',sonstige:'Sonstige'};
+  const imtlb={eigenheim:'Eigenheim',wohnung:'ETW',mietobjekt:'Mietobjekt',grundstueck:'Grundstück'};
+
+  // ── TITELSEITE ──
+  gr(0,0,W,72);
+  doc.setTextColor(...WH);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('BESTATTUNGS-EXPERTEN.DE',M,14);
+  doc.setFont('helvetica','normal');doc.setFontSize(7);doc.text('🔒 VERTRAULICH – Nur für autorisierte Personen',W-M,14,{align:'right'});
+  doc.setFontSize(30);doc.setFont('helvetica','bold');doc.text('Vorsorge-Tresor',M,30);
+  doc.setFont('helvetica','normal');doc.setFontSize(13);doc.text((D.vn||'')+' '+(D.nn||''),M,42);
+  doc.setFontSize(8.5);doc.text('Erstellt: '+new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'}),M,52);
+  doc.text('Vollständigkeit: '+tot()+'%',M,60);
+
+  // Stats
+  [{n:D.pws.length,l:'Zugänge'},{n:D.banken.length,l:'Bankkonten'},{n:D.vers.length,l:'Versicherungen'},{n:D.immos.length,l:'Immobilien'}].forEach(({n,l},i)=>{
+    const bx=W-M-84+i*22;doc.setFillColor(...WH);doc.roundedRect(bx,12,20,18,2,2,'F');
+    doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...P);doc.text(String(n),bx+10,22,{align:'center'});
+    doc.setFont('helvetica','normal');doc.setFontSize(6);doc.setTextColor(...MU);doc.text(l,bx+10,27,{align:'center'});
+  });
+
+  // TOC
+  doc.setFillColor(...WH);doc.roundedRect(M,80,CW,78,5,5,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...P);doc.text('Inhalt dieses Tresors',M+10,93);
+  MODS.forEach(({ic,nm},i)=>{
+    const tx=M+10,ty=99+i*7;
+    doc.setFillColor(...PL);doc.roundedRect(tx,ty-3,8,6,1.5,1.5,'F');
+    doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...P);doc.text(String(i+1).padStart(2,'0'),tx+4,ty+1,{align:'center'});
+    doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...DK);doc.text(ic+' '+nm,tx+12,ty+1);
+  });
+  y=165;nb2('⚠️  Passwortgeschützt. Passwort nur Ihrer Vertrauensperson mitteilen. Diesen Tresor jährlich aktualisieren.','warn');
+  ft();
+
+  // ── PERSON ──
+  np('Person & Kontakte');sh2('Person & Notfallkontakte','Grunddaten',1,'👤');
+  [['Vorname',D.vn],['Nachname',D.nn],['Geburtsdatum',D.geb],['Wohnort / PLZ',D.plz],['Telefon',D.tel],['E-Mail',D.em],['Partner',D.par],['Partner Tel.',D.par_tel]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  y+=4;ch2('Notfallkontakte');
+  [['Kontakt 1',D.nk1],['Kontakt 1 Tel.',D.nk1_tel],['Kontakt 2',D.nk2],['Kontakt 2 Tel.',D.nk2_tel]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  if(D.arzt){y+=4;ch2('Hausarzt');[['Arzt',D.arzt],['Tel.',D.arzt_tel]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));}
+  y+=8;
+
+  // ── BESTATTUNG & KOSTEN ──
+  sh2('Bestattungswünsche','Letzter Wille',2,'🕊️');
+  [['Bestattungsart',artlbl[D.b_art]||D.b_art],['Religiöser Charakter',D.b_rel],['Ort der Trauerfeier',D.b_ort],['Musik-Wünsche',D.b_musik],['Blumen & Dekoration',D.b_blumen],['Grabstein-Wunsch',D.b_grabst]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  if(D.b_wunsch){y+=4;const ls=doc.splitTextToSize(D.b_wunsch,CW-14);const h=ls.length*5.5+10;ck(h+4);doc.setFillColor(...SO);doc.roundedRect(M,y,CW,h,3,3,'F');gr(M,y,3,h);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...P);doc.text('Weitere Wünsche & Anweisungen',M+7,y+7);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...SL);ls.forEach((l,i)=>{ck(6);doc.text(l,M+7,y+13+i*5.5);});y+=h+8;}
+  y+=4;sh2('Kostenplanung & Vorsorge','Finanzielle Vorsorge',3,'💶');
+  [['Geplante Bestattungsart',artlbl[D.k_art]||D.k_art],['Vorsorge-Art',D.k_vor],['Bereits gespart',D.k_ges?D.k_ges+' €':''],['Police / Vertrag',D.k_pol],['Unterlagen liegen',D.k_ort]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  y+=8;
+
+  // ── VOLLMACHT ──
+  np('Vollmacht & Rechtliches');sh2('Vollmacht & Rechtliches','Rechtssicherheit',4,'⚖️');
+  nb2('Kritisch: Bevollmächtigte Person und Aufbewahrungsorte sofort mitteilen!','danger');
+  ch2('Bevollmächtigte Person');
+  [['Name',D.v_per],['Telefon',D.v_tel],['Aufbewahrungsort Vollmacht',D.v_ort]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  y+=4;ch2('Testament');
+  [['Aufbewahrungsort',D.t_ort],['Notar / Anwalt',D.t_not]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  if(D.pv){y+=4;ch2('Patientenverfügung');[['Vorhanden',D.pv],['Aufbewahrungsort',D.pv_ort]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));}
+  if(D.erben){y+=4;const ls=doc.splitTextToSize(D.erben,CW-14);const h=ls.length*5.5+10;ck(h+4);doc.setFillColor(...SO);doc.roundedRect(M,y,CW,h,3,3,'F');gr(M,y,3,h);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...P);doc.text('Wichtige Hinweise für Erben',M+7,y+7);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...SL);ls.forEach((l,i)=>{ck(6);doc.text(l,M+7,y+13+i*5.5);});y+=h+8;}
+  y+=8;
+
+  // ── PASSWÖRTER ──
+  np('Passwörter & Zugänge');sh2('Passwörter & Zugänge','Digitaler Tresor – vertraulich',5,'🔑');
+  nb2('Diese Seite enthält sensible Zugangsdaten. Nur der bevollmächtigten Person zugänglich machen.','danger');
+  ch2('Geräte-Zugänge');
+  [['Smartphone PIN',D.h_pin],['Computer Passwort',D.pc_pw],['E-Mail Hinweis',D.em_hint]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  if(D.pws.length>0){y+=4;ch2('Online-Zugänge ('+D.pws.length+' Einträge)');
+    D.pws.forEach((p,i)=>{ck(18);box([['Dienst',p.d],['Benutzername',p.u],['Passwort/Hinweis',p.p],['Aktion',aklb[p.a]||p.a]]);});}
+  if(D.krypto.length>0){y+=4;ch2('Krypto-Assets ('+D.krypto.length+' Einträge)');
+    nb2('Ohne Private Key / Seed Phrase sind Krypto-Assets für immer verloren!','warn');
+    D.krypto.forEach((k,i)=>{ck(16);box([['Kryptowährung',k.n],['Börse / Wallet',k.b],['Key / Seed-Ort',k.k]]);});}
+  y+=8;
+
+  // ── FINANZEN ──
+  np('Bankkonten & Versicherungen');sh2('Bankkonten & Versicherungen','Vermögen',6,'🏦');
+  if(D.banken.length>0){ch2('Bankkonten & Depots ('+D.banken.length+' Einträge)');
+    D.banken.forEach((b,i)=>{ck(16);box([['Bank',b.n],['Art',bktlb[b.t]||b.t],['IBAN',b.i],['Guthaben',b.g]]);});}
+  if(D.vers.length>0){y+=4;ch2('Versicherungen ('+D.vers.length+' Einträge)');
+    D.vers.forEach((v2,i)=>{ck(20);box([['Art',vstlb[v2.t]||v2.t],['Anbieter',v2.a],['Police-Nr.',v2.p],['Summe',v2.s],['Begünstigter',v2.b]]);});}
+  y+=8;
+
+  // ── IMMOBILIEN ──
+  np('Immobilien & Sachwerte');sh2('Immobilien & Sachwerte','Besitz',7,'🏠');
+  if(D.immos.length>0){ch2('Immobilien ('+D.immos.length+' Einträge)');
+    D.immos.forEach((im,i)=>{ck(16);box([['Adresse',im.a],['Art',imtlb[im.t]||im.t],['Wert',im.w],['Dokumente',im.d]]);});}
+  if(D.fzg){y+=4;ch2('Fahrzeuge');[['Fahrzeug',D.fzg],['Fahrzeugschein',D.fzg_dok]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));}
+  if(D.sachs){y+=4;const ls=doc.splitTextToSize(D.sachs,CW-14);const h=ls.length*5.5+10;ck(h+4);doc.setFillColor(...SO);doc.roundedRect(M,y,CW,h,3,3,'F');gr(M,y,3,h);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...P);doc.text('Wertgegenstände & Sonstiges',M+7,y+7);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...SL);ls.forEach((l,i)=>{ck(6);doc.text(l,M+7,y+13+i*5.5);});y+=h+8;}
+  y+=8;
+
+  // ── DIGITALER NACHLASS ──
+  np('Digitaler Nachlass');sh2('Digitaler Nachlass','Online-Konten & Abonnements',8,'📱');
+  [['Genereller Wunsch',aklb[D.nl_w]||D.nl_w],['Facebook / Instagram',D.nl_fb],['Google / Gmail',D.nl_go],['Apple / iCloud',D.nl_ap],['E-Mail Konten',D.nl_em]].filter(([,v])=>v).forEach(([l,v2],i)=>rw(l,v2,i));
+  if(D.abos.length>0){y+=4;ch2('Abonnements zum Kündigen ('+D.abos.length+' Einträge)');
+    const abot=D.abos.reduce((s,a)=>s+parseFloat(a.b||0),0);
+    D.abos.forEach((a,i)=>{ck(8);if(i%2===0){doc.setFillColor(...SO);doc.rect(M,y-3,CW,8,'F');}doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...DK);doc.text('📺 '+a.n,M+4,y+1);if(a.b){doc.setFont('helvetica','bold');doc.setTextColor(...P);doc.text(a.b+' €/Mo',W-M-2,y+1,{align:'right'});}doc.setDrawColor(...BD);doc.setLineWidth(.15);doc.line(M,y+4,W-M,y+4);y+=8;});
+    ck(10);doc.setFillColor(...PL);doc.roundedRect(M,y,CW,10,3,3,'F');gr(M,y,3,10);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...P);doc.text('Gesamt: '+abot.toFixed(2)+' €/Mo = '+(abot*12).toFixed(0)+' €/Jahr',M+7,y+7);y+=14;}
+  y+=8;
+
+  // ── BRIEF & NACHRUF ──
+  np('Brief & Nachruf');sh2('Persönlicher Brief & Nachruf','Für Ihre Angehörigen',9,'✍️');
+  if(D.brief){
+    const ls=doc.splitTextToSize(D.brief,CW-14);const h=ls.length*5.8+14;ck(h+4);
+    doc.setFillColor(...SO);doc.roundedRect(M,y,CW,h,4,4,'F');gr(M,y,3,h);
+    doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...P);doc.text('Persönlicher Brief',M+7,y+8);
+    doc.setFont('helvetica','italic');doc.setFontSize(9.5);doc.setTextColor(...SL);
+    ls.forEach((l,i)=>{ck(6.5);doc.text(l,M+7,y+14+i*5.8);});y+=h+10;
+  }
+  if(D.nr_txt){
+    const stilLabel={klassisch:'Klassischer Nachruf',modern:'Moderner Nachruf',poetisch:'Poetischer Nachruf'};
+    ck(14);doc.setFillColor(...PL);doc.roundedRect(M,y,CW,8,'F');gr(M,y,3,8);
+    doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...P);doc.text(stilLabel[D.nr_st||'klassisch']||'Nachruf-Entwurf',M+7,y+5.5);y+=12;
+    const ls=doc.splitTextToSize(D.nr_txt,CW-14);const h=ls.length*5.8+14;ck(h+4);
+    doc.setFillColor(...SO);doc.roundedRect(M,y,CW,h,4,4,'F');
+    doc.setFont('helvetica','bold');doc.setFontSize(26);doc.setTextColor(...PL);doc.text('"',M+4,y+12);
+    doc.setFont('helvetica','italic');doc.setFontSize(9.5);doc.setTextColor(...SL);
+    ls.forEach((l,i)=>{ck(6.5);doc.text(l,M+7,y+10+i*5.8);});y+=h+8;
+    ck(10);doc.setFillColor(...AL);doc.roundedRect(M,y,CW,8,3,3,'F');gr(M,y,3,8);
+    doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(...AF);doc.text('KI-generierter Entwurf – bitte vor Verwendung prüfen und bei Bedarf anpassen.',M+7,y+5.5);y+=12;
+  }
+
+  // ── NÄCHSTE SCHRITTE ──
+  ck(20);gr(M,y,CW,18);
+  doc.setTextColor(...WH);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('Nächste Schritte & Empfehlungen',M+6,y+8);
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);
+  doc.text('1. Diesen Tresor Ihrer Vertrauensperson zeigen und Passwort mitteilen',M+6,y+14);
+  doc.text('2. Dokument sicher aufbewahren (Bankschließfach oder beim Notar)',M+6,y+20);
+  y+=26;
+  ck(16);doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...DK);
+  ['3. Vollmacht erstellen lassen (falls noch nicht vorhanden)','4. Bestattungsvorsorge-Vertrag oder Sterbegeldversicherung abschließen','5. Jährlich aktualisieren – neue Konten, neue Passwörter','6. Apple Nachlasskontakt & Google Inaktivitätsmanager einrichten'].forEach((t,i)=>{ck(8);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...DK);doc.text(t,M+4,y+1,{maxWidth:CW-8});doc.setDrawColor(...BD);doc.setLineWidth(.15);doc.line(M,y+4,W-M,y+4);y+=8;});
+  y+=6;ck(20);gr(M,y,CW,18);
+  doc.setTextColor(...WH);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('Kostenlose Beratung',M+6,y+8);
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.text('Unser Team hilft Ihnen, alle Schritte rechtssicher umzusetzen.',M+6,y+14);
+  doc.text('bestattungs-experten.de/formulare/beratungsanfrage',M+6,y+20);
+
+  ft();
+  doc.save('Vorsorge-Tresor-'+(D.vn||USER).replace(/\s+/g,'-')+'.pdf');
+  }catch(err){console.error('PDF Fehler:',err);alert('PDF Fehler: '+err.message);}
+}
+
+
+// ══════════════════════════════════════
+// VORSORGEVOLLMACHT PDF GENERATOR
+// ══════════════════════════════════════
+window._loadJsPDF=function(cb){
+  if(window.jspdf){cb();return;}
+  var s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+  s.onload=function(){cb();};
+  s.onerror=function(){alert('PDF-Bibliothek konnte nicht geladen werden. Bitte Internetverbindung prüfen.');};
+  document.head.appendChild(s);
+};
+window.genVollmachtPDF=function(){
+  window._loadJsPDF(function(){window._genVollmachtPDF();});
+};
+window._genVollmachtPDF=function(){
+  if(!window.jspdf){alert('PDF-Bibliothek nicht geladen.');return;}
+  try{
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({unit:'mm',format:'a4',compress:true});
+  var W=210,H=297,M=20,CW=170;
+  var PU=[100,30,200],PP=[200,50,160],PDK=[60,60,60],PLT=[120,120,120];
+  var totalPages=0;
+  var pageContents=[]; // collect all pages first for total count
+
+  // ── HELPERS ──
+  function setFont(sz,style,color){
+    doc.setFontSize(sz);
+    doc.setFont('helvetica',style||'normal');
+    doc.setTextColor.apply(doc,color||[30,30,30]);
+  }
+  function addLogo(pageNum,total){
+    // Purple rounded square logo (simplified tree icon)
+    doc.setFillColor(100,30,200);
+    doc.roundedRect(W-M-16,8,16,16,3,3,'F');
+    doc.setFillColor(255,255,255);
+    // Tree trunk
+    doc.rect(W-M-8.5,18,1,4,'F');
+    // Tree crown circles
+    doc.circle(W-M-8,14,3,'F');
+    doc.circle(W-M-11,16,2,'F');
+    doc.circle(W-M-5,16,2,'F');
+    // Footer
+    doc.setDrawColor(200,200,200);
+    doc.setLineWidth(0.3);
+    doc.line(M,H-12,W-M,H-12);
+    setFont(7,'normal',[150,150,150]);
+    var footTxt='B e s t a t t u n g s E x p e r t e n  G m b H   -   S e i t e  '+pageNum+'  |  '+total;
+    doc.text(footTxt,W/2,H-7,{align:'center'});
+  }
+  function addPageHeader(title,pageNum,total){
+    addLogo(pageNum,total);
+    setFont(13,'bold',[30,30,30]);
+    doc.text(title,W/2,22,{align:'center'});
+    doc.setDrawColor.apply(doc,PU);
+    doc.setLineWidth(0.5);
+    doc.line(M,25,W-M,25);
+    return 32;
+  }
+  function txtBlock(text,x,y,maxW,sz,style,color){
+    setFont(sz||10,style||'normal',color||[30,30,30]);
+    var lines=doc.splitTextToSize(text,maxW||CW);
+    doc.text(lines,x,y);
+    return y+lines.length*(sz||10)*0.353+1;
+  }
+  function fieldLine(label,value,y){
+    setFont(10,'normal',[80,80,80]);
+    doc.text(label,M,y);
+    y+=5;
+    setFont(10,'normal',[20,20,20]);
+    if(value&&value.trim()){
+      doc.text(value,M,y);
+    } else {
+      doc.setDrawColor(180,180,180);
+      doc.setLineWidth(0.3);
+      doc.line(M,y,M+CW,y);
+    }
+    return y+7;
+  }
+  function sectionTitle(title,y){
+    setFont(11,'bold',[30,30,30]);
+    doc.text(title,W/2,y,{align:'center'});
+    return y+8;
+  }
+  function subHead(title,y){
+    setFont(10,'bold',[30,30,30]);
+    doc.text(title,M,y);
+    return y+6;
+  }
+  function checkPage(y,needed,pageNum,total,pagesRef){
+    if(y+needed>H-18){
+      doc.addPage();
+      pagesRef[0]++;
+      return addPageHeader('',pagesRef[0],total);
+    }
+    return y;
+  }
+
+  // ── COLLECT DATA ──
+  var vn=D.v_per||'';
+  var vgeb=D.v_geb||'';
+  var vgort=D.v_geburtsort||'';
+  var vanschr=D.v_anschrift||'';
+  var vtel=D.v_tel||'';
+  var vemail=D.v_tel2||'';
+  var vausweis=D.v_ausweis||'';
+  var bn=D.v_ort2||'';
+  var bgeb=D.v_beziehung||'';
+  var banschr=D.v_ers_tel||'';
+  var btel=D.v_ers||'';
+  var bverh=D.v_ers_geb||'';
+  var en=D.v_ers_beziehung||'';
+  var etel=D.v_kontroll_tel||'';
+  var everh=D.v_kontroll||'';
+  var b181=D.v_181!==false;
+  var buv=D.v_untervollmacht!==false;
+  var bmehr=D.v_mehrere||'einzeln';
+  var breg=D.v_registrierung||'nein';
+  var tortAuf=D.v_ort||'';
+  var tortNot=D.t_not||'';
+  var pv=D.pv||'nein';
+  var erben=D.erben||'';
+  var bereiche=D.v_bereiche||{A:true,B:true,C:true,D:true,E:true,F:true,G:true,H:true,I:true,J:true,K:true,L:true,M:true,N:false,O:true};
+
+  // Bereichstexte
+  var BT={
+    A:{t:'A. Gesundheitssorge und medizinische Angelegenheiten',
+       i:'Die bevollmächtigte Person darf mich in allen Angelegenheiten der Gesundheitssorge vertreten. Sie darf insbesondere: 1. in ärztliche Untersuchungen, Heilbehandlungen und medizinische Eingriffe einwilligen oder diese ablehnen; 2. bereits erteilte Einwilligungen widerrufen; 3. über Art, Beginn, Fortführung, Änderung oder Beendigung medizinischer Maßnahmen entscheiden; 4. mit Ärzten, Krankenhäusern, Pflegeeinrichtungen, Hospizen, Therapeuten und Apotheken sprechen; 5. Krankenunterlagen, Befunde und Diagnosen einsehen; 6. Behandlungsverträge abschließen, ändern oder kündigen. Ich entbinde alle behandelnden Ärzte gegenüber der bevollmächtigten Person von ihrer Schweigepflicht.'},
+    B:{t:'B. Pflege, Versorgung und persönliche Angelegenheiten',
+       i:'Die bevollmächtigte Person darf alle Angelegenheiten meiner Pflege und Versorgung regeln. Sie darf insbesondere: 1. Pflegeleistungen beantragen, organisieren und überwachen; 2. Pflegedienste und Haushaltshilfen beauftragen; 3. Pflegeverträge und Heimverträge abschließen oder kündigen; 4. Leistungen der Pflegeversicherung und Sozialhilfe beantragen; 5. Pflegegrade und Begutachtungen begleiten.'},
+    C:{t:'C. Aufenthalt, Wohnung und Heimangelegenheiten',
+       i:'Die bevollmächtigte Person darf über meinen Aufenthalt entscheiden. Sie darf insbesondere: 1. meinen Aufenthalt in einem Krankenhaus, Pflegeheim oder betreuten Wohnform veranlassen; 2. Mietverträge und Heimverträge abschließen, ändern oder kündigen; 3. meine Wohnung betreten, sichern, verwalten oder auflösen; 4. Reparaturen, Umzüge und Haushaltsauflösungen organisieren.'},
+    D:{t:'D. Freiheitsentziehende Maßnahmen und Unterbringung',
+       i:'Die bevollmächtigte Person darf in freiheitsentziehende Maßnahmen einwilligen, soweit diese rechtlich zulässig und medizinisch erforderlich sind. Dies umfasst: 1. die Unterbringung in einer geschlossenen Einrichtung; 2. mechanische Vorrichtungen wie Bettgitter oder Fixierungen; 3. Medikamente zur Ruhigstellung. Diese Befugnis gilt für Maßnahmen im Sinne von § 1831 BGB und § 1832 BGB.'},
+    E:{t:'E. Behörden, Ämter und Versicherungen',
+       i:'Die bevollmächtigte Person darf mich gegenüber allen Behörden und Versicherungen vertreten. Sie darf insbesondere: 1. Anträge stellen und Bescheide entgegennehmen; 2. Widersprüche einlegen; 3. Versicherungsleistungen beantragen; 4. Renten- und Sozialangelegenheiten regeln.'},
+    F:{t:'F. Vermögenssorge',
+       i:'Die bevollmächtigte Person darf mein Vermögen verwalten. Sie darf insbesondere: 1. über Barvermögen, Wertpapiere und sonstiges Vermögen verfügen; 2. Vermögensgegenstände kaufen, verkaufen oder belasten; 3. Erbschaften annehmen oder ausschlagen; 4. Vergleiche schließen und Verbindlichkeiten eingehen.'},
+    G:{t:'G. Bank-, Konto- und Depotangelegenheiten',
+       i:'Die bevollmächtigte Person darf alle meine Bank- und Finanzangelegenheiten regeln. Sie darf insbesondere: 1. über meine Konten, Depots und Sparguthaben verfügen; 2. Zahlungen leisten und Überweisungen tätigen; 3. Konten eröffnen oder schließen; 4. Wertpapiertransaktionen durchführen; 5. Tresorfächer öffnen und verwalten.'},
+    H:{t:'H. Immobilien und Grundstücke',
+       i:'Die bevollmächtigte Person darf meine Immobilien und Grundstücke verwalten. Sie darf insbesondere: 1. Immobilien kaufen, verkaufen oder verwalten; 2. Mietverträge abschließen, ändern oder kündigen; 3. Baumaßnahmen beauftragen; 4. Grundbucheintragungen vornehmen lassen.'},
+    I:{t:'I. Digitale Angelegenheiten und Online-Konten',
+       i:'Die bevollmächtigte Person darf alle meine digitalen Angelegenheiten regeln. Sie darf insbesondere: 1. auf meine E-Mail-Konten und Online-Dienste zugreifen; 2. Konten schließen oder in Gedenkzustand versetzen; 3. digitale Inhalte sichern und verwalten; 4. Abonnements kündigen; 5. Kryptowährungen verwalten.'},
+    J:{t:'J. Post, Telekommunikation und Datenschutz',
+       i:'Die bevollmächtigte Person darf meine Post und Kommunikation verwalten. Sie darf insbesondere: 1. Post und Pakete entgegennehmen und öffnen; 2. Nachsendeaufträge einrichten; 3. Telefon- und Internetverträge kündigen; 4. Datenschutzrechte geltend machen.'},
+    K:{t:'K. Gerichtliche und außergerichtliche Vertretung',
+       i:'Die bevollmächtigte Person darf mich gerichtlich und außergerichtlich vertreten. Sie darf insbesondere: 1. Ansprüche geltend machen oder abwehren; 2. Rechtsanwälte beauftragen; 3. Prozesse führen und Vergleiche schließen; 4. Rechtsmittel einlegen oder zurücknehmen; 5. mich in Betreuungsverfahren vertreten.'},
+    L:{t:'L. Verträge, Mitgliedschaften und laufende Verpflichtungen',
+       i:'Die bevollmächtigte Person darf alle laufenden Verträge verwalten. Dies betrifft: 1. Mietverträge und Energieverträge; 2. Versicherungen und Abonnements; 3. Vereinsmitgliedschaften; 4. Dienstleistungsverträge; 5. Leasing- und Kaufverträge.'},
+    M:{t:'M. Steuerliche Angelegenheiten',
+       i:'Die bevollmächtigte Person darf mich in allen steuerlichen Angelegenheiten vertreten. Sie darf insbesondere: 1. Steuererklärungen vorbereiten und einreichen; 2. Steuerberater beauftragen; 3. Steuerbescheide entgegennehmen und Einsprüche einlegen; 4. Zahlungen leisten und Erstattungen entgegennehmen.'},
+    N:{t:'N. Unternehmerische Angelegenheiten',
+       i:'Die bevollmächtigte Person darf mich in unternehmerischen Angelegenheiten vertreten. Sie darf insbesondere: 1. laufende geschäftliche Angelegenheiten regeln; 2. Verträge abschließen, ändern oder kündigen; 3. Mitarbeiter und Berater einbinden; 4. Maßnahmen zur Sicherung oder Beendigung der Tätigkeit einleiten.'},
+    O:{t:'O. Vertretung gegenüber Bestattungsunternehmen und nach dem Tod',
+       i:'Diese Vollmacht gilt, soweit rechtlich zulässig, über meinen Tod hinaus. Die bevollmächtigte Person darf nach meinem Tod insbesondere: 1. Bestattungsangelegenheiten regeln und Bestattungsunternehmen beauftragen; 2. meine Bestattungswünsche berücksichtigen; 3. Rechnungen bezahlen; 4. Verträge über meinen Tod informieren; 5. Unterlagen an Erben weitergeben.'}
+  };
+
+  // ── SEITE 1: COVER ──
+  // Obere Hälfte: Gradient Hintergrund (kein Foto möglich ohne externe Ressource)
+  // Stattdessen: eleganter Farbverlauf
+  doc.setFillColor.apply(doc,[30,0,60]);
+  doc.rect(0,0,W,H/2,'F');
+  // Gradient-Simulation: mehrere Rechtecke
+  for(var gi=0;gi<40;gi++){
+    var t=gi/40;
+    var r=Math.round(30+t*(200-30));
+    var g=Math.round(0+t*(50-0));
+    var b=Math.round(60+t*(160-60));
+    doc.setFillColor(r,g,b);
+    doc.rect(0,gi*(H/2/40),W,(H/2/40)+0.5,'F');
+  }
+  // Logo auf Cover
+  doc.setFillColor(255,255,255);
+  doc.roundedRect(W-40,10,30,30,5,5,'F');
+  doc.setFillColor.apply(doc,PU);
+  doc.circle(W-25,22,6,'F');
+  doc.setFillColor(255,255,255);
+  doc.rect(W-25.5,25,1,5,'F');
+  doc.circle(W-25,20,2.5,'F');
+  doc.circle(W-28,22,1.8,'F');
+  doc.circle(W-22,22,1.8,'F');
+
+  // Untere Hälfte: Lila-Pink Gradient
+  for(var gi2=0;gi2<50;gi2++){
+    var t2=gi2/50;
+    var r2=Math.round(100+t2*(220-100));
+    var g2=Math.round(30+t2*(20-30));
+    var b2=Math.round(200+t2*(120-200));
+    doc.setFillColor(r2,g2,b2);
+    doc.rect(0,H/2+gi2*(H/2/50),W,(H/2/50)+0.5,'F');
+  }
+
+  // Cover Titel
+  doc.setFillColor(255,255,255);
+  doc.rect(M,H/2+15,30,1,'F'); // Trennlinie
+  setFont(28,'bold',[255,255,255]);
+  doc.text('GENERALVOLLMACHT',M,H/2+12);
+  setFont(13,'normal',[255,255,255]);
+  doc.text('Selbst bestimmen.',M,H/2+24);
+  doc.text('Verantwortung übertragen',M,H/2+32);
+  // Rechts unten
+  setFont(9,'normal',[255,255,255]);
+  doc.text('VORSORGEN.',W-M-40,H-15);
+  setFont(9,'bold',[255,255,255]);
+  doc.text('ABER RICHTIG',W-M-18,H-15);
+
+  // Footer Seite 1
+  setFont(7,'normal',[200,200,200]);
+  doc.text('B e s t a t t u n g s E x p e r t e n  G m b H   -   S e i t e  1  |  TOTAL',W/2,H-5,{align:'center'});
+
+  // ── SEITE 2: Vollmachtgebende Person ──
+  doc.addPage();
+  var pg=[2]; // mutable page counter
+  var TOTAL=99; // placeholder, will be replaced
+  var y=addPageHeader('1. Angaben zur vollmachtgebenden Person',pg[0],TOTAL);
+  y=fieldLine('Vorname und Nachname:',vn,y);
+  y=fieldLine('Geburtsdatum:',vgeb,y);
+  y=fieldLine('Geburtsort:',vgort,y);
+  y=fieldLine('Anschrift:',vanschr,y);
+  y=fieldLine('Telefon:',vtel,y);
+  y=fieldLine('E-Mail:',vemail,y);
+  y=fieldLine('Personalausweis-/Reisepassnummer:',vausweis,y);
+
+  // ── Bevollmächtigte Person ──
+  y+=4;
+  y=sectionTitle('2. Bevollmächtigte Person',y);
+  setFont(10,'normal',[60,60,60]);
+  var introLines=doc.splitTextToSize('Ich bevollmächtige hiermit die nachfolgend genannte Person, mich in dem in dieser Vorsorgevollmacht beschriebenen Umfang zu vertreten.',CW);
+  doc.text(introLines,M,y);
+  y+=introLines.length*4+4;
+  y=fieldLine('Vorname und Nachname:',bn,y);
+  y=fieldLine('Geburtsdatum:',bgeb,y);
+  y=fieldLine('Anschrift:',banschr,y);
+  y=fieldLine('Telefon:',btel,y);
+  y=fieldLine('Verhältnis zu mir:',bverh,y);
+  setFont(10,'italic',[80,80,80]);
+  doc.text('Diese Person wird nachfolgend "bevollmächtigte Person" genannt.',M,y);
+  y+=8;
+
+  // ── SEITE 3: Ersatzbevollmächtigte ──
+  doc.addPage();pg[0]++;
+  y=addPageHeader('3. Ersatzbevollmächtigte Person',pg[0],TOTAL);
+  setFont(10,'normal',[60,60,60]);
+  var ersLines=doc.splitTextToSize('Für den Fall, dass die vorgenannte bevollmächtigte Person verhindert ist, die Vollmacht nicht ausüben kann oder will, bevollmächtige ich ersatzweise folgende Person:',CW);
+  doc.text(ersLines,M,y);
+  y+=ersLines.length*4+4;
+  y=fieldLine('Vorname und Nachname:',en,y);
+  y=fieldLine('Telefon:',etel,y);
+  y=fieldLine('Verhältnis zu mir:',everh,y);
+
+  // ── Grundsatz ──
+  y+=4;
+  y=sectionTitle('4. Grundsatz meiner Vollmacht',y);
+  setFont(10,'normal',[60,60,60]);
+  var grundText='Diese Vorsorgevollmacht soll sicherstellen, dass meine persönlichen, gesundheitlichen, pflegerischen, vermögensrechtlichen, behördlichen, wohnungsbezogenen, digitalen und sonstigen Angelegenheiten in meinem Sinne geregelt werden können, wenn ich selbst dazu nicht mehr in der Lage bin. Die Vollmacht soll eine gerichtlich angeordnete Betreuung vermeiden, soweit dies rechtlich möglich ist.';
+  var grundLines=doc.splitTextToSize(grundText,CW);
+  doc.text(grundLines,M,y);
+  y+=grundLines.length*4+6;
+
+  // ── Wirksamkeit ──
+  y=sectionTitle('5. Wirksamkeit der Vollmacht',y);
+  setFont(10,'normal',[60,60,60]);
+  var wirkText='Diese Vollmacht gilt ab dem Zeitpunkt meiner eigenhändigen Unterschrift. Im Innenverhältnis weise ich die bevollmächtigte Person an, von dieser Vollmacht nur Gebrauch zu machen, wenn ich meine Angelegenheiten nicht mehr selbst regeln kann. Dritten gegenüber bleibt diese Vollmacht unabhängig davon wirksam.';
+  var wirkLines=doc.splitTextToSize(wirkText,CW);
+  doc.text(wirkLines,M,y);
+  y+=wirkLines.length*4+6;
+
+  // ── SEITE 4+: Umfang der Vollmacht ──
+  doc.addPage();pg[0]++;
+  y=addPageHeader('6. Umfang der Vollmacht',pg[0],TOTAL);
+  setFont(10,'normal',[60,60,60]);
+  doc.text('Die bevollmächtigte Person ist berechtigt, mich in den nachfolgend genannten Angelegenheiten zu vertreten.',M,y);
+  y+=8;
+
+  var bKeys=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'];
+  for(var bi=0;bi<bKeys.length;bi++){
+    var bk=bKeys[bi];
+    if(!bereiche[bk])continue;
+    var bdata=BT[bk];
+    // Check if need new page (estimate 40mm per section)
+    if(y>H-60){doc.addPage();pg[0]++;y=addPageHeader('6. Umfang der Vollmacht (Fortsetzung)',pg[0],TOTAL);}
+    // Section heading bold
+    setFont(10,'bold',[30,30,30]);
+    var htLines=doc.splitTextToSize(bdata.t,CW);
+    doc.text(htLines,M,y);
+    y+=htLines.length*4+3;
+    // Section body
+    setFont(10,'normal',[60,60,60]);
+    var btLines=doc.splitTextToSize(bdata.i,CW);
+    doc.text(btLines,M,y);
+    y+=btLines.length*4+8;
+  }
+
+  // ── § 181 BGB ──
+  if(y>H-50){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y+=2;
+  y=subHead('7. Befreiung von § 181 BGB',y);
+  setFont(10,'normal',[60,60,60]);
+  if(b181){
+    doc.text('Die bevollmächtigte Person ist von den Beschränkungen des § 181 BGB befreit. Sie darf Rechtsgeschäfte in meinem Namen mit sich selbst vornehmen.',M,y);
+  } else {
+    doc.text('Die Befreiung von § 181 BGB wird NICHT erteilt.',M,y);
+  }
+  y+=10;
+
+  // ── Untervollmacht ──
+  if(y>H-40){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y=subHead('8. Untervollmacht',y);
+  setFont(10,'normal',[60,60,60]);
+  if(buv){
+    doc.text('Die bevollmächtigte Person darf Untervollmacht erteilen, soweit dies zur sachgerechten Wahrnehmung meiner Angelegenheiten erforderlich ist.',M,y);
+  } else {
+    doc.text('Die Erteilung von Untervollmachten ist NICHT gestattet.',M,y);
+  }
+  y+=10;
+
+  // ── Mehrere Bevollmächtigte ──
+  if(y>H-50){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y=subHead('9. Mehrere Bevollmächtigte',y);
+  setFont(10,'normal',[60,60,60]);
+  var mehrText=bmehr==='gesamt'
+    ?'Die bevollmächtigten Personen dürfen mich nur gemeinsam vertreten.'
+    :'Jede bevollmächtigte Person darf mich einzeln vertreten.';
+  doc.text(mehrText,M,y);
+  y+=10;
+
+  // ── Patientenverfügung ──
+  if(y>H-50){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y=subHead('10. Verhältnis zur Patientenverfügung',y);
+  setFont(10,'normal',[60,60,60]);
+  var pvText='';
+  if(pv==='ja'){pvText='Ich habe eine Patientenverfügung errichtet. Die bevollmächtigte Person hat diese zu beachten und umzusetzen.'+(tortNot?'\nAufbewahrungsort: '+tortNot:'');}
+  else if(pv==='geplant'){pvText='Eine Patientenverfügung ist in Planung. Bis dahin soll die bevollmächtigte Person nach meinem mutmaßlichen Willen entscheiden.';}
+  else{pvText='Es besteht derzeit keine Patientenverfügung. Die bevollmächtigte Person soll nach meinem mutmaßlichen Willen entscheiden.';}
+  var pvLines=doc.splitTextToSize(pvText,CW);
+  doc.text(pvLines,M,y);
+  y+=pvLines.length*4+8;
+
+  // ── Aufbewahrung ──
+  if(y>H-50){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y=subHead('11. Aufbewahrung und Auffindbarkeit',y);
+  setFont(10,'normal',[60,60,60]);
+  y=fieldLine('Aufbewahrungsort Testament / Vollmacht:',tortAuf,y);
+  var regText=breg==='erfolgt'?'Die Registrierung im Zentralen Vorsorgeregister der Bundesnotarkammer ist bereits erfolgt.':breg==='geplant'?'Die Registrierung im Zentralen Vorsorgeregister ist geplant.':'Keine Registrierung im Vorsorgeregister gewünscht.';
+  setFont(10,'normal',[60,60,60]);
+  var regLines=doc.splitTextToSize(regText,CW);
+  doc.text(regLines,M,y);
+  y+=regLines.length*4+8;
+
+  // ── Geltung nach dem Tod ──
+  if(y>H-40){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y=subHead('12. Geltung über den Tod hinaus',y);
+  setFont(10,'normal',[60,60,60]);
+  var gLines=doc.splitTextToSize('Diese Vollmacht gilt über meinen Tod hinaus, soweit sie nicht von meinen Erben widerrufen wird. Die bevollmächtigte Person darf nach meinem Tod alle Maßnahmen treffen, die zur Abwicklung dringender Angelegenheiten erforderlich sind.',CW);
+  doc.text(gLines,M,y);
+  y+=gLines.length*4+8;
+
+  // ── Hinweise & Schlussbestimmungen ──
+  if(y>H-60){doc.addPage();pg[0]++;y=addPageHeader('',pg[0],TOTAL);}
+  y=subHead('13. Hinweise zur Nutzung',y);
+  setFont(10,'normal',[60,60,60]);
+  var hinwLines=doc.splitTextToSize('Mir ist bekannt: 1. Diese Vollmacht gibt der bevollmächtigten Person weitreichende Befugnisse. 2. Ich sollte nur eine Person bevollmächtigen, der ich vollständig vertraue. 3. Banken und Grundbuchämter können zusätzliche Anforderungen stellen. 4. Diese Vollmacht sollte regelmäßig überprüft werden.',CW);
+  doc.text(hinwLines,M,y);
+  y+=hinwLines.length*4+6;
+
+  y=subHead('14. Schlussbestimmungen',y);
+  setFont(10,'normal',[60,60,60]);
+  var schlussLines=doc.splitTextToSize('Sollten einzelne Bestimmungen dieser Vorsorgevollmacht unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen davon unberührt. Diese Vorsorgevollmacht wurde von mir gelesen, verstanden und freiwillig erteilt.',CW);
+  doc.text(schlussLines,M,y);
+  y+=schlussLines.length*4+8;
+
+  if(erben){
+    y=subHead('Besondere Hinweise für Bevollmächtigte:',y);
+    setFont(10,'normal',[60,60,60]);
+    var erbenLines=doc.splitTextToSize(erben,CW);
+    doc.text(erbenLines,M,y);
+    y+=erbenLines.length*4+8;
+  }
+
+  // ── UNTERSCHRIFTEN ──
+  if(y>H-80){doc.addPage();pg[0]++;y=addPageHeader('15. Ort, Datum und Unterschrift',pg[0],TOTAL);}
+  else{y=subHead('15. Ort, Datum und Unterschrift',y);}
+  y+=4;
+  // Ort + Datum
+  setFont(10,'normal',[80,80,80]);
+  doc.text('Ort:',M,y);
+  doc.setDrawColor(150,150,150);doc.setLineWidth(0.3);
+  doc.line(M+10,y,M+80,y);
+  doc.text('Datum:',M+90,y);
+  doc.line(M+110,y,M+CW,y);
+  y+=12;
+  doc.text('Unterschrift der vollmachtgebenden Person ('+vn+'):',M,y);
+  y+=8;
+  doc.setDrawColor.apply(doc,PU);doc.setLineWidth(0.5);
+  doc.line(M,y,M+CW,y);
+  y+=14;
+
+  // Bestätigung bevollmächtigte Person
+  doc.setFillColor(245,243,255);
+  doc.roundedRect(M,y,CW,32,3,3,'F');
+  y+=6;
+  setFont(10,'bold',[60,30,150]);
+  doc.text('Bestätigung der bevollmächtigten Person ('+bn+')',M+4,y);
+  y+=6;
+  setFont(9,'normal',[80,80,80]);
+  doc.text('Ich bestätige, dass ich über diese Vorsorgevollmacht informiert bin und grundsätzlich bereit bin,',M+4,y);
+  y+=4;
+  doc.text('die Aufgabe im Ernstfall zu übernehmen.',M+4,y);
+  y+=8;
+  doc.text('Ort, Datum:',M+4,y);
+  doc.setDrawColor(150,150,150);doc.line(M+30,y,M+100,y);
+  doc.text('Unterschrift:',M+105,y);
+  doc.line(M+125,y,M+CW-4,y);
+  y+=14;
+
+  // Bestätigung Ersatz
+  if(en){
+    doc.setFillColor(248,248,255);
+    doc.roundedRect(M,y,CW,32,3,3,'F');
+    y+=6;
+    setFont(10,'bold',[60,30,150]);
+    doc.text('Bestätigung der ersatzbevollmächtigten Person ('+en+')',M+4,y);
+    y+=6;
+    setFont(9,'normal',[80,80,80]);
+    doc.text('Ich bestätige, dass ich über diese Ersatzbevollmächtigung informiert bin.',M+4,y);
+    y+=8;
+    doc.text('Ort, Datum:',M+4,y);
+    doc.setDrawColor(150,150,150);doc.line(M+30,y,M+100,y);
+    doc.text('Unterschrift:',M+105,y);
+    doc.line(M+125,y,M+CW-4,y);
+    y+=14;
+  }
+
+  // ── ANLAGE 2: Wichtige Kontakte ──
+  doc.addPage();pg[0]++;
+  y=addPageHeader('Anlage 2: Wichtige Kontakte',pg[0],TOTAL);
+  var kontakte=[
+    ['Hausarzt / Hausärztin',D.arzt||'',D.arzt_tel||''],
+    ['Krankenkasse',D.kk||'',D.kk_nr?'Vers.-Nr.: '+D.kk_nr:''],
+    ['Steuerberater',D.steuerber||'',D.steuerber_tel||''],
+    ['Bank / Sparkasse (IBAN)',D.banken&&D.banken.length>0?D.banken[0].n+' · '+D.banken[0].i:'',''],
+    ['Bevollmächtigte Person',bn,btel],
+    ['Ersatzbevollmächtigte',en,etel],
+    ['Notfallkontakt 1',D.nk1||'',D.nk1_tel||''],
+    ['Notfallkontakt 2',D.nk2||'',D.nk2_tel||''],
+  ];
+  for(var ki=0;ki<kontakte.length;ki++){
+    var knt=kontakte[ki];
+    setFont(10,'bold',[30,30,30]);
+    doc.text(knt[0],M,y);
+    y+=5;
+    setFont(10,'normal',[60,60,60]);
+    if(knt[1]){doc.text(knt[1],M+4,y);y+=5;}
+    if(knt[2]){doc.text(knt[2],M+4,y);y+=5;}
+    if(!knt[1]&&!knt[2]){
+      doc.setDrawColor(200,200,200);doc.setLineWidth(0.3);
+      doc.line(M,y,M+CW,y);y+=5;
+    }
+    y+=3;
+  }
+
+  // ── ANLAGE 3: Weitere Dokumente ──
+  if(y>H-80){doc.addPage();pg[0]++;y=addPageHeader('Anlage 3: Weitere Dokumente',pg[0],TOTAL);}
+  else{
+    y+=6;
+    setFont(12,'bold',[30,30,30]);
+    doc.text('Anlage 3: Hinweise zu weiteren Dokumenten',M,y);y+=8;
+    doc.setDrawColor.apply(doc,PU);doc.setLineWidth(0.5);
+    doc.line(M,y-3,W-M,y-3);
+  }
+  var dokumente=[
+    ['Patientenverfügung',pv==='ja'],
+    ['Testament',!!tortAuf],
+    ['Bankvollmacht',false],
+    ['Digitaler Nachlass / Passwortübersicht',D.pws&&D.pws.length>0],
+    ['Bestattungsverfügung',D.b_art&&D.b_art.length>0],
+  ];
+  for(var di=0;di<dokumente.length;di++){
+    var dok=dokumente[di];
+    doc.setFillColor(dok[1]?100:220,dok[1]?30:220,dok[1]?200:220);
+    doc.rect(M,y-3,4,4,'F');
+    setFont(10,'normal',[30,30,30]);
+    doc.text((dok[1]?'✓ ':'☐ ')+dok[0],M+6,y);
+    y+=7;
+  }
+
+  // ── ANLAGE 4: Überprüfung ──
+  y+=6;
+  setFont(11,'bold',[30,30,30]);
+  doc.text('Anlage 4: Regelmäßige Überprüfung',M,y);y+=6;
+  setFont(9,'normal',[80,80,80]);
+  doc.text('Ich habe diese Vorsorgevollmacht überprüft und bestätige, dass sie weiterhin meinem Willen entspricht.',M,y);y+=8;
+  setFont(9,'normal',[130,130,130]);
+  doc.text('Datum                          Bemerkung                                    Unterschrift',M,y);y+=5;
+  for(var li=0;li<3;li++){
+    doc.setDrawColor(200,200,200);doc.setLineWidth(0.3);
+    doc.line(M,y,M+CW,y);y+=8;
+  }
+
+  // ── TOTAL PAGES KORREKTUR ──
+  var totalPgs=pg[0];
+  // Gehe durch alle Seiten und korrigiere den Footer
+  var totalStr=''+totalPgs;
+  for(var pi=1;pi<=totalPgs;pi++){
+    doc.setPage(pi);
+    // Überschreibe Footer mit korrekter Seitenzahl
+    doc.setFillColor(255,255,255);
+    doc.rect(0,H-14,W,14,'F');
+    doc.setDrawColor(200,200,200);
+    doc.setLineWidth(0.3);
+    doc.line(M,H-12,W-M,H-12);
+    setFont(7,'normal',[150,150,150]);
+    var ft='B e s t a t t u n g s E x p e r t e n  G m b H   -   S e i t e  '+pi+'  |  '+totalPgs;
+    doc.text(ft,W/2,H-7,{align:'center'});
+  }
+
+  // ── SPEICHERN ──
+  var fname='Vorsorgevollmacht-'+(vn||USER).replace(/\s+/g,'-')+'.pdf';
+  doc.save(fname);
+  }catch(err){console.error(err);alert('Fehler beim Erstellen der PDF: '+err.message);}
+};
+
+// ── Event-Bindings (am Ende wenn alle Funktionen definiert sind) ──
+function _b(id,ev,fn){var el=document.getElementById(id);if(el)el.addEventListener(ev,fn);}
+_b('btnStartTresor','click',function(){startTresor();});
+_b('btnResumeTresor','click',function(){resumeTresor();});
+_b('btnObNext','click',function(){window.obNext&&window.obNext();});
+_b('btnObFinish','click',function(){window.obFinish&&window.obFinish();});
+_b('btnObPrev','click',function(){window.obPrev&&window.obPrev();});
+_b('btnGoFinish','click',function(){window.goFinish&&window.goFinish();});
+var _inp=document.getElementById('loginName');
+if(_inp)_inp.addEventListener('keydown',function(e){if(e.key==='Enter')startTresor();});
+
+})();
+</script>
+<script>
+// DEBUG: Direkter Test
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('btnStartTresor');
+  console.log('DEBUG: btnStartTresor found:', !!btn);
+  console.log('DEBUG: startTresor defined:', typeof startTresor);
+  console.log('DEBUG: window.startTresor defined:', typeof window.startTresor);
+  if(btn) {
+    // Testweise direkten Listener hinzufügen
+    btn.addEventListener('click', function() {
+      console.log('DEBUG: Button clicked!');
+      try {
+        startTresor();
+        console.log('DEBUG: startTresor() OK');
+      } catch(e) {
+        console.log('DEBUG: startTresor() FEHLER:', e.message);
+        alert('Fehler: ' + e.message);
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

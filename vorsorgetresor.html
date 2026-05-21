@@ -307,11 +307,11 @@ body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-ap
     <div class="lc-badge">bestattungs-experten.de<br>Digitaler Vorsorge-Tresor</div>
     <h1 class="lc-title">Ihr<br><span style="background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vorsorge-Tresor</span></h1>
     <p class="lc-sub">Alle wichtigen Informationen sicher an einem Ort. Für Sie – und für Ihre Angehörigen wenn es darauf ankommt.</p>
-    <input class="lc-in" type="text" id="loginName" placeholder="Ihr vollständiger Name *" autocomplete="name"/>
-    <button class="lc-btn" id="btnStartTresor">Tresor öffnen →</button>
+    <input class="lc-in" type="text" id="loginName" placeholder="Ihr vollständiger Name *" autocomplete="name" onkeydown="if(event.key==='Enter')startTresor()"/>
+    <button class="lc-btn" onclick="startTresor()">Tresor öffnen →</button>
     <div class="lc-res" id="lcRes">
       <div style="text-align:center;font-size:12px;color:#94a3b8;margin:8px 0">oder</div>
-      <button class="lc-res-btn" id="btnResumeTresor">↩ Fortschritt laden (<span id="resName"></span>)</button>
+      <button class="lc-res-btn" onclick="resumeTresor()">↩ Fortschritt laden (<span id="resName"></span>)</button>
     </div>
     <div class="lc-stats">
       <div style="text-align:center"><div class="lcs-n">9</div><div class="lcs-l">Bereiche</div></div>
@@ -417,7 +417,7 @@ body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-ap
         <div style="font-size:12.5px;color:#4c1d95;line-height:1.55"><strong>Kein Account. Keine Cloud. Kein Tracking.</strong><br>Alle Daten bleiben ausschließlich auf Ihrem Gerät.</div>
       </div>
 
-      <button class="ob-btn ob-btn-pri" id="btnObNext" style="width:100%;padding:16px;font-size:15px;border-radius:16px;letter-spacing:.01em">Was brauche ich dafür? →</button>
+      <button class="ob-btn ob-btn-pri" onclick="obNext()" style="width:100%;padding:16px;font-size:15px;border-radius:16px;letter-spacing:.01em">Was brauche ich dafür? →</button>
       <p style="text-align:center;font-size:12px;color:#94a3b8;margin:10px 0 0">Kostenlos &nbsp;·&nbsp; Keine Registrierung &nbsp;·&nbsp; Jederzeit pausierbar</p>
 
     </div>
@@ -455,8 +455,8 @@ body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-ap
         <div class="ob-check-item" onclick="obToggle(this)" style="border-bottom:none;padding-bottom:0;cursor:pointer"><div class="ob-check-box"></div><div><div class="ob-check-text">Ihre Bestattungswünsche</div><div class="ob-check-sub">Art, Ort, Musik – je konkreter, desto weniger Stress für Angehörige</div></div></div>
       </div>
 
-      <button class="ob-btn ob-btn-pri" id="btnObFinish" style="width:100%;padding:16px;font-size:16px;border-radius:16px">Tresor jetzt starten 🔒</button>
-      <button class="ob-btn ob-btn-sec" id="btnObPrev" style="width:100%;padding:12px;margin-top:10px;border-radius:14px">← Zurück</button>
+      <button class="ob-btn ob-btn-pri" onclick="obFinish()" style="width:100%;padding:16px;font-size:16px;border-radius:16px">Tresor jetzt starten 🔒</button>
+      <button class="ob-btn ob-btn-sec" onclick="obPrev()" style="width:100%;padding:12px;margin-top:10px;border-radius:14px">← Zurück</button>
       <p style="text-align:center;font-size:12px;color:#94a3b8;margin:12px 0 0">Ihre Daten verlassen niemals dieses Gerät</p>
     </div>
   </div>
@@ -489,7 +489,7 @@ body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-ap
       </div>
       <div id="navItems"></div>
       <div class="sb-a">
-        <button class="sb-btn pr" id="btnGoFinish">🔒 Tresor-PDF erstellen</button>
+        <button class="sb-btn pr" onclick="goFinish()">🔒 Tresor-PDF erstellen</button>
         <button class="sb-btn" onclick="if(confirm('Fortschritt wirklich löschen?')){localStorage.removeItem(SK);location.reload();}">🗑 Zurücksetzen</button>
       </div>
     </div>
@@ -499,7 +499,6 @@ body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-ap
 </div>
 
 <script>
-(function(){
 var SK='vtresor_v4';
 var USER='',CUR=0;
 
@@ -677,9 +676,6 @@ function showApp(){
   sv();rSB();rMod();
 }
 
-// Globale Funktionen verfügbar machen
-window.startTresor=startTresor;
-window.resumeTresor=resumeTresor;
 
 // check stored
 var stored=ld();
@@ -2511,40 +2507,6 @@ window._genVollmachtPDF=function(){
   }catch(err){console.error(err);alert('Fehler beim Erstellen der PDF: '+err.message);}
 };
 
-// ── Event-Bindings (am Ende wenn alle Funktionen definiert sind) ──
-function _b(id,ev,fn){var el=document.getElementById(id);if(el)el.addEventListener(ev,fn);}
-_b('btnStartTresor','click',function(){startTresor();});
-_b('btnResumeTresor','click',function(){resumeTresor();});
-_b('btnObNext','click',function(){window.obNext&&window.obNext();});
-_b('btnObFinish','click',function(){window.obFinish&&window.obFinish();});
-_b('btnObPrev','click',function(){window.obPrev&&window.obPrev();});
-_b('btnGoFinish','click',function(){window.goFinish&&window.goFinish();});
-var _inp=document.getElementById('loginName');
-if(_inp)_inp.addEventListener('keydown',function(e){if(e.key==='Enter')startTresor();});
-
-})();
-</script>
-<script>
-// DEBUG: Direkter Test
-document.addEventListener('DOMContentLoaded', function() {
-  var btn = document.getElementById('btnStartTresor');
-  console.log('DEBUG: btnStartTresor found:', !!btn);
-  console.log('DEBUG: startTresor defined:', typeof startTresor);
-  console.log('DEBUG: window.startTresor defined:', typeof window.startTresor);
-  if(btn) {
-    // Testweise direkten Listener hinzufügen
-    btn.addEventListener('click', function() {
-      console.log('DEBUG: Button clicked!');
-      try {
-        startTresor();
-        console.log('DEBUG: startTresor() OK');
-      } catch(e) {
-        console.log('DEBUG: startTresor() FEHLER:', e.message);
-        alert('Fehler: ' + e.message);
-      }
-    });
-  }
-});
 </script>
 
 </body>

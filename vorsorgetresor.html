@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" style="background:transparent">
+<html lang="de">
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -9,6 +9,7 @@
 
 
 <style>
+
 :root{
   --bg:transparent;--w:#fff;--ink:#0d1117;--mu:#64748b;
   --bo:#e5e7eb;--soft:#f8fafc;--cr:#f1f5f9;
@@ -19,7 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:transparent;color:var(--ink);min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.6}
+body{background:#fff;color:var(--ink);min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.6}
 .wrap{max-width:1280px;margin:0 auto;padding:20px 20px}
 .hidden{display:none!important}
 
@@ -190,12 +191,12 @@ body{background:transparent;color:var(--ink);min-height:100vh;font-family:system
 .pg{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:24px;margin-top:20px}
 .pg-t{font-size:15px;font-weight:700;color:#0d1117;margin-bottom:6px;display:flex;align-items:center;gap:8px}
 .pg-h{font-size:12.5px;color:#64748b;margin-bottom:16px;line-height:1.55}
-.pg-in{width:100%;padding:11px 14px;border-radius:11px;border:1.5px solid #e5e7eb;background:#fafafa;color:#0d1117;font-size:14px;font-family:inherit;box-sizing:border-box}
+.pg-in{width:100%;padding:11px 14px;border-radius:11px;border:1.5px solid #e5e7eb;background:#fafafa;color:#0d1117;font-size:14px;font-family:inherit;margin-bottom:10px;box-sizing:border-box}
 .pg-in::placeholder{color:rgba(255,255,255,.35)}
 .pg-in:focus{border-color:rgba(124,58,237,.8);outline:none}
 .pg-pw{position:relative;margin-bottom:9px}
 .pg-pw input,select,textarea{box-sizing:border-box;font-family:inherit}
-.pg-pw input{width:100%;padding:11px 40px 11px 14px;border-radius:11px;border:1.5px solid #e5e7eb;background:#fafafa;color:#0d1117;font-size:14px;font-family:inherit;box-sizing:border-box}
+.pg-in input{width:100%;padding:11px 40px 11px 14px;border-radius:11px;border:1.5px solid #e5e7eb;background:#fafafa;color:#0d1117;font-size:14px;font-family:inherit;box-sizing:border-box}
 .pg-pw input::placeholder{color:#9ca3af}
 .pg-pw input:focus{border-color:rgba(124,58,237,.8);outline:none}
 .pg-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#9ca3af;font-size:16px;transition:color .15s}
@@ -297,6 +298,44 @@ body{background:transparent;color:var(--ink);min-height:100vh;font-family:system
 
 /* Sidebar Label */
 .s-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:2px;margin-top:4px}
+
+
+/* MODUL COMPLETE ANIMATION */
+.mod-done-overlay{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s;
+}
+.mod-done-overlay.show{opacity:1;}
+.mod-done-card{
+  background:#fff;border-radius:24px;padding:36px 48px;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.18);
+  transform:scale(.8);transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.mod-done-overlay.show .mod-done-card{transform:scale(1);}
+.mod-done-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 30px rgba(124,58,237,.4);
+}
+.mod-done-icon svg{overflow:visible;}
+.mod-done-check{
+  stroke-dasharray:60;stroke-dashoffset:60;
+  animation:drawCheck .5s cubic-bezier(.4,0,.2,1) .2s forwards;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes drawCheck{to{stroke-dashoffset:0}}
+.mod-done-title{font-family:Georgia,serif;font-size:20px;font-weight:600;color:#0d1117;}
+.mod-done-sub{font-size:13px;color:#64748b;}
+.mod-done-bar{
+  width:200px;height:4px;background:#f1f5f9;border-radius:999px;overflow:hidden;margin-top:4px;
+}
+.mod-done-bar-fill{
+  height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);
+  border-radius:999px;width:0;transition:width .6s ease .2s;
+}
 </style>
 </head>
 <body>
@@ -463,6 +502,14 @@ body{background:transparent;color:var(--ink);min-height:100vh;font-family:system
 
 </div>
 
+<div id="modDoneOverlay" class="mod-done-overlay" style="display:none">
+  <div class="mod-done-card">
+    <div class="mod-done-icon" id="modDoneIcon"></div>
+    <div class="mod-done-title" id="modDoneTitle">Bereich abgeschlossen!</div>
+    <div class="mod-done-sub" id="modDoneSub">Weiter zum nächsten Bereich</div>
+    <div class="mod-done-bar"><div class="mod-done-bar-fill" id="modDoneBar"></div></div>
+  </div>
+</div>
 <div id="AS">
 <div class="wrap">
   <div class="tb">
@@ -499,6 +546,7 @@ body{background:transparent;color:var(--ink);min-height:100vh;font-family:system
 </div>
 
 <script>
+
 var SK='vtresor_v4';
 var USER='',CUR=0;
 
@@ -511,7 +559,7 @@ var D={
   b_musik:'',b_blumen:'',b_kleid:'',b_schmuck:'',b_redner:'',
   b_anzeige:'',b_groesse:'',b_ausgeladen:'',b_essen:'',b_haustier:'',
   b_wunsch:'',b_rel:'',
-  k_art:'',k_vor:'',k_ges:'',k_pol:'',k_ort:'',k_mo:'',
+  rente_betrag:'',rente_traeger:'',rente_betrieb:'',k_art:'',k_vor:'',k_ges:'',k_pol:'',k_ort:'',k_mo:'',
   k_anbieter:'',k_ansp:'',k_wert:'',k_beg:'',k_pflegev:'',k_pflege_pol:'',
   v_per:'',v_tel:'',v_tel2:'',v_ort:'',v_ort2:'',v_geb:'',v_geburtsort:'',
   v_ausweis:'',v_anschrift:'',v_beziehung:'',v_ers:'',v_ers_tel:'',
@@ -523,8 +571,8 @@ var D={
   pws:[],krypto:[],
   banken:[],vers:[],
   immos:[],fzg:'',fzg_dok:'',fzg_vers:'',fzg_wert:'',sachs:'',tresor:'',
-  nl_w:'',nl_fb:'',nl_go:'',nl_ap:'',nl_em:'',nl_li:'',nl_amz:'',nl_cloud:'',nl_wa:'',nl_sonst:'',abos:[],
-  brief:'',brief_ort:'',nr_st:'klassisch',nr_ber:'',nr_hob:'',nr_eri:'',nr_txt:'',nr_leben:'',nr_zitat:'',
+  nl_w:'',nl_tiktok:'',nl_streaming:'',nl_fb:'',nl_go:'',nl_ap:'',nl_em:'',nl_li:'',nl_amz:'',nl_cloud:'',nl_wa:'',nl_sonst:'',abos:[],
+  brief:'',brief_ort:'',blutgruppe:'',rhesusfaktor:'',allergien:'',nahrung_unvertraeg:'',dauermed:'',vorerkrankungen:'',operationen:'',implantate:'',org_status:'',impfpass:'',med_hausarzt:'',med_kardio:'',med_sonstige:'',vereine:'',zeitungen:'',mitglied_sonst:'',ehrenamt:'',vermaecht_schmuck:'',vermaecht_moebel:'',fam_dokumente:'',fam_fotos:'',fam_geschichte:'',vermaecht_sonst:'',ist_unternehmer:'',firma_name:'',firma_hr:'',firma_stb:'',firma_nachfolge:'',firma_kunden:'',firma_zugaenge:'',firma_mitarbeiter:'',rente_betrag:'',rente_traeger:'',rente_betrieb:'',kredite:'',buergschaft:'',nr_st:'klassisch',nr_ber:'',nr_hob:'',nr_eri:'',nr_txt:'',nr_leben:'',nr_zitat:'',
 };
 
 var MODS=[
@@ -537,6 +585,10 @@ var MODS=[
   {id:'m7',ic:'🏠',nm:'Immobilien & Sachwerte',tg:'Besitz'},
   {id:'m8',ic:'📱',nm:'Digitaler Nachlass',tg:'Online-Konten'},
   {id:'m9',ic:'✍️',nm:'Brief & Nachruf',tg:'Persönliches'},
+  {id:'m10',ic:'🏥',nm:'Med. Notfalldaten',tg:'Gesundheit'},
+  {id:'m11',ic:'📬',nm:'Mitgliedschaften',tg:'Verträge'},
+  {id:'m12',ic:'🎁',nm:'Vermächtnisse',tg:'Erinnerungen'},
+  {id:'m13',ic:'🤝',nm:'Unternehmen',tg:'Geschäftliches'},
 ];
 
 function msc(id){
@@ -644,10 +696,28 @@ function msc(id){
       if(h('nr_zitat'))s9+=10;
       return Math.min(100,s9);
 
+    case 'm10':
+      var s10=0;
+      if(h('blutgruppe'))s10+=15;if(h('allergien'))s10+=25;if(h('dauermed'))s10+=25;
+      if(h('vorerkrankungen'))s10+=15;if(h('implantate'))s10+=10;if(h('med_hausarzt'))s10+=10;
+      return Math.min(100,s10);
+    case 'm11':
+      var s11=0;
+      if(h('vereine'))s11+=35;if(h('zeitungen'))s11+=35;if(h('mitglied_sonst'))s11+=30;
+      return Math.min(100,s11);
+    case 'm12':
+      var s12=0;
+      if(h('vermaecht_schmuck'))s12+=25;if(h('fam_fotos'))s12+=20;if(h('fam_geschichte'))s12+=30;
+      if(h('fam_dokumente'))s12+=15;if(h('vermaecht_sonst'))s12+=10;
+      return Math.min(100,s12);
+    case 'm13':
+      var s13=0;
+      if(h('firma_name'))s13+=20;if(h('firma_nachfolge'))s13+=40;if(h('firma_kunden'))s13+=25;if(h('firma_zugaenge'))s13+=15;
+      return Math.min(100,s13);
     default:return 0;
   }
 }
-function tot(){return Math.round(MODS.map(m=>msc(m.id)).reduce((a,b)=>a+b,0)/MODS.length);}
+function tot(){var scores=MODS.map(function(m){var s=msc(m.id);return isNaN(s)?0:s;});return Math.round(scores.reduce(function(a,b){return a+b;},0)/MODS.length);}
 
 function sv(){try{localStorage.setItem(SK,JSON.stringify({u:USER,c:CUR,d:D}));}catch(e){}}
 function ld(){try{return JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){return{};}}
@@ -659,13 +729,21 @@ function startTresor(){
   if(!D.vn)D.vn=pts[0];
   if(!D.nn&&pts[1])D.nn=pts.slice(1).join(' ');
   // Onboarding zeigen statt direkt App
+  // Arrays initialisieren
+  ['pws','krypto','banken','vers','immos','abos'].forEach(function(k){
+    if(!Array.isArray(D[k]))D[k]=[];
+  });
   document.getElementById('LS').style.display='none';
   document.getElementById('ob').style.display='block';
 };
 function resumeTresor(){
   const s=ld();if(!s.u)return;
   USER=s.u;Object.assign(D,s.d||{});CUR=s.c||0;
-  // Gespeicherter Fortschritt → direkt App, Onboarding überspringen
+  // Arrays sichern (könnten durch alten Stand kaputt sein)
+  ['pws','krypto','banken','vers','immos','abos'].forEach(function(k){
+    if(!Array.isArray(D[k]))D[k]=[];
+  });
+  if(!D.v_bereiche||typeof D.v_bereiche!=='object')D.v_bereiche={A:true,B:true,C:true,D:true,E:true,F:true,G:true,H:true,I:true,J:true,K:true,L:true,M:true,N:false,O:true};
   showApp();
 };
 function showApp(){
@@ -685,7 +763,7 @@ if(stored.u&&(Object.keys(stored.d||{}).some(k=>stored.d[k]&&(typeof stored.d[k]
 }
 
 function rSB(){
-  const t=tot();
+  var t=tot();if(isNaN(t))t=0;
   const c=document.getElementById('scC');if(c)c.style.strokeDashoffset=232*(1-t/100);
   const sn=document.getElementById('scN');if(sn)sn.textContent=t+'%';
   var sl=document.getElementById('scL');
@@ -787,7 +865,51 @@ window.obToggle=function(el){
 };
 window.gM=function(i){collAll();CUR=i;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});};
 function prev(){if(CUR>0){collAll();CUR--;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});}}
-function next(){collAll();if(CUR<MODS.length-1){CUR++;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});}}
+function next(){
+  collAll();
+  if(CUR>=MODS.length-1)return;
+  // Zeige Abschluss-Animation
+  var score=msc(MODS[CUR].id);
+  var modName=MODS[CUR].nm;
+  var overlay=document.getElementById('modDoneOverlay');
+  var title=document.getElementById('modDoneTitle');
+  var sub=document.getElementById('modDoneSub');
+  var bar=document.getElementById('modDoneBar');
+  var nextName=MODS[CUR+1]?MODS[CUR+1].nm:'';
+
+  if(overlay&&title&&sub&&bar){
+    title.textContent=score>50?'✨ '+modName+' abgeschlossen!':'💾 Gespeichert!';
+    sub.textContent=score>50
+      ?'Weiter: '+nextName+' →'
+      :'Tipp: Diesen Bereich später vervollständigen';
+    // Haken-SVG frisch einsetzen damit Animation neu startet
+    var iconEl=document.getElementById('modDoneIcon');
+    if(iconEl){
+      iconEl.innerHTML='<svg width="36" height="36" viewBox="0 0 36 36" fill="none">'
+        +'<polyline class="mod-done-check" points="7,19 15,27 29,11" '
+        +'stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'
+        +'</svg>';
+    }
+    overlay.style.display='flex';
+    bar.style.width='0';
+    setTimeout(function(){
+      overlay.classList.add('show');
+      setTimeout(function(){bar.style.width=score+'%';},150);
+    },20);
+    // Nach 1.2 Sekunden weiter
+    setTimeout(function(){
+      overlay.classList.remove('show');
+      setTimeout(function(){
+        overlay.style.display='none';
+        bar.style.width='0';
+        CUR++;sv();rSB();rMod();
+        window.scrollTo({top:0,behavior:'smooth'});
+      },300);
+    },1200);
+  } else {
+    CUR++;sv();rSB();rMod();window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
 window.prev=prev;window.next=next;
 
 function navB(){
@@ -802,7 +924,7 @@ function navB(){
 
 function sh(ic,tg,ti,de,mainContent,sideContent){
   var descHtml=de?'<div class="mh-d">'+de+'</div>':'';
-  var sc=msc(MODS[CUR].id);
+  var sc=msc(MODS[CUR].id);if(isNaN(sc))sc=0;
   var scBar=sc>0?'<div style="height:2px;background:#f1f5f9;border-radius:999px;margin-top:8px;overflow:hidden"><div style="height:100%;width:'+sc+'%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:999px;transition:width .6s ease"></div></div>':'';
   var side=sideContent?'<div class="mod-side">'+sideContent+'</div>':'';
   var body=sideContent
@@ -865,6 +987,10 @@ var FIELD_MAP={
   m7:['fzg','fzg_dok','sachs','fzg_vers','fzg_wert','tresor'],
   m8:['nl_fb','nl_go','nl_ap','nl_em','nl_wa','nl_li','nl_amz','nl_cloud','nl_sonst'],
   m9:['brief','brief_ort','nr_ber','nr_hob','nr_eri','nr_leben','nr_zitat'],
+  m10:['blutgruppe','rhesusfaktor','allergien','nahrung_unvertraeg','dauermed','vorerkrankungen','operationen','implantate','org_status','impfpass','med_hausarzt','med_kardio','med_sonstige'],
+  m11:['vereine','zeitungen','mitglied_sonst','ehrenamt'],
+  m12:['vermaecht_schmuck','vermaecht_moebel','fam_dokumente','fam_fotos','fam_geschichte','vermaecht_sonst'],
+  m13:['ist_unternehmer','firma_name','firma_hr','firma_stb','firma_nachfolge','firma_kunden','firma_zugaenge','firma_mitarbeiter'],
 };
 var SELECT_FIELDS=['k_art','nl_w','b_art','b_rel','k_vor','pv','v_mehrere','v_registrierung','k_pflegev','nr_st'];
 
@@ -1019,7 +1145,7 @@ function rMod(){
   c.style.opacity='0';
   c.style.transform='translateY(8px)';
   setTimeout(function(){
-    ({m1:r1,m2:r2,m3:r3,m4:r4,m5:r5,m6:r6,m7:r7,m8:r8,m9:r9}[MODS[CUR].id]||function(){})(c);
+    ({m1:r1,m2:r2,m3:r3,m4:r4,m5:r5,m6:r6,m7:r7,m8:r8,m9:r9,m10:r10,m11:r11,m12:r12,m13:r13}[MODS[CUR].id]||function(){})(c);
     initAccordions();
     c.style.transition='opacity .25s ease,transform .25s ease';
     c.style.opacity='1';
@@ -1404,7 +1530,7 @@ function r4(c){
       '<div class="al-box al-info"><span class="ali">✅</span><div>Alle empfohlenen Bereiche sind vorausgewählt. Bereich N (Unternehmerisches) ist standardmäßig deaktiviert.</div></div>'
       +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">'+bereicheHTML+'</div>'
     )
-    +sec(5,'Zusätzliche Regelungen',
+    +sec(5,'Regelungen & Optionen',
       '<div class="f"><label>§ 181 BGB – Insichgeschäfte erlaubt?</label>'
       +'<div class="fh" style="margin-bottom:8px">Empfehlung: Ja erlauben – ermöglicht einfacheres Handeln</div>'
       +'<div class="cg" id="cg181">'
@@ -1621,20 +1747,13 @@ function r8(c){
       +'</div>'
       +'<div class="fr">'
       +fld('Amazon / PayPal','nl_amz','z.B. Guthaben auszahlen, dann schließen','',D.nl_amz||'')
+      +fld('TikTok / YouTube / Twitch','nl_tiktok','z.B. YouTube: löschen / TikTok kündigen','',D.nl_tiktok||'')
+      +fld('Netflix / Spotify / Streaming','nl_streaming','z.B. Netflix kündigen / Spotify an Tochter','',D.nl_streaming||'')
       +fld('Cloud-Speicher (Fotos!)','nl_cloud','z.B. Dropbox: 50GB Fotos bitte sichern','',D.nl_cloud||'')
       +'</div>'
       +fldTA('Sonstige Konten & Wünsche','nl_sonst','z.B.: Dating-App diskret löschen / ELSTER an Steuerberater / Online-Banking: Bank informieren',D.nl_sonst||'')
     )
-    +sec(3,'Abonnements kündigen',
-      +'<div class="tl" id="abL"></div>'
-      +'<div class="add-form hidden" id="abF">'
-      +'<div class="fr"><div class="f"><label>Dienst / Abo</label><input id="ab_n" placeholder="z.B. Netflix, Spotify, Adobe"/></div>'
-      +'<div class="f"><label>Monatlich (€)</label><input type="number" id="ab_b" placeholder="14.99"/></div></div>'
-      +'<div style="display:flex;gap:8px"><button class="btn btn-g" onclick="addAb()" style="flex:1">+ Hinzufügen</button><button class="btn" onclick="hideForm(\'abF\')">Abbrechen</button></div>'
-      +'</div>'
-      +'<button class="add-btn" onclick="document.getElementById(\'abF\').classList.remove(\'hidden\')">+ Abo / Mitgliedschaft hinzufügen</button>'
-    )
-    +navB();
+        +navB();
 
   var side8=
     sLabel('Zahlen die überraschen')
@@ -1647,7 +1766,6 @@ function r8(c){
     +sTip('yellow','💰 Abos finden','Kontoauszüge der letzten 3 Monate nach wiederkehrenden Abbuchungen durchsuchen.');
 
   c.innerHTML=sh('📱','Online-Konten','Digitaler Nachlass','Was soll mit Ihren Konten, Profilen und Abonnements passieren?',main8,side8);
-  rAbL();
 }
 // ═══ MODUL 9 ═══
 function r9(c){
@@ -1658,7 +1776,7 @@ function r9(c){
     )
     +sec(2,'KI-Nachruf erstellen',
       '<div class="fr">'
-      +fld('Beruf / Tätigkeit','nr_ber','z.B. 35 Jahre Lehrerin / Schreiner / Rentner','',D.nr_ber)
+      +fld('Beruf / Tätigkeit','nr_ber','z.B. 35 Jahre Lehrerin / Schreiner / Rentner','',D.nr_ber||(D.beruf||''))
       +fld('Hobbys & Leidenschaften','nr_hob','z.B. Gartenarbeit, Reisen nach Italien','',D.nr_hob)
       +'</div>'
       +'<div class="fr">'
@@ -1684,6 +1802,136 @@ function r9(c){
 
   c.innerHTML=sh('✍️','Persönliches','Persönlicher Brief & Nachruf','Das Wertvollste was Sie hinterlassen – Ihre eigenen Worte.',main9,side9);
 }
+
+// ═══ MODUL 10 ═══
+function r10(c){
+  var side10=
+    sLabel('Warum so wichtig?')
+    +sWb('🚑 Im Notfall entscheidend','Rettungskräfte benötigen diese Infos sofort – und Angehörige wissen sie oft nicht auswendig.')
+    +sTip('red','⚠ Medikamentenwechselwirkungen','Falsche Medikamente im Notfall können lebensgefährlich sein.')
+    +sTip('blue','💉 Blutgruppe','Nur 8% der Deutschen kennen ihre Blutgruppe. Sie steht auf alten Blutspendeausweisen oder beim Arzt.')
+    +sTip('green','✓ Impfpass','Liegt oft jahrelang irgendwo – jetzt Aufbewahrungsort notieren.');
+
+  var main10=
+    sec(1,'Blut & Impfschutz',
+      '<div class="fr">'
+      +fld('Blutgruppe','blutgruppe','z.B. A positiv (A+)','',D.blutgruppe||'')
+      +fld('Rhesusfaktor','rhesusfaktor','z.B. positiv (+) / negativ (-)','',D.rhesusfaktor||'')
+      +'</div>'
+      +fld('Impfpass – Aufbewahrungsort','impfpass','z.B. Roter Ordner Büroschrank / beim Hausarzt','',D.impfpass||'')
+      +fld('Organspendeausweis','org_status','z.B. Ja – im Portemonnaie / Nein – Ablehnung schriftlich hinterlegt','',D.org_status||'')
+      +'<a href="https://www.organspende-info.de/organspendeausweis/infos-und-download/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;padding:10px 18px;border-radius:11px;text-decoration:none;font-size:13px;font-weight:700;margin-top:8px;box-shadow:0 4px 14px rgba(124,58,237,.25)">🫀 Organspendeausweis kostenlos beantragen</a>'
+    )
+    +sec(2,'Allergien & Unverträglichkeiten',
+      fldTA('Allergien (mit Schweregrad!)','allergien','z.B. Penicillin (anaphylaktischer Schock!), Latex (Kontaktallergie), Nüsse, Kontrastmittel',D.allergien||'')
+      +fldTA('Nahrungsmittelunverträglichkeiten','nahrung_unvertraeg','z.B. Laktose-Intoleranz, Zöliakie (Gluten), Fruktose-Intoleranz',D.nahrung_unvertraeg||'')
+    )
+    +sec(3,'Dauermedikamente',
+      fldTA('Aktuelle Medikamente (Wirkstoff, Dosis, Häufigkeit)','dauermed','z.B. Metformin 500mg 2x tägl. (Diabetes), ASS 100mg (Blutverdünnung), Ramipril 5mg (Bluthochdruck)',D.dauermed||'')
+    )
+    +sec(4,'Erkrankungen & Operationen',
+      fldTA('Chronische Erkrankungen','vorerkrankungen','z.B. Typ-2-Diabetes seit 2015, KHK, Bluthochdruck, Rheuma, Asthma',D.vorerkrankungen||'')
+      +fldTA('Frühere Operationen & Ereignisse','operationen','z.B. Herzinfarkt 2019 (Stent), Hüft-OP 2021 rechts, Gallenblasenentfernung 2005',D.operationen||'')
+      +fld('Implantate & Hilfsmittel','implantate','z.B. Herzschrittmacher (MRT-tauglich), Hüftprothese, Hörgerät, Insulin-Pumpe','Wichtig vor MRT und Operationen!',D.implantate||'')
+    )
+    +sec(5,'Behandelnde Ärzte',
+      '<div class="fr">'
+      +fld('Hausarzt (Name & Tel.)','med_hausarzt','z.B. Dr. Schmidt, Musterstr. 1, Tel: 040-...','',D.med_hausarzt||'')
+      +fld('Facharzt 1 (Name & Tel.)','med_kardio','z.B. Kardiologe Dr. Weber, Herzzentrum, Tel: 040-...','',D.med_kardio||'')
+      +'</div>'
+      +fld('Weitere Fachärzte','med_sonstige','z.B. Diabetologe Dr. Braun, Orthopäde Dr. Klein','',D.med_sonstige||'')
+    )
+    +navB();
+
+  c.innerHTML=sh('🏥','Gesundheit','Medizinische Notfalldaten','Lebensrettende Informationen – bitte immer aktuell halten.',main10,side10);
+}
+
+// ═══ MODUL 11 ═══
+function r11(c){
+  var side11=
+    sLabel('Warum das wichtig ist')
+    +sStat('840 €','Ø jährl. Abos laufen nach Tod weiter')
+    +sTip('green','✓ Kontoauszüge','Alle wiederkehrenden Abbuchungen der letzten 3 Monate durchsuchen.')
+    +sTip('blue','⚖ Mitgliedschaften','Vereinsbeiträge laufen bis zur Kündigung weiter.');
+
+  var main11=
+    sec(1,'Vereinsmitgliedschaften',
+      fldTA('Vereine & Organisationen','vereine','z.B. TSV Hamburg (Mitglieds-Nr. 12345, 120 €/Jahr) – bitte kündigen',D.vereine||'')
+    )
+    +sec(2,'Zeitungen, Magazine & Streaming',
+      fldTA('Abonnements & Streaming-Dienste','zeitungen','z.B. Hamburger Abendblatt (Kundennr. 12345), Netflix, Spotify, Amazon Prime – alle kündigen',D.zeitungen||'')
+    )
+    +sec(3,'Sonstige Mitgliedschaften & Ehrenamt',
+      fldTA('Weitere Mitgliedschaften','mitglied_sonst','z.B. Gewerkschaft ver.di, Fitnessstudio (bis 12/2025), ADAC, Partei-Mitgliedschaft',D.mitglied_sonst||'')
+      +fldTA('Ehrenamtliche Tätigkeiten','ehrenamt','z.B. Vorstand Sportverein (Nachfolger: Hans Meier), Nachbarschaftshilfe (Kontakt: Maria Schulz)',D.ehrenamt||'')
+    )
+    +navB();
+
+  c.innerHTML=sh('📬','Mitgliedschaften','Verträge & Mitgliedschaften','Alles was gekündigt oder übergeben werden muss.',main11,side11);
+}
+
+// ═══ MODUL 12 ═══
+function r12(c){
+  var side12=
+    sLabel('Warum das wichtig ist')
+    +sWb('🎁 Häufigster Familienstreit','Streit um Gegenstände ist nach dem Tod häufiger als Streit ums Geld.')
+    +sTip('red','⚠ Nur Testament bindend','Diese Aufzeichnung ist ein Wunsch – wichtige Vermächtnisse ins Testament!')
+    +sTip('green','✓ Je detaillierter desto besser','Aufbewahrungsort und Aussehen genau beschreiben.');
+
+  var main12=
+    sec(1,'Persönliche Gegenstände & Wertgegenstände',
+      fldTA('Schmuck & Wertgegenstände','vermaecht_schmuck','z.B. Goldring von Oma → an Tochter Anna (Schmuckkästchen Schlafzimmer) / Rolex → an Sohn Peter (Bankschließfach)',D.vermaecht_schmuck||'')
+      +fldTA('Möbel, Kunst & Sammlungen','vermaecht_moebel','z.B. Eichenholzschrank → an Peter / Gemälde „Hamburger Hafen" → verkaufen / Briefmarkensammlung → an Enkel Tim',D.vermaecht_moebel||'')
+    )
+    +sec(2,'Erinnerungen & Familiengeschichte',
+      fldTA('Wichtige Familiendokumente','fam_dokumente','z.B. Stammbuch (Schlafzimmer Kommode), Heiratsurkunde (roter Ordner), alte Fotos (Dachboden Kiste „Familie")',D.fam_dokumente||'')
+      +fldTA('Fotos & Videos','fam_fotos','z.B. Fotoalben 1960-1990 (Wohnzimmer Regal), digitale Fotos in iCloud, Videokassetten (Dachboden – digitalisieren!)',D.fam_fotos||'')
+      +fldTA('Was sollen Kinder & Enkel über Sie wissen?','fam_geschichte','Was war Ihnen im Leben wichtig? Welche Geschichten sollen weitergegeben werden?',D.fam_geschichte||'')
+    )
+    +sec(3,'Sonstige Wünsche',
+      fldTA('Weitere Wünsche zur Verteilung','vermaecht_sonst','z.B. Bibliothek → an Stadtbücherei spenden / Werkzeug → an Nachbar Klaus / Auto → verkaufen, Erlös an Rotes Kreuz',D.vermaecht_sonst||'')
+    )
+    +navB();
+
+  c.innerHTML=sh('🎁','Vermächtnis','Vermächtnisse & Erinnerungen','Was mit Ihren Dingen geschehen soll.',main12,side12);
+}
+
+// ═══ MODUL 13 ═══
+function r13(c){
+  var side13=
+    sLabel('Für Selbstständige & Unternehmer')
+    +sWb('⚠ Sofortiger Handlungsbedarf','Ein Unternehmen kann nicht einfach eingefroren werden – ohne Plan geraten Mitarbeiter und Kunden in Not.')
+    +sTip('red','⚠ Prokura jetzt erteilen','Ohne Handlungsvollmacht kann niemand im Ernstfall handeln.')
+    +sTip('blue','⚖ Testamentsvollstrecker','Für Unternehmen empfiehlt sich ein Testamentsvollstrecker.');
+
+  var skipHint=D.ist_unternehmer==='ja'?'':'<div class="al-box al-info"><span class="ali">💼</span><div>'
+    +'<strong>Dieser Bereich ist für Selbstständige & Unternehmer.</strong><br/>'
+    +'<div class="f" style="margin-top:8px"><label>Sind Sie selbstständig oder Unternehmer?</label>'
+    +chips('cgisuntern','ist_unternehmer',[['ja','Ja, relevant für mich'],['nein','Nein, überspringen']])
+    +'</div></div></div>';
+
+  var main13=
+    skipHint
+    +sec(1,'Unternehmen & Firma',
+      '<div class="fr">'
+      +fld('Firmenname & Rechtsform','firma_name','z.B. Müller GmbH / Einzelunternehmen Max Müller','',D.firma_name||'')
+      +fld('Handelsregister-Nr.','firma_hr','z.B. HRB 12345 Hamburg','',D.firma_hr||'')
+      +'</div>'
+      +fld('Steuerberater / Rechtsanwalt der Firma','firma_stb','z.B. Kanzlei Braun & Partner, Tel: 040-...','',D.firma_stb||'')
+    )
+    +sec(2,'Vollmachten & Nachfolge',
+      fldTA('Wer übernimmt im Notfall?','firma_nachfolge','z.B. Prokurist Hans Meier (Tel: 0170-...) hat Vollmacht / Gesellschafter Peter Schulz informieren',D.firma_nachfolge||'')
+      +fldTA('Wichtige Kunden & laufende Aufträge','firma_kunden','z.B. Hauptkunde Stadt Hamburg (Frau Klein, Tel: ...) / Auftrag bis 03/2025 (Ordner rot)',D.firma_kunden||'')
+    )
+    +sec(3,'Zugänge & Mitarbeiter',
+      fldTA('Wichtige Zugänge der Firma','firma_zugaenge','z.B. Server-Login im Passwort-Manager / ELSTER: Steuerberater hat Zugang / Bankvollmacht beim Prokuristen',D.firma_zugaenge||'')
+      +fldTA('Mitarbeiter & Verpflichtungen','firma_mitarbeiter','z.B. 3 Mitarbeiter: Hans (VZ), Maria (TZ), Klaus (Minijob) / Löhne automatisch bis Monatsende',D.firma_mitarbeiter||'')
+    )
+    +navB();
+
+  c.innerHTML=sh('🤝','Unternehmen','Geschäftliches & Selbstständigkeit','Damit das Unternehmen nicht führungslos wird.',main13,side13);
+}
+
 
 window.genNR=function(){
   coll();
@@ -1781,7 +2029,7 @@ window.goFinish=function(){
 
     <div style="margin-bottom:10px">
       <label style="font-size:11.5px;font-weight:600;color:#374151">Passwort wiederholen *</label>
-      <div class="pg-pw"><input type="password" id="pg_pw2" placeholder="Passwort wiederholen"/></div>
+      <div class="pg-pw" style="margin-top:6px"><input type="password" id="pg_pw2" placeholder="Passwort wiederholen"/></div>
     </div>
 
     <div class="pg-con"><input type="checkbox" id="pg_co" style="margin-top:2px;flex-shrink:0"/>
@@ -2506,6 +2754,7 @@ window._genVollmachtPDF=function(){
   doc.save(fname);
   }catch(err){console.error(err);alert('Fehler beim Erstellen der PDF: '+err.message);}
 };
+
 
 </script>
 
